@@ -1,0 +1,129 @@
+﻿body {
+    background-color: #020202;
+    background-image: url('../imagenes/pelota.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: 320px;
+}
+
+.bienvenidos {
+    color: #e44f1e;
+    background-color: #020202;
+    margin-top: 0px;
+    margin: auto;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 70px;
+}
+
+.fondoIngreso {
+    background-color: #020202;
+}
+
+.formH1 {
+    background-color: #e44f1e;
+}
+
+.formulario {
+    float: left;
+    width: 200px;
+    background: #cccccc;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: 6%;
+    margin-left: 25%;
+    width: 350px;
+}
+
+.formulario h1 {
+    text-align: left;
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid #4e4d4d;
+    font: bold 25px arial, verdana;
+}
+
+.formulario label {
+    padding: 0 30px;
+    box-sizing: border-box;
+    font: 17px arial, verdana;
+}
+
+.input {
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0 30px;
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: 17px arial, verdana;
+    height: 28px;
+    width: 220px;
+}
+
+.btnIngresar {
+    margin: 10px 30px 15px;
+    padding: 5px 5px 5px 5px;
+    background-color: #e44f1e;
+    color: white;
+    font: bold 20px arial, verdana;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.btnIngresar:active {
+    background-color: #fd875c;
+}
+
+.divImagen {
+    float: left;
+    width: 350px;
+}
+
+.menu {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.tabla {
+    border: none;
+    margin-left: 5%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.tabla tr {
+    border: none;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.tabla td {
+    border: none;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.btnMenu {
+    background-color: #d8d8d8;
+    border: 3.5px solid #e44f1e;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    font: bold 26px arial, verdana;
+    height: 70px;
+    width: 450px;
+    margin: 10px 10px 10px 10px;
+}
+
+.btnMenu:hover {
+    background-color: #e4701e;
+    border-color: #d8d8d8;
+}
+
+.btnMenu:active {
+    background-color: #e44f1e;
+    border-color: #c9c9c9;
+}
