@@ -12,9 +12,9 @@ namespace Logica
     {
         Datos.UsuarioDA usuario = new Datos.UsuarioDA();
 
-        public List<Entidades.Dto.UsuarioDto> getUsuarios()
+        public List<Entidades.Dto.UsuarioDto> getUsuarios(string contr, string nombreUs)
         {
-            return usuario.getUsuarios();
+            return usuario.getUsuarios(contr, nombreUs);
         }
     }
 }

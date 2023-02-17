@@ -10,6 +10,8 @@ namespace Entidades.Dto
     {
         public int Id { get; set; }
         public string NombreUsuario { get; set; }
+        public string Contraseña { get; set; }
         public int RolId { get; set; }
+        public int? ClubId { get; set; }
     }
 }
