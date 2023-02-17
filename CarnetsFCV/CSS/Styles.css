@@ -35,18 +35,18 @@
     width: 350px;
 }
 
-.formulario h1 {
-    text-align: left;
-    padding: 10px 0 10px 10px;
-    border-bottom: 1px solid #4e4d4d;
-    font: bold 25px arial, verdana;
-}
+    .formulario h1 {
+        text-align: left;
+        padding: 10px 0 10px 10px;
+        border-bottom: 1px solid #4e4d4d;
+        font: bold 25px arial, verdana;
+    }
 
-.formulario label {
-    padding: 0 30px;
-    box-sizing: border-box;
-    font: 17px arial, verdana;
-}
+    .formulario label {
+        padding: 0 30px;
+        box-sizing: border-box;
+        font: 17px arial, verdana;
+    }
 
 .input {
     padding: 15px 15px 15px 15px;
@@ -72,9 +72,9 @@
 }
 
 
-.btnIngresar:active {
-    background-color: #fd875c;
-}
+    .btnIngresar:active {
+        background-color: #fd875c;
+    }
 
 .divImagen {
     float: left;
@@ -94,17 +94,17 @@
     text-align: center;
 }
 
-.tabla tr {
-    border: none;
-    margin-right: 10px;
-    text-align: center;
-}
+    .tabla tr {
+        border: none;
+        margin-right: 10px;
+        text-align: center;
+    }
 
-.tabla td {
-    border: none;
-    text-align: center;
-    margin-left: 50px;
-}
+    .tabla td {
+        border: none;
+        text-align: center;
+        margin-left: 50px;
+    }
 
 .btnMenu {
     background-color: #d8d8d8;
@@ -114,16 +114,37 @@
     cursor: pointer;
     font: bold 26px arial, verdana;
     height: 70px;
-    width: 450px;
+    width: 350px;
     margin: 10px 10px 10px 10px;
 }
 
-.btnMenu:hover {
-    background-color: #e4701e;
-    border-color: #d8d8d8;
-}
+    .btnMenu:hover {
+        background-color: #e4701e;
+        border-color: #d8d8d8;
+    }
 
-.btnMenu:active {
+    .btnMenu:active {
+        background-color: #e44f1e;
+        border-color: #c9c9c9;
+    }
+
+.btnCerrar {
+    margin: 10px 30px 15px;
+    padding: 5px 5px 5px 5px;
     background-color: #e44f1e;
-    border-color: #c9c9c9;
+    color: white;
+    font: bold 20px arial, verdana;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align:right;
+    bottom: 0%;
 }
+    .btnCerrar:hover {
+        background-color: #fd875c;
+        border-color: #d8d8d8;
+    }
+
+
+    .btnCerrar:active {
+        background-color: #e44f1e;
+    }
