@@ -21,6 +21,7 @@ namespace CarnetsFCV
 
             if (usuario != null)
             {
+                Session["clubId"] = usuario.ClubId.ToString();
                 Session["rolId"] = usuario.RolId.ToString();
                 Response.Redirect("Menu.aspx");
             }

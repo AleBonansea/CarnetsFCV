@@ -21,11 +21,13 @@ namespace CarnetsFCV
                 {
                     case 1:
                         btnJugadores.Visible = false;
+                        btnEquipos.Visible = false;
                         break;
 
                     case 2:
                         btnArbitros.Visible = false;
                         btnClubes.Visible = false;
+                        btnDelegados.Visible = false;
                         break;
 
                     case (3):
@@ -34,23 +36,9 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnEquipos.Visible = false;
                         btnJugadores.Visible = false;
+                        btnDelegados.Visible = false;
                         break;
 
-                    case 4:
-                        btnArbitros.Visible = false;
-                        btnClubes.Visible = false;
-                        btnEntrenadores.Visible = false;
-                        btnEquipos.Visible = false;
-                        btnJugadores.Visible = false;
-                        break;
-
-                    case 5:
-                        btnArbitros.Visible = false;
-                        btnClubes.Visible = false;
-                        btnEntrenadores.Visible = false;
-                        btnEquipos.Visible = false;
-                        btnJugadores.Visible = false;
-                        break;
                 }
             }
             else
