@@ -148,3 +148,21 @@
     .btnCerrar:active {
         background-color: #e44f1e;
     }
+
+.divGrilla {
+    background-color: #e44f1e;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    height:300px;
+}
+
+.grilla {
+    margin-left: 5%;
+    background-color: white;
+    border-color: black;
+    border: solid;
+    border-width: 3px;
+    height: 150px;
+    width:1350px;
+}
