@@ -53,8 +53,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arbitros.cs" />
+    <Compile Include="Clubes.cs" />
+    <Compile Include="Delegados.cs" />
+    <Compile Include="Divisiones.cs" />
+    <Compile Include="Dto\ClubDto.cs" />
+    <Compile Include="Dto\DivisionDto.cs" />
+    <Compile Include="Dto\EquipoDto.cs" />
+    <Compile Include="Dto\JugadorDto.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />
+    <Compile Include="Entrenadores.cs" />
+    <Compile Include="Equipos.cs" />
+    <Compile Include="Jugadores.cs" />
+    <Compile Include="Modelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ramas.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

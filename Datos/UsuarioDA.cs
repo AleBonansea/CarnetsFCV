@@ -15,14 +15,17 @@ namespace Datos
         public List<Entidades.Dto.UsuarioDto> getUsuarios(string contr, string nombreUs)
         {
             var listaUsuarios = from u in context.Usuarios
+                                from d in context.Delegados
                                 where u.NombreUsuario == nombreUs
                                 && u.Contraseña == contr
+                                && d.UsuarioId == u.Id
                                 select new Entidades.Dto.UsuarioDto
                                 {
                                     Id = u.Id,
                                     NombreUsuario = u.NombreUsuario,
                                     Contraseña = u.Contraseña,
-                                    RolId = u.RolId                                   
+                                    RolId = u.RolId,
+                                    ClubId = d.ClubId
                                 };
 
             return listaUsuarios.ToList();
