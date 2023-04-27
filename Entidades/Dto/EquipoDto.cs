@@ -9,6 +9,9 @@ namespace Entidades.Dto
     public class EquipoDto
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
+        public string NombreClub { get; set; }
+        public string NombreEquipo { get; set; }
+        public string Division { get; set; }
+        public string Rama { get; set; }
     }
 }

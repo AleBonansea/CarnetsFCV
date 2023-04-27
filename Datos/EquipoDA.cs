@@ -16,10 +16,42 @@ namespace Datos
                               select new Entidades.Dto.EquipoDto
                               {
                                   Id = e.Id,
-                                  Nombre = e.Nombre
+                                  NombreEquipo = e.Nombre
                               };
+
+            return listaEquipos.ToList();
+        }
+        public List<Entidades.Dto.EquipoDto> getTotalEquipos(int clubId)
+        {
+            var listaEquipos = from e in context.Equipos
+                               where e.ClubId == clubId
+                              select new Entidades.Dto.EquipoDto
+                              {
+                                  NombreClub = e.Clubes.Nombre,
+                                  NombreEquipo = e.Nombre,
+                                  Division = e.Divisiones.Descripcion,
+                                  Rama = e.Ramas.Descripcion
+                              };
+
+            return listaEquipos.ToList();
+        }
+
+        public List<Entidades.Dto.EquipoDto> getBuscadorEquipos(string buscar, int clubId)
+        {
+            var listaEquipos = from e in context.Equipos
+                              where e.Nombre.Contains(buscar)
+                              && e.ClubId == clubId
+                              select new Entidades.Dto.EquipoDto
+                              {
+                                  NombreClub = e.Clubes.Nombre,
+                                  NombreEquipo = e.Nombre,
+                                  Division = e.Divisiones.Descripcion,
+                                  Rama = e.Ramas.Descripcion
+                              };
+                              
 
             return listaEquipos.ToList();
         }
     }
 }
+

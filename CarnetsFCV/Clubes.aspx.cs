@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,11 @@ namespace CarnetsFCV
             CargarGrilla();
         }
 
+        protected void btnInicio_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Menu.aspx");
+        }
+
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session.Abandon();
@@ -24,9 +30,28 @@ namespace CarnetsFCV
         }
 
         public void CargarGrilla()
+        {           
+            gvClubes.DataSource = clubes.getTotalClubes();
+            gvClubes.DataBind();
+        }
+                
+
+        protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
         {
-            gvJugadores.DataBind();
-            gvJugadores.DataSource = clubes.getTotalClubes();
+            if (!string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                gvClubes.DataSource = clubes.getBuscadorClubes(txtBuscar.Text);
+                gvClubes.DataBind();
+            }
+            else
+            {
+                CargarGrilla();
+            }
+        }
+
+        protected void btnAñadir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

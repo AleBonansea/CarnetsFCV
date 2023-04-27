@@ -40,5 +40,23 @@ namespace Datos
             return listaClubes.ToList();
         }
 
+        public List<Entidades.Dto.ClubDto> getBuscadorClubes(string buscar)
+        {
+            var listaClubes = from c in context.Clubes
+                              from d in context.Delegados
+                              where c.Id == d.ClubId
+                              && c.Nombre.Contains(buscar)
+                              select new Entidades.Dto.ClubDto
+                              {
+                                  Id = c.Id,
+                                  Nombre = c.Nombre,
+                                  Domicilio = c.Domicilio,
+                                  Delegado = d.Nombre + " " + d.Apellido,
+                                  Telefono = d.Telefono,
+                                  Email = d.Email
+                              };
+
+            return listaClubes.ToList();
+        }
     }
 }

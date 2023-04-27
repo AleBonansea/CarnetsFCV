@@ -17,7 +17,8 @@ namespace CarnetsFCV
 
         void getUsuarios()
         {
-            var usuario = objLogica.getUsuarios(txtContraseña.Text, txtUsuario.Text).FirstOrDefault();
+            var usuario = objLogica.getUsuarios(txtContraseña.Text, txtUsuario.Text);
+
 
             if (usuario != null)
             {

@@ -83,7 +83,7 @@ namespace CarnetsFCV
             {
                 return new ListItem()
                 {
-                    Text = e.Nombre,
+                    Text = e.NombreEquipo,
                     Value = e.Id.ToString(),
                     Selected = false
                 };
