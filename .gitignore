@@ -14,6 +14,7 @@ node_modules/
 *.user
 *.userosscache
 *.sln.docstates
+*.sln
 *.jfm
 
 # User-specific files (MonoDevelop/Xamarin Studio)
@@ -291,7 +292,7 @@ _Pvt_Extensions
 # JetBrains Rider
 .idea/
 *.sln.iml
-
+.sln
 # CodeRush
 .cr/
 
