@@ -12,23 +12,25 @@ namespace Datos
     {
         Entidades.Modelo context = new Entidades.Modelo();
 
-        public List<Entidades.Dto.UsuarioDto> getUsuarios(string contr, string nombreUs)
+        public Entidades.Dto.UsuarioDto getUsuarios(string contr, string nombreUs)
         {
-            var listaUsuarios = from u in context.Usuarios
-                                from d in context.Delegados
+            var Usuario = (from u in context.Usuarios
                                 where u.NombreUsuario == nombreUs
                                 && u.Contraseña == contr
-                                && d.UsuarioId == u.Id
                                 select new Entidades.Dto.UsuarioDto
                                 {
                                     Id = u.Id,
                                     NombreUsuario = u.NombreUsuario,
                                     Contraseña = u.Contraseña,
-                                    RolId = u.RolId,
-                                    ClubId = d.ClubId
-                                };
+                                    RolId = u.RolId
+                                }).FirstOrDefault();
+            
+            if (Usuario.RolId != 1)
+            {
+                Usuario.ClubId = context.Delegados.Where(d => d.UsuarioId.Equals(Usuario.Id)).Select(d => d.ClubId).FirstOrDefault();
+            }
 
-            return listaUsuarios.ToList();
+            return Usuario;
         }
     }
 }

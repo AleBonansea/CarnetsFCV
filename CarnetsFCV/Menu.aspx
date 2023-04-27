@@ -13,10 +13,9 @@
     <div style="margin-top:8%; text-align:center" class="auto-style8">   
         <asp:Button ID="btnArbitros" class="btnMenu" Text="Árbitros" runat="server" />
         <asp:Button ID="btnCarnet" class="btnMenu" Text="Carnet" runat="server" />
-        <asp:Button ID="btnClubes" class="btnMenu" Text="Clubes" runat="server" />
-        <asp:Button ID="btnDelegados" class="btnMenu" Text="Delegados" runat="server" />
+        <asp:Button ID="btnClubes" OnClick="btnClubes_Click" class="btnMenu" Text="Clubes" runat="server" />
         <asp:Button ID="btnEntrenadores" class="btnMenu" Text="Entrenadores" runat="server" />
-        <asp:Button ID="btnEquipos" class="btnMenu" Text="Equipos" runat="server" />
+        <asp:Button ID="btnEquipos" OnClick="btnEquipos_Click" class="btnMenu" Text="Equipos" runat="server" />
         <asp:Button ID="btnJugadores" OnClick="btnJugadores_Click" class="btnMenu" Text="Jugadores" runat="server" />
 
     </div>
