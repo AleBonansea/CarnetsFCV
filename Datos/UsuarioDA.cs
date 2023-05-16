@@ -25,7 +25,7 @@ namespace Datos
                                     RolId = u.RolId
                                 }).FirstOrDefault();
             
-            if (Usuario.RolId != 1)
+            if (Usuario.RolId == 2)
             {
                 Usuario.ClubId = context.Delegados.Where(d => d.UsuarioId.Equals(Usuario.Id)).Select(d => d.ClubId).FirstOrDefault();
             }
