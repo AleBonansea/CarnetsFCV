@@ -3,7 +3,17 @@
 
 <html>
 <head runat="server">
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-language" content="IE=edge"/>
+    <meta name="viewport" content="widt=devicr-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
     <title>Carnets Digitales</title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="CSS/Styles.css" rel="stylesheet" />
