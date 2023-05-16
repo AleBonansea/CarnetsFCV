@@ -21,7 +21,7 @@
                 <label>Contraseña:</label>
                 <asp:TextBox  placeHolder="Ingrese Contraseña" class="input" type="password"  id="txtContraseña" value="" runat="server"/>
             </div>
-            <asp:Label Text="" ID="lblError" ForeColor="Red" Font-Bold="true" Font-Size="15px" runat="server" />
+            <asp:Label Text="" ID="lblError" style="margin-left:10px" ForeColor="Red" Font-Bold="true" Font-Size="16px" runat="server" />
             <div style="text-align:right;">
                 <asp:Button style="margin-right:5px" id="btnIngresar" OnClick="btnIngresar_Click" class="btnIngresar" Text="Ingresar" runat="server" />
                 <asp:Button style="margin-left:5px" id="btnCancelar" OnClick="btnCancelar_Click" class="btnIngresar" Text="Cancelar"  runat="server" />

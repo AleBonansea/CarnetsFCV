@@ -27,7 +27,6 @@ namespace CarnetsFCV
                     case 2:
                         btnArbitros.Visible = false;
                         btnClubes.Visible = false;
-                        btnDelegados.Visible = false;
                         break;
 
                     case (3):
@@ -36,7 +35,6 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnEquipos.Visible = false;
                         btnJugadores.Visible = false;
-                        btnDelegados.Visible = false;
                         break;
 
                 }
@@ -48,10 +46,6 @@ namespace CarnetsFCV
             
         }
 
-        protected void btnJugadores_Click(object sender, EventArgs e)
-        {
-            Server.Transfer("Jugadores.aspx");
-        }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -59,6 +53,21 @@ namespace CarnetsFCV
             Session.RemoveAll();
             Response.Cookies.Clear();
             Response.Redirect("Ingreso.aspx");
+        }
+
+        protected void btnJugadores_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Jugadores.aspx");
+        }
+
+        protected void btnClubes_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Clubes.aspx");
+        }
+
+        protected void btnEquipos_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Equipos.aspx");
         }
     }
 }

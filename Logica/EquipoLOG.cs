@@ -14,5 +14,14 @@ namespace Logica
         {
             return equipo.getComboEquipos();
         }
+        public List<Entidades.Dto.EquipoDto> getTotalEquipos(int clubId)
+        {
+            return equipo.getTotalEquipos(clubId);
     }
+
+        public List<Entidades.Dto.EquipoDto> getBuscadorEquipos(string buscar, int clubId)
+        {
+            return equipo.getBuscadorEquipos(buscar, clubId);
+        }
+    }        
 }

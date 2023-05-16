@@ -185,6 +185,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CSS\Styles.css" />
+    <Content Include="Equipos.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -219,6 +220,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Imagenes\Logo.png" />
+    <Content Include="Imagenes\Lupa.png" />
     <Content Include="Imagenes\Pelota.png" />
     <Content Include="Ingreso.aspx" />
     <Content Include="Jugadores.aspx" />
@@ -371,6 +373,13 @@
     </Compile>
     <Compile Include="Clubes.aspx.designer.cs">
       <DependentUpon>Clubes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Equipos.aspx.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipos.aspx.designer.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

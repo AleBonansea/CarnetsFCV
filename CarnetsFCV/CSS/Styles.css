@@ -161,3 +161,94 @@
     height: 150px;
     width:1350px;
 }
+
+.btnBuscar {
+    margin-left: 10px;
+    margin-right: 10%;
+}
+
+.buscador {
+    border: 3.5px solid #e44f1e;
+    border-radius: 30px;
+    margin-left: 5%;
+    padding-top: 6px;
+    font: 18px arial, verdana;
+    line-height:30px;
+    padding-inline-start:10px;
+}
+
+.btnInicio {
+    margin: 10px 10px 15px;
+    padding: 5px 5px 5px 5px;
+    font: bold 14px arial, verdana;
+    border-radius:25px;
+    cursor: pointer;
+    text-align: center;
+    bottom: 0%;
+    background-color: #d8d8d8;
+    border: 3.5px solid #e44f1e;
+    cursor: pointer;
+    height:40px;
+    width:60px;
+}
+
+    .btnInicio:hover {
+        background-color: black;
+        border-color: #d8d8d8;
+        color:white;
+    }
+
+    .btnInicio:active {
+        background-color: #e44f1e;
+        border-color: black;
+    }
+
+.btnCRUD {
+    margin-right:10px;
+    padding: 6px 10px 10px 12px;
+    font: bold 16px arial, verdana;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    bottom: 0%;
+    background-color: #d8d8d8;
+    border: 3.5px solid #e44f1e;
+    cursor: pointer;
+    height: 40px;
+    width: auto;
+}
+
+    .btnCRUD:hover {
+        background-color: #fd875c;
+        border-color: black;
+        color: white;
+    }
+
+    .btnCRUD:active {
+        background-color: #e44f1e;
+        border-color: white;
+    }
+
+
+.Background {
+    background-color: Black;
+    filter: sepia(opacity=90);
+    opacity: 0.8;
+}
+
+.Popup {
+    background-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 400px;
+    height: 350px;
+}
+
+.lbl {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}

@@ -19,5 +19,10 @@ namespace Logica
         {
             return club.getTotalClubes();
         }
+
+        public List<Entidades.Dto.ClubDto> getBuscadorClubes(string buscar)
+        {
+            return club.getBuscadorClubes(buscar);
+        }
     }
 }
