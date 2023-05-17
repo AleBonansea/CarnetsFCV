@@ -1,11 +1,21 @@
 ﻿body {
     background-color: #020202;
+    background-image: url('../imagenes/pelota.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-attachment: fixed;
+
 }
 
-.imagenFondo{
+.imagenFondo {
+  /*  background-image: url('../imagenes/pelota.png');
+    background-repeat: no-repeat;
+    width:400px;
+    height:400px;
     position:absolute;
     right:0px;
-    bottom: 0px;
+    bottom:0px;*/
 }
 
 .bienvenidos {

@@ -28,9 +28,6 @@
             <asp:ContentPlaceHolder ID="Contenido" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class="imagenFondo">
-        <img  src="Imagenes/Pelota.png" />
-        </div>
 
     </form>
 </body>
