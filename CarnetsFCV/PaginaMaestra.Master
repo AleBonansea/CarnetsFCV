@@ -12,12 +12,12 @@
 
     <title>Carnets Digitales</title>
 
+    <link href="CSS/Styles.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="CSS/Styles.css" rel="stylesheet" />
 </head>
 <body style="background-color:#020202;">
     <form id="form1" runat="server">
@@ -28,6 +28,10 @@
             <asp:ContentPlaceHolder ID="Contenido" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <div class="imagenFondo">
+        <img  src="Imagenes/Pelota.png" />
+        </div>
+
     </form>
 </body>
 </html>
