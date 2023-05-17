@@ -1,4 +1,9 @@
 ﻿body {
+    background-color: #020202;
+    background-image: url('../imagenes/pelota.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
 }
 
 .bienvenidos {
@@ -145,7 +150,7 @@
     }
 
 .divGrilla {
-    background-color: #e44f1e;
+    background-color: black;
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
