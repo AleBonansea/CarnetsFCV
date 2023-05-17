@@ -14,21 +14,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
 
-
-
-
-    ///////////////////////////////////////////////////////
     <div>
-        <div style="background-color:#e44f1e">
+        <div>
             <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
             
-            <div style="text-align:right; background-color:#e44f1e" class="auto-style1">
+            <div style="text-align:right;" class="auto-style1">
+                <!-- Button trigger modal -->
                 <div style="float:left; margin-left:5%" >   
-                    <asp:Button CssClass="btnCRUD" Text="Añadir" runat="server" />
-                    <asp:Button CssClass="btnCRUD" Text="Modificar" runat="server"/>
-                    <asp:Button CssClass="btnCRUD" Text="Eliminar" runat="server"/>
+                    <button type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalAgregar">Agregar</button>
+                    <button type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalModificar">Modificar</button>
+                    <button type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar">Eliminar</button>
                 </div>
-                <div style="background-color:#e44f1e" class="auto-style3">
+                <div class="auto-style3">
 
                     <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
                     <asp:ImageButton class="btnBuscar" ID="btnBuscar" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" Height="23px" Width="23px" />
@@ -51,4 +48,64 @@
     <div style="text-align:right">
     <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
     </div>
+
+    <!-- Modal Agregar -->
+        <div class="modal fade" id="ModalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Club</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <asp:Label Text="Club" runat="server" />
+                  <asp:TextBox ID="Club" Style="width:35%" class="form-control" type="text" placeholder="Default input" aria-label="default input example" runat="server" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btnIngresar">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Modal Modificar -->
+        <div class="modal fade" id="ModalModificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Club</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <asp:Label Text="Club" runat="server" />
+                  <asp:TextBox ID="TextBox1" Style="width:35%" class="form-control" type="text" placeholder="Default input" aria-label="default input example" runat="server" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btnIngresar">Modificar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Modal Eliminar -->
+        <div class="modal fade" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Club</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <asp:Label Text="Club" runat="server" />
+                  <asp:TextBox ID="TextBox2" Style="width:35%" class="form-control" type="text" placeholder="Default input" aria-label="default input example" runat="server" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btnIngresar">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
 </asp:Content>
