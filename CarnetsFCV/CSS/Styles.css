@@ -13,16 +13,6 @@ img {
     height: auto;
 }
 
-.imagenFondo {
-  /*  background-image: url('../imagenes/pelota.png');
-    background-repeat: no-repeat;
-    width:400px;
-    height:400px;
-    position:absolute;
-    right:0px;
-    bottom:0px;*/
-}
-
 .bienvenidos {
     color: #e44f1e;
     background-color: #020202;
