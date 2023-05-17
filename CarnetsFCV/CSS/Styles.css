@@ -5,7 +5,12 @@
     background-position-x: right;
     background-position-y: bottom;
     background-attachment: fixed;
+    background-size: 30% 50%;
+}
 
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 .imagenFondo {
