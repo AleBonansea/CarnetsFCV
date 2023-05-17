@@ -69,6 +69,24 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
+        /// txtBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscar;
+
+        /// <summary>
+        /// ImageButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+
+        /// <summary>
         /// gvJugadores control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,15 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvJugadores;
+
+        /// <summary>
+        /// Club control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Club;
 
         /// <summary>
         /// btnCerrarSesion control.
