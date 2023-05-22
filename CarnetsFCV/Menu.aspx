@@ -9,17 +9,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     
-    
-    <div style="margin-top:8%; text-align:center" class="auto-style8">   
-        <asp:Button ID="btnArbitros" class="btnMenu" Text="Árbitros" runat="server" />
-        <asp:Button ID="btnCarnet" class="btnMenu" Text="Carnet" runat="server" />
-        <asp:Button ID="btnClubes" OnClick="btnClubes_Click" class="btnMenu" Text="Clubes" runat="server" />
-        <asp:Button ID="btnEntrenadores" class="btnMenu" Text="Entrenadores" runat="server" />
-        <asp:Button ID="btnEquipos" OnClick="btnEquipos_Click" class="btnMenu" Text="Equipos" runat="server" />
-        <asp:Button ID="btnJugadores" OnClick="btnJugadores_Click" class="btnMenu" Text="Jugadores" runat="server" />
+    <div class="row">
+        <div class="col">
+            <div style="Margin-top:8%; text-align:center" class="auto-style8">   
+                <asp:Button ID="btnArbitros" class="btnMenu" Text="Árbitros" runat="server" />
+                <asp:Button ID="btnCarnet" class="btnMenu" Text="Carnet" runat="server" />
+                <asp:Button ID="btnClubes" OnClick="btnClubes_Click" class="btnMenu" Text="Clubes" runat="server" />
+                <asp:Button ID="btnEntrenadores" class="btnMenu" Text="Entrenadores" runat="server" />
+                <asp:Button ID="btnEquipos" OnClick="btnEquipos_Click" class="btnMenu" Text="Equipos" runat="server" />
+                <asp:Button ID="btnJugadores" OnClick="btnJugadores_Click" class="btnMenu" Text="Jugadores" runat="server" />
 
+            </div>
+        </div>
     </div>
-    <div style="text-align:right">
-    <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
+    
+     <div class="row">
+             <div style="text-align:right">
+                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
+            </div>
     </div>
 </asp:Content>

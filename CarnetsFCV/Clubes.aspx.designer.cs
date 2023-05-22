@@ -60,13 +60,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
-        /// Club control.
+        /// txtClub control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Club;
+        protected global::System.Web.UI.WebControls.TextBox txtClub;
 
         /// <summary>
         /// TextBox1 control.

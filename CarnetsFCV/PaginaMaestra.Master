@@ -21,8 +21,8 @@
 </head>
 <body style="background-color:#020202;">
     <form id="form1" runat="server">
-        <div style="background-color:#020202; height:140px;">
-            <img style="margin:auto;Margin-top:30px; height:80px" align="right" src="Imagenes/Logo.png" />
+        <div style="background-color:#020202; text-align:right; height:140px;">
+            <img Class="imgLogo" src="Imagenes/Logo.png" />
         </div>
         <div>
             <asp:ContentPlaceHolder ID="Contenido" runat="server">
