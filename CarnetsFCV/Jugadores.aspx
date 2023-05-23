@@ -55,11 +55,9 @@
             
 
             </div>
-        <div class="row">
-            <div class="col">
-                <div class="divGrilla">
+                <div class="divGrilla" style="overflow:auto" >
 
-                    <asp:GridView CssClass="grilla" ID="gvJugadores" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial"  GridLines="None">
+                    <asp:GridView CssClass="grilla"  ID="gvJugadores" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial"  GridLines="None">
                     
                         <AlternatingRowStyle CssClass="grilla" BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="3px" Font-Names="Arial"/>
                         <EditRowStyle Font-Names="Arial" Font-Size="14pt" />
@@ -67,8 +65,6 @@
                         <SelectedRowStyle BackColor="#FFA420" />
                     </asp:GridView>
                 </div>
-             </div>
-         </div>
    
     <div style="text-align:right">
     <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>

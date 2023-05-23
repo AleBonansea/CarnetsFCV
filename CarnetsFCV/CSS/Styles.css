@@ -104,12 +104,25 @@
 
 .divGrilla {
     text-align: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    height:300px;
-    margin-right:5%;
-    margin-left:5%;
+    margin-top: 2%;
+    height: auto;
+    max-height: 500px;
+    margin-right: 5%;
+    margin-left: 5%;
 }
+    .divGrilla::-webkit-scrollbar-track {
+        background: white;
+        border: solid 1px #D33500;
+    }
+    .divGrilla::-webkit-scrollbar{
+        width:15px;
+    }
+
+    .divGrilla::-webkit-scrollbar-thumb {
+        background: #ffa560;
+        border-radius: 10px;
+    }
+
 
 .grilla {
     margin: auto;
