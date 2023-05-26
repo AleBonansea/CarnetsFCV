@@ -14,6 +14,11 @@ namespace Logica
         {
             return division.getComboDivisiones(clubId,ramaId);
         }
-        
+
+        public List<Entidades.Dto.DivisionDto> getDivisiones()
+        {
+            return division.getDivisiones();
+        }
+
     }
 }

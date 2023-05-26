@@ -56,6 +56,7 @@
     <Compile Include="EquipoDA.cs" />
     <Compile Include="JugadorDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RamaDA.cs" />
     <Compile Include="UsuarioDA.cs" />
   </ItemGroup>
   <ItemGroup>

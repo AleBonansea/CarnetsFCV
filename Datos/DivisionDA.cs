@@ -27,5 +27,16 @@ namespace Datos
             return listaDivisiones.ToList();
         }
 
+        public List<Entidades.Dto.DivisionDto> getDivisiones()
+        {
+            var listaDivisiones = from d in context.Divisiones
+                                  select new Entidades.Dto.DivisionDto
+                                  {
+                                      Id = d.Id,
+                                      Descripcion = d.Descripcion
+                                  };
+
+            return listaDivisiones.ToList();
+        }
     }
 }

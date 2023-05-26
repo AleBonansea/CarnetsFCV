@@ -8,9 +8,6 @@
     background-size: 30% 50%;
 }
 
-/*img {
-    
-}*/
 
 .imgLogo {
     margin: auto;
@@ -288,6 +285,9 @@
     font: bold 20px arial, verdana;
     border-radius: 5px;
     cursor: pointer;
+    position:absolute;
+    bottom:2%;
+    right:3%;
 }
 
     .btnCerrar:hover {
@@ -469,6 +469,7 @@
     .bienvenidos {
         font-size: 40px;
     }
+
     .formulario {
         float: left;
         background: #cccccc;
@@ -501,6 +502,7 @@
         Margin-top: 20px;
         height: 30%;
     }
+
     .btnMenu {
         background-color: #d8d8d8;
         border: 3.5px solid #e44f1e;
@@ -511,6 +513,7 @@
         height: 50px;
         width: 280px;
     }
+
     .btnCerrar {
         margin: 0px 10px 15px;
         background-color: #e44f1e;
@@ -521,6 +524,7 @@
         text-align: right;
         bottom: 2%;
     }
+
     .grilla {
         margin: auto;
         background-color: white;
@@ -530,6 +534,7 @@
         width: 100%;
         font-size: 10px;
     }
+
     .btnCRUD {
         padding: 6px 10px 10px 12px;
         font: bold 12px arial, verdana;
@@ -545,6 +550,7 @@
         margin-top: 3px;
         margin-bottom: 3px;
     }
+
     .btnInicio {
         margin: 10px 10px 15px;
         padding: 5px 5px 5px 5px;
@@ -559,6 +565,7 @@
         height: 30px;
         width: 50px;
     }
+
     .btnBuscar {
         margin-left: 2%;
         margin-right: 8%;
@@ -568,6 +575,7 @@
         width: 25px;
         padding: 3px 3px 3px 5px;
     }
+
     .buscador {
         border: 3.5px solid #e44f1e;
         border-radius: 30px;
@@ -577,6 +585,7 @@
         height: 30px;
         padding-inline-start: 10px;
     }
+
     .btnIngresar {
         margin: 10px 30px 15px;
         padding: 5px 5px 5px 5px;
@@ -585,5 +594,17 @@
         font: bold 14px arial, verdana;
         border-radius: 5px;
         cursor: pointer;
+    }
+}
+@media screen and (max-width:1500px) {
+    .btnCerrar {
+        margin: 10px 30px 15px;
+        padding: 5px 5px 5px 5px;
+        background-color: #e44f1e;
+        color: white;
+        font: bold 20px arial, verdana;
+        border-radius: 5px;
+        cursor: pointer;
+        position: initial;
     }
 }
