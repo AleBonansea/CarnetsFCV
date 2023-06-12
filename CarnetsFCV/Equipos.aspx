@@ -26,7 +26,7 @@
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalModificar">Modificar</button>
             </div>
             <div class="col-xl-1">
-                <asp:Button class="btnCRUD" OnClick="btnEliminar_Click" Text="Eliminar" runat="server" />
+                <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar">Eliminar</button>
             </div>
             <div class="col-xl-9" style="display: flex; justify-content: right; align-items: center;">
                 <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
@@ -109,7 +109,7 @@
                   
                   </div>
               <div class="modal-footer">
-                <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
                   <asp:Button class="btnGuardar" OnClick="modalGuardar_Click" Text="Guardar" runat="server" />
               </div>
             </div>
@@ -119,9 +119,9 @@
     <!-- Modal Modificar -->
         <div class="modal fade" id="ModalModificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Club</h1>
+            <div class="modal-content" style="background-color:#CCCCCC">
+              <div class="modal-header" style="background-color:#e44f1e;">
+                <h1 class="modal-title fs-5" style="color:white" id="staticBackdropLabel">Modificar Equipo</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -159,6 +159,28 @@
               <div class="modal-footer">
                 <button type="button" class="btnCancelar"  data-bs-dismiss="modal">Cancelar</button>
                 <asp:Button class="btnGuardar" OnClick="modalModificar_Click" Text="Guardar" runat="server" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Modal Eliminar -->
+        <div class="modal fade" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color:#CCCCCC">
+              <div class="modal-header" style="background-color:#e44f1e;">
+                <h1 class="modal-title fs-5" style="color:white" id="staticBackdropLabel">Eliminar Equipo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  
+                      <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                          <h4>¿Seguro desea eliminar el equipo?</h4>                                                  
+                      </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btnCancelar"  data-bs-dismiss="modal">Cancelar</button>
+                <asp:Button class="btnGuardar" OnClick="btnEliminar_Click" Text="Eliminar" runat="server" />
               </div>
             </div>
           </div>

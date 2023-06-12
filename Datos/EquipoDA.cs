@@ -62,7 +62,7 @@ namespace Datos
             return listaEquipos.ToList();
         }
 
-        public Equipos guardarEquipo(Equipos equipo)
+        public Entidades.Equipos guardarEquipo(Entidades.Equipos equipo)
         {
             context.Equipos.Add(equipo);
 

@@ -31,7 +31,7 @@ namespace Logica
             return equipo.getBuscadorEquipos(buscar, clubId);
         }
 
-        public Equipos guardarEquipo(Equipos equipoNuevo)
+        public Entidades.Equipos guardarEquipo(Entidades.Equipos equipoNuevo)
         {
             return equipo.guardarEquipo(equipoNuevo);
         }

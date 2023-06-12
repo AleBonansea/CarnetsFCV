@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ClubDA.cs" />
     <Compile Include="DivisionDA.cs" />
+    <Compile Include="EntrenadorDA.cs" />
     <Compile Include="EquipoDA.cs" />
     <Compile Include="JugadorDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

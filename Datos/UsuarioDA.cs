@@ -32,5 +32,22 @@ namespace Datos
 
             return Usuario;
         }
+
+        public Entidades.Usuarios validarUsuario(int rolId, string txtDNI)
+        {
+            Usuarios usuarioBD = (from u in context.Usuarios
+                                  where u.NombreUsuario == txtDNI
+                                  && u.RolId == rolId
+                                  select u).FirstOrDefault();
+            return usuarioBD;
+        }
+        public Entidades.Usuarios crearUsuarioEntrenador(Entidades.Usuarios usuario)
+        {
+            context.Usuarios.Add(usuario);
+            context.SaveChanges();
+
+            return usuario;
+            
+        }
     }
 }

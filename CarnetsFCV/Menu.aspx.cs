@@ -69,5 +69,10 @@ namespace CarnetsFCV
         {
             Server.Transfer("Equipos.aspx");
         }
+
+        protected void btnEntrenadores_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Entrenadores.aspx");
+        }
     }
 }

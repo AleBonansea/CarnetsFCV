@@ -10,6 +10,8 @@ namespace Entidades.Enums
     {
         Administracion = 1,
         Delegado = 2,
-        Consulta = 3
+        Entrenador = 3,
+        Arbitro = 4,
+        Jugador = 5
     }
 }
