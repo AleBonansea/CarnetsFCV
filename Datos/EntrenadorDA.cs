@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,22 @@ namespace Datos
                          where e.Id == idEntrenador
                          select e;
             return entrenador.FirstOrDefault();
+        }
+        public List<EntrenadorDto> cargarExcel()
+        {
+            var entrenadores = from e in context.Entrenadores
+                               select new EntrenadorDto
+                               {
+                                   Nombre = e.Nombre,
+                                   Apellido = e.Apellido,
+                                   FechaNac = e.FechaNac,
+                                   FechaEMMAC = e.FechaEMMAC,
+                                   DNI = e.DNI,
+                                   Email = e.Email,
+                                   Telefono = e.Telefono,
+                                   Habilitado = e.Habilitado
+                               };
+            return entrenadores.ToList();
         }
     }
 }

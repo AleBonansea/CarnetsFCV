@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,10 @@ namespace Logica
         public Entidades.Entrenadores getEntrenador(int idEntrenador)
         {
             return entrenador.getEntrenador(idEntrenador);
+        }
+        public List<EntrenadorDto> cargarExcel()
+        {
+            return entrenador.cargarExcel();
         }
     }
 }

@@ -28,12 +28,11 @@
             <div class="col-xl-1">
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar">Eliminar</button>
             </div>
-            <div class="col-xl-9" style="display: flex; justify-content: right; align-items: center;">
+            <div class="col-xl-9" style="padding-right:6%; display: flex; justify-content: right; align-items: center;">
                 <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
                 <asp:ImageButton  class="btnBuscar" ID="btnBuscar" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />
+                <asp:ImageButton CssClass="btnBuscar" ImageUrl="Imagenes/excel.png" ID="ImageButton1" OnClick="btnExportar_Click" runat="server" />
             </div>
-            
-
     </div>
     <div class="row">
         <div class="col">        

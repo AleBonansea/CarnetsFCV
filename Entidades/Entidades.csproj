@@ -59,6 +59,7 @@
     <Compile Include="Divisiones.cs" />
     <Compile Include="Dto\ClubDto.cs" />
     <Compile Include="Dto\DivisionDto.cs" />
+    <Compile Include="Dto\EntrenadorDto.cs" />
     <Compile Include="Dto\EquipoDto.cs" />
     <Compile Include="Dto\JugadorDto.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />

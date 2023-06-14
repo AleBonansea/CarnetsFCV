@@ -1,4 +1,6 @@
-﻿using Entidades.Enums;
+﻿using ClosedXML.Excel;
+using Entidades.Dto;
+using Entidades.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +53,6 @@ namespace CarnetsFCV
 
         protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
         {
-            int clubId = Int32.Parse((string)Session["clubId"]);
             if (!string.IsNullOrEmpty(txtBuscar.Text))
             {
                 gvEntrenadores.DataSource = entrenador.getBuscadorEntrenadores(txtBuscar.Text);
@@ -97,7 +98,14 @@ namespace CarnetsFCV
                     nuevoEntrenador.Email = txtEmail.Text;
                     nuevoEntrenador.Telefono = Int32.Parse((String)txtTel.Text);
                     nuevoEntrenador.Foto = imagen;
-                    nuevoEntrenador.Habilitado = true;
+                    if (rdbSi.Checked)
+                    {
+                        nuevoEntrenador.Habilitado = true;
+                    }
+                    else
+                    {
+                        nuevoEntrenador.Habilitado = false;
+                    }
 
                     entrenador.guardarEntrenador(nuevoEntrenador);
 
@@ -265,5 +273,30 @@ namespace CarnetsFCV
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
             Session["idEntrenadorSeleccionado"] = idEntrenador.ToString();
         }
+
+        protected void btnExportar_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    List<EntrenadorDto> listaEntrenadores = entrenador.cargarExcel().ToList();
+
+                    var worksheet = workbook.Worksheets.Add("Entrenadores");
+                    worksheet.Cells("A1:H1").Style.Fill.BackgroundColor = XLColor.FromArgb(228, 79, 31);
+                    worksheet.Cell("A1").InsertTable(listaEntrenadores);
+                    worksheet.Columns(1, 8).AdjustToContents();
+                    workbook.SaveAs(@"C:\Users\abonansea\Desktop\Entrenadores.xlsx");
+                }
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El excel se ha descargado correctamente','','success')", true);
+            }
+            
+            catch (Exception)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El excel pudo ser descargado','error')", true);
+            }
+        }    
     }
 }
