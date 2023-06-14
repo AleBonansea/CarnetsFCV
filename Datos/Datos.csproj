@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbitroDA.cs" />
     <Compile Include="ClubDA.cs" />
     <Compile Include="DivisionDA.cs" />
     <Compile Include="EntrenadorDA.cs" />

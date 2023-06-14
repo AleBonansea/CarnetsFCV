@@ -10,9 +10,9 @@ using System.Web.UI.WebControls;
 
 namespace CarnetsFCV
 {
-    public partial class Entrenadores : System.Web.UI.Page
+    public partial class Arbitros : System.Web.UI.Page
     {
-        Logica.EntrenadorLOG entrenador = new Logica.EntrenadorLOG();
+        Logica.ArbitroLOG arbitro = new Logica.ArbitroLOG();
         Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,8 +46,8 @@ namespace CarnetsFCV
 
         public void CargarGrilla()
         {
-            gvEntrenadores.DataSource = entrenador.getTotalEntrenadores();
-            gvEntrenadores.DataBind();
+            gvArbitros.DataSource = arbitro.getTotalArbitros();
+            gvArbitros.DataBind();
         }
 
 
@@ -55,8 +55,8 @@ namespace CarnetsFCV
         {
             if (!string.IsNullOrEmpty(txtBuscar.Text))
             {
-                gvEntrenadores.DataSource = entrenador.getBuscadorEntrenadores(txtBuscar.Text);
-                gvEntrenadores.DataBind();
+                gvArbitros.DataSource = arbitro.getBuscadorArbitros(txtBuscar.Text);
+                gvArbitros.DataBind();
             }
             else
             {
@@ -72,50 +72,50 @@ namespace CarnetsFCV
                 byte[] imagen = new byte[tamanioFoto];
                 archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
-                int rolEntrenadorId = (int)RolesEnum.Entrenador;
+                int rolArbitroId = (int)RolesEnum.Arbitro;
 
 
-                var usuarioExistente = usuario.validarUsuario(rolEntrenadorId, txtDNI.Text);
+                var usuarioExistente = usuario.validarUsuario(rolArbitroId, txtDNI.Text);
 
                 if (usuarioExistente is null)
                 {
-                    var usuarioEntrenador = new Entidades.Usuarios();
+                    var usuarioArbitro = new Entidades.Usuarios();
 
-                    usuarioEntrenador.RolId = rolEntrenadorId;
-                    usuarioEntrenador.NombreUsuario = txtDNI.Text;
-                    usuarioEntrenador.Contraseña = txtDNI.Text;
+                    usuarioArbitro.RolId = rolArbitroId;
+                    usuarioArbitro.NombreUsuario = txtDNI.Text;
+                    usuarioArbitro.Contraseña = txtDNI.Text;
 
-                    usuario.crearUsuario(usuarioEntrenador);
+                    usuario.crearUsuario(usuarioArbitro);
 
-                    var nuevoEntrenador = new Entidades.Entrenadores();
+                    var nuevoArbitro = new Entidades.Arbitros();
 
-                    nuevoEntrenador.UsuarioId = usuarioEntrenador.Id;
-                    nuevoEntrenador.Nombre = txtNombre.Text;
-                    nuevoEntrenador.Apellido = txtApellido.Text;
-                    nuevoEntrenador.FechaNac = DateTime.Parse(txtFecNac.Text);
-                    nuevoEntrenador.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
-                    nuevoEntrenador.DNI = txtDNI.Text;
-                    nuevoEntrenador.Email = txtEmail.Text;
-                    nuevoEntrenador.Telefono = Int32.Parse((String)txtTel.Text);
-                    nuevoEntrenador.Foto = imagen;
+                    nuevoArbitro.UsuarioId = usuarioArbitro.Id;
+                    nuevoArbitro.Nombre = txtNombre.Text;
+                    nuevoArbitro.Apellido = txtApellido.Text;
+                    nuevoArbitro.FechaNac = DateTime.Parse(txtFecNac.Text);
+                    nuevoArbitro.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
+                    nuevoArbitro.DNI = txtDNI.Text;
+                    nuevoArbitro.Email = txtEmail.Text;
+                    nuevoArbitro.Telefono = Int32.Parse((String)txtTel.Text);
+                    nuevoArbitro.Foto = imagen;
                     if (rdbSi.Checked)
                     {
-                        nuevoEntrenador.Habilitado = true;
+                        nuevoArbitro.Habilitado = true;
                     }
                     else
                     {
-                        nuevoEntrenador.Habilitado = false;
+                        nuevoArbitro.Habilitado = false;
                     }
 
-                    entrenador.guardarEntrenador(nuevoEntrenador);
+                    arbitro.guardarArbitro(nuevoArbitro);
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El entrenador se ha registrado correctamente','','success')", true);
+                    "swal('El árbitro se ha registrado correctamente','','success')", true);
                 }
                 else
                 {
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El entrenador ya existe','','info')", true);
+                    "swal('El áritro ya existe','','info')", true);
                 }
                 CargarGrilla();
 
@@ -129,12 +129,12 @@ namespace CarnetsFCV
                 rdbNo.Checked = false;
                 rdbSi.Checked = true;
 
-                
+
             }
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El entrenador no se ha registrado correctamente','error')", true);                
+                    "swal('Error','El árbitro no se ha registrado correctamente','error')", true);
             }
 
         }
@@ -143,41 +143,41 @@ namespace CarnetsFCV
         {
             try
             {
-                if (Session["idEntrenadorSeleccionado"] != null)
+                if (Session["idArbitroSeleccionado"] != null)
                 {
-                    int idEntrenador = Int32.Parse((string)Session["idEntrenadorSeleccionado"]);
+                    int idArbitro = Int32.Parse((string)Session["idArbitroSeleccionado"]);
 
-                    Entidades.Entrenadores entrenadorAModificar = entrenador.getEntrenador(idEntrenador);
+                    Entidades.Arbitros arbitroAModificar = arbitro.getArbitro(idArbitro);
 
                     int tamanioFoto = archivoModificar.PostedFile.ContentLength;
                     byte[] imagen = new byte[tamanioFoto];
                     archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
-                    entrenadorAModificar.Nombre = txtModificarNombre.Text;
-                    entrenadorAModificar.Apellido = txtModificarApellido.Text;
-                    entrenadorAModificar.FechaNac = DateTime.Parse(txtModificarFecNac.Text);
-                    entrenadorAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
-                    entrenadorAModificar.DNI = txtModificarDNI.Text;
-                    entrenadorAModificar.Email = txtModificarEmail.Text;
-                    entrenadorAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    arbitroAModificar.Nombre = txtModificarNombre.Text;
+                    arbitroAModificar.Apellido = txtModificarApellido.Text;
+                    arbitroAModificar.FechaNac = DateTime.Parse(txtModificarFecNac.Text);
+                    arbitroAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
+                    arbitroAModificar.DNI = txtModificarDNI.Text;
+                    arbitroAModificar.Email = txtModificarEmail.Text;
+                    arbitroAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
                     if (rdbModificarSi.Checked)
                     {
-                        entrenadorAModificar.Habilitado = true;
+                        arbitroAModificar.Habilitado = true;
                     }
                     else
                     {
-                        entrenadorAModificar.Habilitado = false;
+                        arbitroAModificar.Habilitado = false;
                     }
 
                     byte[] sinImagen = new byte[0];
 
                     if (imagen.Equals(sinImagen))
                     {
-                        entrenadorAModificar.Foto = imagen;
+                        arbitroAModificar.Foto = imagen;
                     }
 
 
-                    entrenador.modificarEntrenador(entrenadorAModificar);
+                    arbitro.modificarArbitro(arbitroAModificar);
 
                     CargarGrilla();
 
@@ -196,12 +196,12 @@ namespace CarnetsFCV
                 }
 
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El entrenador se ha modificado correctamente','','success')", true);
+                    "swal('El árbitro se ha modificado correctamente','','success')", true);
             }
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El entrenador no se ha modificado','error')", true);
+                    "swal('Error','El árbitro no se ha modificado','error')", true);
             }
         }
 
@@ -209,11 +209,11 @@ namespace CarnetsFCV
         {
             try
             {
-                if (Session["idEntrenadorSeleccionado"] != null)
+                if (Session["idArbitroSeleccionado"] != null)
                 {
-                    int idEntrenador = Int32.Parse((string)Session["idEntrenadorSeleccionado"]);
+                    int idEntrenador = Int32.Parse((string)Session["idArbitroSeleccionado"]);
 
-                    entrenador.eliminarEntrenador(idEntrenador);
+                    arbitro.eliminarArbitro(idEntrenador);
                     CargarGrilla();
 
 
@@ -221,12 +221,12 @@ namespace CarnetsFCV
                 }
 
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El entrenador se ha eliminado correctamente','','success')", true);
+                    "swal('El árbitro se ha eliminado correctamente','','success')", true);
             }
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El entrenador no se pudo eliminar','error')", true);
+                    "swal('Error','El árbitro no se pudo eliminar','error')", true);
             }
         }
 
@@ -241,25 +241,25 @@ namespace CarnetsFCV
 
                 if (idFilaSeleccionada != ultimaFilaSeleccionada)
                 {
-                    ((CheckBox)gvEntrenadores.Rows[ultimaFilaSeleccionada].Cells[0].FindControl("chk")).Checked = false;
+                    ((CheckBox)gvArbitros.Rows[ultimaFilaSeleccionada].Cells[0].FindControl("chk")).Checked = false;
                 }
             }
 
 
-            int idEntrenador = Int32.Parse(gvEntrenadores.Rows[idFilaSeleccionada].Cells[1].Text);
+            int idArbitro = Int32.Parse(gvArbitros.Rows[idFilaSeleccionada].Cells[1].Text);
 
-            Entidades.Entrenadores entrenadorAModificar = entrenador.getEntrenador(idEntrenador);
+            Entidades.Arbitros arbitroAModificar = arbitro.getArbitro(idArbitro);
 
 
-            txtModificarNombre.Text = entrenadorAModificar.Nombre;
-            txtModificarApellido.Text = entrenadorAModificar.Apellido;
-            txtModificarFecNac.Text = entrenadorAModificar.FechaNac.ToString("yyyy-MM-dd");
-            txtModificarFecEMMAC.Text = entrenadorAModificar.FechaEMMAC.ToString("yyyy-MM-dd");
-            txtModificarDNI.Text = entrenadorAModificar.DNI;
-            txtModificarEmail.Text = entrenadorAModificar.Email;
-            txtModificarTel.Text = entrenadorAModificar.Telefono.ToString();
+            txtModificarNombre.Text = arbitroAModificar.Nombre;
+            txtModificarApellido.Text = arbitroAModificar.Apellido;
+            txtModificarFecNac.Text = arbitroAModificar.FechaNac.ToString("yyyy-MM-dd");
+            txtModificarFecEMMAC.Text = arbitroAModificar.FechaEMMAC.ToString("yyyy-MM-dd");
+            txtModificarDNI.Text = arbitroAModificar.DNI;
+            txtModificarEmail.Text = arbitroAModificar.Email;
+            txtModificarTel.Text = arbitroAModificar.Telefono.ToString();
 
-            if (entrenadorAModificar.Habilitado)
+            if (arbitroAModificar.Habilitado)
             {
                 rdbModificarSi.Checked = true;
                 rdbModificarNo.Checked = false;
@@ -271,7 +271,7 @@ namespace CarnetsFCV
             }
 
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
-            Session["idEntrenadorSeleccionado"] = idEntrenador.ToString();
+            Session["idArbitroSeleccionado"] = idArbitro.ToString();
         }
 
         protected void btnExportar_Click(object sender, ImageClickEventArgs e)
@@ -280,24 +280,24 @@ namespace CarnetsFCV
             {
                 using (var workbook = new XLWorkbook())
                 {
-                    List<EntrenadorDto> listaEntrenadores = entrenador.cargarExcel().ToList();
+                    List<ArbitroDto> listaEntrenadores = arbitro.cargarExcel().ToList();
 
-                    var worksheet = workbook.Worksheets.Add("Entrenadores");
+                    var worksheet = workbook.Worksheets.Add("Arbitros");
                     worksheet.Cell("A1").InsertTable(listaEntrenadores);
                     worksheet.Columns(1, 8).AdjustToContents();
                     worksheet.Columns(1, 8).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                     worksheet.Cells("A1:H1").Style.Fill.BackgroundColor = XLColor.FromArgb(228, 79, 31);
-                    workbook.SaveAs(@"C:\FCV\Entrenadores.xlsx");
+                    workbook.SaveAs(@"C:\FCV\Arbitros.xlsx");
                 }
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El excel se ha descargado correctamente','','success')", true);
             }
-            
+
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El excel no pudo ser descargado','error')", true);
             }
-        }    
+        }
     }
 }

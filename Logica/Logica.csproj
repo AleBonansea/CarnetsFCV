@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbitroLOG.cs" />
     <Compile Include="ClubLOG.cs" />
     <Compile Include="DivisionLOG.cs" />
     <Compile Include="EntrenadorLOG.cs" />

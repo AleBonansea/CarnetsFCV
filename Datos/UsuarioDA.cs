@@ -41,7 +41,7 @@ namespace Datos
                                   select u).FirstOrDefault();
             return usuarioBD;
         }
-        public Entidades.Usuarios crearUsuarioEntrenador(Entidades.Usuarios usuario)
+        public Entidades.Usuarios crearUsuario(Entidades.Usuarios usuario)
         {
             context.Usuarios.Add(usuario);
             context.SaveChanges();

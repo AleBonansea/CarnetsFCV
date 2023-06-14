@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col">
             <div style="Margin-top:8%; text-align:center" class="auto-style8">   
-                <asp:Button ID="btnArbitros" class="btnMenu" Text="Árbitros" runat="server" />
+                <asp:Button ID="btnArbitros" OnClick="btnArbitros_Click" class="btnMenu" Text="Árbitros" runat="server" />
                 <asp:Button ID="btnCarnet" class="btnMenu" Text="Carnet" runat="server" />
                 <asp:Button ID="btnClubes" OnClick="btnClubes_Click" class="btnMenu" Text="Clubes" runat="server" />
                 <asp:Button ID="btnEntrenadores" OnClick="btnEntrenadores_Click" class="btnMenu" Text="Entrenadores" runat="server" />

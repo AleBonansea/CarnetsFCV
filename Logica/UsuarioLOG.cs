@@ -21,9 +21,9 @@ namespace Logica
         {
             return usuario.validarUsuario(rolId, txtDNI);
         }
-        public Entidades.Usuarios crearUsuarioEntrenador(Entidades.Usuarios usuarioEntrenador)
+        public Entidades.Usuarios crearUsuario(Entidades.Usuarios usuarioEntrenador)
         {
-            return usuario.crearUsuarioEntrenador(usuarioEntrenador);
+            return usuario.crearUsuario(usuarioEntrenador);
         }
 
     }
