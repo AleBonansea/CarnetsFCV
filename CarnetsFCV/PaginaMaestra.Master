@@ -20,7 +20,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-color:#020202;">
+<body style="background-color:#020202; max-width:1500px">
     <form id="form1" runat="server">
         <div style="background-color:#020202; text-align:right; height:140px;">
             <img Class="imgLogo" src="Imagenes/Logo.png" />

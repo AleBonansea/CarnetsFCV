@@ -42,6 +42,24 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.ImageButton btnBuscar;
 
         /// <summary>
+        /// btnExportar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnExportar;
+
+        /// <summary>
+        /// filaSeleccionada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField filaSeleccionada;
+
+        /// <summary>
         /// gvClubes control.
         /// </summary>
         /// <remarks>

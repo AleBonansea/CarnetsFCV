@@ -42,7 +42,7 @@ namespace CarnetsFCV
 
         protected void btnInicio_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Menu.aspx");
+            Response.Redirect("Menu.aspx");
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -159,8 +159,8 @@ namespace CarnetsFCV
                 var nuevoEquipo = new Entidades.Equipos();
 
                 nuevoEquipo.ClubId = Int32.Parse((string)Session["clubId"]);
-                nuevoEquipo.DivisionId = cmbDivisiones.SelectedIndex + 1;
-                nuevoEquipo.RamaId = cmbRama.SelectedIndex + 1;
+                nuevoEquipo.DivisionId = Int32.Parse((String)cmbDivisiones.SelectedValue) - 1;
+                nuevoEquipo.RamaId = Int32.Parse((String)cmbRama.SelectedValue);
                 nuevoEquipo.Nombre = txtNombre.Text;
 
                 equipo.guardarEquipo(nuevoEquipo);
@@ -215,8 +215,8 @@ namespace CarnetsFCV
             Entidades.Equipos equipoAModificar = equipo.getEquipo(idEquipo);
 
             txtModificarNombre.Text = equipoAModificar.Nombre;
-            cmbModificarDivision.SelectedIndex = equipoAModificar.DivisionId - 1;
-            cmbModificarRama.SelectedIndex = equipoAModificar.RamaId - 1;
+            cmbModificarDivision.SelectedValue = equipoAModificar.DivisionId.ToString();
+            cmbModificarRama.SelectedValue = equipoAModificar.RamaId.ToString();
 
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
             Session["idEquipoSeleccionado"] = idEquipo.ToString();
@@ -235,8 +235,8 @@ namespace CarnetsFCV
 
                     Entidades.Equipos equipoAModificar = equipo.getEquipo(idEquipo);
 
-                    equipoAModificar.DivisionId = cmbModificarDivision.SelectedIndex + 1;
-                    equipoAModificar.RamaId = cmbModificarRama.SelectedIndex + 1;
+                    equipoAModificar.DivisionId = Int32.Parse((String)cmbModificarDivision.SelectedValue);
+                    equipoAModificar.RamaId = Int32.Parse((String)cmbModificarRama.SelectedValue);
                     equipoAModificar.Nombre = txtModificarNombre.Text;
 
 

@@ -20,7 +20,6 @@ namespace CarnetsFCV
                 switch (rolId)
                 {
                     case 1:
-                        btnJugadores.Visible = false;
                         btnEquipos.Visible = false;
                         break;
 
@@ -57,27 +56,27 @@ namespace CarnetsFCV
 
         protected void btnJugadores_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Jugadores.aspx");
+            Response.Redirect("Jugadores.aspx");
         }
 
         protected void btnClubes_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Clubes.aspx");
+            Response.Redirect("Clubes.aspx");
         }
 
         protected void btnEquipos_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Equipos.aspx");
+            Response.Redirect("Equipos.aspx");
         }
 
         protected void btnEntrenadores_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Entrenadores.aspx");
+            Response.Redirect("Entrenadores.aspx");
         }
 
         protected void btnArbitros_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Arbitros.aspx");
+            Response.Redirect("Arbitros.aspx");
         }
     }
 }

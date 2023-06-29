@@ -8,6 +8,7 @@ namespace Entidades.Dto
 {
     public class JugadorDto
     {
+        public int Id { get; set; }
         public string Club { get; set; }
         public string Equipo { get; set; }
         public string División { get; set; }

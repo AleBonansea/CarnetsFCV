@@ -32,17 +32,18 @@
             <div class="col-xl-9" style="display: flex; justify-content: right; align-items: center;">
                 <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
                 <asp:ImageButton  class="btnBuscar" ID="btnBuscar" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />
+                <asp:ImageButton CssClass="btnBuscar" ImageUrl="Imagenes/excel.png" ID="btnExportar" OnClick="btnExportar_Click" runat="server" />
             </div>
             
 
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col">        
+            
             <div class="divGrilla">
-
-                <asp:GridView CssClass="grilla" ID="gvClubes"  runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial"  GridLines="None">
-
+                <asp:HiddenField ID="filaSeleccionada" runat="server" />
+                <asp:GridView AutoGenerateColumns="false" CssClass="grilla"  ID="gvClubes" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None">
                     <AlternatingRowStyle CssClass="grilla" BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="3px" Font-Names="Arial"/>
                     <EditRowStyle Font-Names="Arial" Font-Size="14pt" />
                     <HeaderStyle CssClass="grilla" BackColor="#e44f1e" Font-Bold="True" Font-Names="Arial"  Font-Strikeout="False" VerticalAlign="Middle" />

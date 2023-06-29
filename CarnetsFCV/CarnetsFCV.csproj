@@ -247,7 +247,6 @@
     <Content Include="Imagenes\Calendar.png" />
     <Content Include="Imagenes\excel.png" />
     <Content Include="Imagenes\LupaBlanca.svg" />
-    <Content Include="PruebaBootstrap.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -485,13 +484,6 @@
     </Compile>
     <Compile Include="PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
-    </Compile>
-    <Compile Include="PruebaBootstrap.aspx.cs">
-      <DependentUpon>PruebaBootstrap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PruebaBootstrap.aspx.designer.cs">
-      <DependentUpon>PruebaBootstrap.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
