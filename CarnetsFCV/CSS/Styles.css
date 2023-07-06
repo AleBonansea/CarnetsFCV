@@ -8,6 +8,62 @@
     background-size: 30% 50%;
 }
 
+.carnet {
+    height: 400px;
+    width: 750px;
+    background-color:#ff6161;
+    border: solid 2px black;
+    border-radius: 30px;
+    position:relative;
+    margin-left:20%;
+    margin-top:2%;
+}
+
+.QR {
+    position:absolute;
+    bottom:2%;
+    right:3%;
+    width:170px;
+}
+
+.tituloCarnet {
+    display: flex;
+    font-size: 33px;
+    margin-left: 1%;
+    margin-top: 1%;
+    position:relative;
+}
+
+.datosCarnet {
+    font-size:20px;
+    margin-left:3%;
+    margin-top:2%;
+    font-weight:500;
+    text-decoration: underline
+}
+
+.datosCarnetBd {
+    font-size: 20px;
+    margin-left: 2%;
+    font-weight: 400;
+}
+
+.rolCarnet {
+    font-size: 30px;
+    margin-left: 35%;
+    font-weight: 500;
+    position: absolute;
+    bottom: 3%;
+}
+
+.imgFoto{
+    background-color:white;
+    height:200px;
+    width: 180px;
+    position:absolute;
+    right:3%;
+    top:4%;
+}
 
 .imgLogo {
     margin: auto;
@@ -635,5 +691,59 @@
         border-radius: 5px;
         cursor: pointer;
         position: initial;
+    }
+    .carnet {
+        height: 310px;
+        width: 550px;
+        background-color: #ff6161;
+        border: solid 2px black;
+        border-radius: 30px;
+        position: relative;
+        margin-left: 20%;
+        margin-top: 2%;
+    }
+
+    .QR {
+        position: absolute;
+        bottom: 2%;
+        right: 3%;
+    }
+
+    .tituloCarnet {
+        display: flex;
+        font-size: 25px;
+        margin-left: 1%;
+        margin-top: 1%;
+        position: relative;
+    }
+
+    .datosCarnet {
+        font-size: 15px;
+        margin-left: 3%;
+        margin-top: 2%;
+        font-weight: 500;
+    }
+
+    .datosCarnetBd {
+        font-size: 15px;
+        margin-left: 2%;
+        font-weight: 400;
+    }
+
+    .rolCarnet {
+        font-size: 22px;
+        margin-left: 35%;
+        font-weight: 500;
+        position: absolute;
+        bottom: 3%;
+    }
+
+    .imgFoto {
+        background-color: white;
+        height: 160px;
+        width: 130px;
+        position: absolute;
+        right: 3%;
+        top: 4%;
     }
 }

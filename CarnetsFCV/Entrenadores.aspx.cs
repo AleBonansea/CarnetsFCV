@@ -151,7 +151,7 @@ namespace CarnetsFCV
 
                     int tamanioFoto = archivoModificar.PostedFile.ContentLength;
                     byte[] imagen = new byte[tamanioFoto];
-                    archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+                    archivoModificar.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
                     entrenadorAModificar.Nombre = txtModificarNombre.Text;
                     entrenadorAModificar.Apellido = txtModificarApellido.Text;
@@ -171,7 +171,7 @@ namespace CarnetsFCV
 
                     byte[] sinImagen = new byte[0];
 
-                    if (imagen.Equals(sinImagen))
+                    if (imagen != sinImagen)
                     {
                         entrenadorAModificar.Foto = imagen;
                     }
@@ -226,7 +226,7 @@ namespace CarnetsFCV
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El entrenador no se pudo eliminar','error')", true);
+                    "swal('Error','El entrenador no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
             }
         }
 

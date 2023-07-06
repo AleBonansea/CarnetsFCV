@@ -151,7 +151,7 @@ namespace CarnetsFCV
 
                     int tamanioFoto = archivoModificar.PostedFile.ContentLength;
                     byte[] imagen = new byte[tamanioFoto];
-                    archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+                    archivoModificar.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
                     arbitroAModificar.Nombre = txtModificarNombre.Text;
                     arbitroAModificar.Apellido = txtModificarApellido.Text;
@@ -171,7 +171,7 @@ namespace CarnetsFCV
 
                     byte[] sinImagen = new byte[0];
 
-                    if (imagen.Equals(sinImagen))
+                    if (imagen != sinImagen)
                     {
                         arbitroAModificar.Foto = imagen;
                     }

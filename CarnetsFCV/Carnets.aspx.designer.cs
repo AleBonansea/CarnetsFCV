@@ -11,7 +11,7 @@ namespace CarnetsFCV
 {
 
 
-    public partial class Clubes
+    public partial class Carnets
     {
 
         /// <summary>
@@ -24,165 +24,129 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnInicio;
 
         /// <summary>
-        /// txtBuscar control.
+        /// divQRContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divQRContent;
 
         /// <summary>
-        /// btnBuscar control.
+        /// lblNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnBuscar;
+        protected global::System.Web.UI.WebControls.Label lblNombre;
 
         /// <summary>
-        /// btnExportar control.
+        /// lblApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportar;
+        protected global::System.Web.UI.WebControls.Label lblApellido;
 
         /// <summary>
-        /// filaSeleccionada control.
+        /// lblFecNac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField filaSeleccionada;
+        protected global::System.Web.UI.WebControls.Label lblFecNac;
 
         /// <summary>
-        /// gvClubes control.
+        /// lblDNI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvClubes;
+        protected global::System.Web.UI.WebControls.Label lblDNI;
 
         /// <summary>
-        /// btnCerrarSesion control.
+        /// lblHabilitado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
+        protected global::System.Web.UI.WebControls.Label lblHabilitado;
 
         /// <summary>
-        /// txtNombreClub control.
+        /// lblEMMAC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreClub;
+        protected global::System.Web.UI.WebControls.Label lblEMMAC;
 
         /// <summary>
-        /// txtDomicilio control.
+        /// lblSexoTit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
+        protected global::System.Web.UI.WebControls.Label lblSexoTit;
 
         /// <summary>
-        /// txtNombreDelegado control.
+        /// lblSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreDelegado;
+        protected global::System.Web.UI.WebControls.Label lblSexo;
 
         /// <summary>
-        /// txtApellido control.
+        /// lblClub control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.Label lblClub;
 
         /// <summary>
-        /// txtEmail control.
+        /// lblClubJugador control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Label lblClubJugador;
 
         /// <summary>
-        /// txtTel control.
+        /// lblRol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTel;
+        protected global::System.Web.UI.WebControls.Label lblRol;
 
         /// <summary>
-        /// txtMofidicarNombreClub control.
+        /// imgFoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMofidicarNombreClub;
+        protected global::System.Web.UI.WebControls.Image imgFoto;
 
         /// <summary>
-        /// txtModificarDomicilio control.
+        /// imgQRCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarDomicilio;
-
-        /// <summary>
-        /// txtModificarNombreDel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarNombreDel;
-
-        /// <summary>
-        /// txtModificarApellido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarApellido;
-
-        /// <summary>
-        /// txtModificarEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarEmail;
-
-        /// <summary>
-        /// txtModificarTel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarTel;
+        protected global::System.Web.UI.WebControls.Image imgQRCode;
     }
 }

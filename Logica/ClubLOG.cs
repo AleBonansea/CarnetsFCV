@@ -24,5 +24,25 @@ namespace Logica
         {
             return club.getBuscadorClubes(buscar);
         }
+        public Entidades.Clubes eliminarClub(int clubId)
+        {
+            return club.eliminarClub(clubId);
+        }
+        public Entidades.Clubes guardarClub(Entidades.Clubes nuevoClub)
+        {
+            return club.guardarClub(nuevoClub);
+        }
+        public Entidades.Clubes modificarClub(Entidades.Clubes clubModificado)
+        {
+            return club.modificarClub(clubModificado);
+        }
+        public Entidades.Clubes getClub(int clubId)
+        {
+            return club.getClub(clubId);
+        }
+        public Entidades.Clubes getClubPorNombre(string nombre)
+        {
+            return club.getClubPorNombre(nombre);
+        }
     }
 }

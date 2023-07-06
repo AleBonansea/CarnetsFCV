@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ArbitroLOG.cs" />
     <Compile Include="ClubLOG.cs" />
+    <Compile Include="DelegadoLOG.cs" />
     <Compile Include="DivisionLOG.cs" />
     <Compile Include="EntrenadorLOG.cs" />
     <Compile Include="EquipoLOG.cs" />

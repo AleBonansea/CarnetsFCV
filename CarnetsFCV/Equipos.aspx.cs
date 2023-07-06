@@ -278,7 +278,7 @@ namespace CarnetsFCV
             catch (Exception)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El equipo no se pudo eliminar','error')", true);
+                    "swal('Error','El equipo no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
             }
         }
 

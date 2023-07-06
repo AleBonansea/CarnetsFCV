@@ -375,7 +375,7 @@ namespace CarnetsFCV
 
                     int tamanioFoto = archivoModificar.PostedFile.ContentLength;
                     byte[] imagen = new byte[tamanioFoto];
-                    archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+                    archivoModificar.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
                     jugadorAModificar.EquipoId = Int32.Parse((String)cmbModificarEquipo.SelectedValue) - 1;
                     jugadorAModificar.Nombre = txtModificarNombre.Text;
@@ -404,7 +404,7 @@ namespace CarnetsFCV
 
                     byte[] sinImagen = new byte[0];
 
-                    if (imagen.Equals(sinImagen))
+                    if (imagen != sinImagen)
                     {
                         jugadorAModificar.Foto = imagen;
                     }

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ArbitroDA.cs" />
     <Compile Include="ClubDA.cs" />
+    <Compile Include="DelegadoDA.cs" />
     <Compile Include="DivisionDA.cs" />
     <Compile Include="EntrenadorDA.cs" />
     <Compile Include="EquipoDA.cs" />
