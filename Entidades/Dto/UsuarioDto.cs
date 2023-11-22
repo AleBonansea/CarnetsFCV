@@ -13,5 +13,15 @@ namespace Entidades.Dto
         public string Contraseña { get; set; }
         public int RolId { get; set; }
         public int? ClubId { get; set; }
+        public string NombreRol { get; set; }
+        public string Club { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public DateTime FechaNac { get; set; }
+        public DateTime FechaEMMAC { get; set; }
+        public string DNI { get; set; }
+        public string Sexo { get; set; }
+        public bool Habilitado { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

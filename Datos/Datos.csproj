@@ -51,11 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbitroDA.cs" />
     <Compile Include="ClubDA.cs" />
+    <Compile Include="DelegadoDA.cs" />
     <Compile Include="DivisionDA.cs" />
+    <Compile Include="EntrenadorDA.cs" />
     <Compile Include="EquipoDA.cs" />
     <Compile Include="JugadorDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RamaDA.cs" />
     <Compile Include="UsuarioDA.cs" />
   </ItemGroup>
   <ItemGroup>

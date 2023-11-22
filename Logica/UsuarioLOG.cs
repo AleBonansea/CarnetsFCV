@@ -16,5 +16,23 @@ namespace Logica
         {
             return usuario.getUsuarios(contr, nombreUs);
         }
+
+        public Entidades.Usuarios validarUsuario(int rolId, string txtDNI)
+        {
+            return usuario.validarUsuario(rolId, txtDNI);
+        }
+        public Entidades.Usuarios crearUsuario(Entidades.Usuarios usuarioEntrenador)
+        {
+            return usuario.crearUsuario(usuarioEntrenador);
+        }
+        public List<Entidades.Dto.UsuarioDto> getRoles(string nombreUsuario)
+        {
+            return usuario.getRoles(nombreUsuario);
+        }
+        public Entidades.Dto.UsuarioDto getCarnet(string nombreUsuario, int rolId)
+        {
+            return usuario.getCarnet(nombreUsuario, rolId);
+        }
+
     }
 }

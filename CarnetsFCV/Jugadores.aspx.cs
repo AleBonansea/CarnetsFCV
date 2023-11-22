@@ -1,4 +1,6 @@
-﻿using Entidades.Dto;
+﻿using ClosedXML.Excel;
+using Entidades.Dto;
+using Entidades.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,29 +12,86 @@ namespace CarnetsFCV
 {
     public partial class Jugadores : System.Web.UI.Page
     {
-        Logica.JugadorLOG jugadores = new Logica.JugadorLOG();
+        Logica.JugadorLOG jugador = new Logica.JugadorLOG();
         Logica.ClubLOG clubes = new Logica.ClubLOG();
         Logica.EquipoLOG equipos = new Logica.EquipoLOG();
         Logica.DivisionLOG division = new Logica.DivisionLOG();
+        Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
-            CargarClubes();
-            //CargarDivisiones();
-            //CargarRamas();
-            //if (Session["rolId"] != null)
-            //{
-            //    int rolId = Int32.Parse((string)Session["rolId"]);
-            //}
-            //else
-            //{
-            //    Response.Redirect("Ingreso.aspx");
-            //}
+            int rolId = Int32.Parse((string)Session["rolId"]);
+            
+
+            if (!IsPostBack)
+            { 
+                if (Session["rolId"] != null)
+                {
+                    CargarGrilla();
+                    CargarClubes();
+
+                }
+                else
+                {
+                    Response.Redirect("Ingreso.aspx");
+                }
+                CargarDivisiones();
+                CargarRamas();
+
+                if (rolId == 2)
+                {
+                    CargarEquiposModal();
+                }
+                else
+                {
+                    btnAgregar.Disabled = true;
+                    btnModificar.Disabled = true;
+                    btnEliminar.Disabled = true;
+                }
+
+            }
         }
 
+        private void CargarEquiposModal()
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+            List<Entidades.Dto.EquipoDto> listaEquipos = equipos.getTotalEquipos(clubId);
+
+            if (listaEquipos != null)
+            {
+                cmbEquiposModal.DataSource = listaEquipos;
+                cmbEquiposModal.DataTextField = "NombreEquipo";
+                cmbEquiposModal.DataValueField = "Id";
+                cmbEquiposModal.DataBind();
+
+                cmbModificarEquipo.DataSource = listaEquipos;
+                cmbModificarEquipo.DataTextField = "NombreEquipo";
+                cmbModificarEquipo.DataValueField = "Id";
+                cmbModificarEquipo.DataBind();
+            }
+            else
+            {
+                List<EquipoDto> sinDivision = new List<EquipoDto>();
+                List<ListItem> items = sinDivision.ConvertAll(d =>
+
+                {
+                    return new ListItem()
+                    {
+                        Text = "Sin Equipos",
+                        Value = "1",
+                        Selected = false
+                    };
+                });
+
+                cmbEquiposModal.DataSource = items;
+                cmbEquiposModal.DataBind();
+
+                cmbModificarEquipo.DataSource = items;
+                cmbModificarEquipo.DataBind();
+
+            }
+        }
         private void CargarRamas()
         {
-            throw new NotImplementedException();
         }
 
         private void CargarDivisiones()
@@ -98,7 +157,7 @@ namespace CarnetsFCV
         {
 
             int rolId = Int32.Parse((string)Session["rolId"]);
-            int clubId = Int32.Parse((string)Session["clubId"]);
+            
 
             List<ClubDto> listaClubes = clubes.getComboClubes();
 
@@ -118,6 +177,7 @@ namespace CarnetsFCV
 
             if (rolId == 2)
             {
+                int clubId = Int32.Parse((string)Session["clubId"]);
                 cmbClub.SelectedIndex = clubId - 1;
             }
             else
@@ -128,18 +188,17 @@ namespace CarnetsFCV
 
         public void CargarGrilla()
         {
-
             int rolId = Int32.Parse((string)Session["rolId"]);
-            int clubId = Int32.Parse((string)Session["clubId"]);
 
             if (rolId == 2)
             {
-            gvJugadores.DataSource = jugadores.getGVJugadores(clubId);
-            gvJugadores.DataBind();
+                int clubId = Int32.Parse((string)Session["clubId"]);
+                gvJugadores.DataSource = jugador.getGVJugadores(clubId);
+                gvJugadores.DataBind();
             }
             else
             {
-                gvJugadores.DataSource = jugadores.getGVJugadores(1);
+                gvJugadores.DataSource = jugador.getGVJugadoresTotales();
                 gvJugadores.DataBind();
             }
         }
@@ -166,6 +225,299 @@ namespace CarnetsFCV
             Session.RemoveAll();
             Response.Cookies.Clear();
             Response.Redirect("Ingreso.aspx");
+        }
+
+        protected void btnExportar_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    int rolId = Int32.Parse((string)Session["rolId"]);
+
+                    List<JugadorDto> listaJugadores = new List<JugadorDto>();
+
+                    if (rolId == 2)
+                    {
+                        int clubId = Int32.Parse((string)Session["clubId"]);
+                        listaJugadores = jugador.getGVJugadores(clubId);
+                    }
+                    else
+                    {
+                        listaJugadores = jugador.getGVJugadoresTotales();
+                    }
+
+
+                    var worksheet = workbook.Worksheets.Add("Jugadores");
+                    worksheet.Cell("A1").InsertTable(listaJugadores);
+                    worksheet.Cells("A1:M1").Style.Fill.BackgroundColor = XLColor.FromArgb(228, 79, 31);
+                    worksheet.Columns(1, 13).AdjustToContents();
+                    worksheet.Columns(1, 13).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    workbook.SaveAs(@"C:\FCV\Jugadores.xlsx");
+                }
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El excel se ha descargado correctamente','','success')", true);
+            }
+
+            catch (Exception)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El excel no pudo ser descargado','error')", true);
+            }
+        }
+
+        protected void cmbEquipos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbEquiposModal.SelectedIndex = cmbEquiposModal.SelectedIndex;
+        }
+        protected void cmbMoficarEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbModificarEquipo.SelectedIndex = cmbModificarEquipo.SelectedIndex + 1;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int clubId = Int32.Parse((string)Session["clubId"]);
+
+                int tamanioFoto = archivo.PostedFile.ContentLength;
+                byte[] imagen = new byte[tamanioFoto];
+                archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+
+                int rolJugadorId = (int)RolesEnum.Jugador;
+
+
+                var usuarioExistente = usuario.validarUsuario(rolJugadorId, txtDNI.Text);
+
+                if (usuarioExistente is null)
+                {
+                    var usuarioJugador = new Entidades.Usuarios();
+
+                    usuarioJugador.RolId = rolJugadorId;
+                    usuarioJugador.NombreUsuario = txtDNI.Text;
+                    usuarioJugador.Contraseña = txtDNI.Text;
+
+                    usuario.crearUsuario(usuarioJugador);
+
+                    var nuevoJugador = new Entidades.Jugadores();
+
+                    nuevoJugador.UsuarioId = usuarioJugador.Id;
+                    nuevoJugador.ClubId = clubId;
+                    nuevoJugador.EquipoId = Int32.Parse((String)cmbEquiposModal.SelectedValue);
+                    nuevoJugador.Nombre = txtNombre.Text;
+                    nuevoJugador.Apellido = txtApellido.Text;
+                    nuevoJugador.FechaNac = DateTime.Parse(txtFecNac.Text);
+                    nuevoJugador.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
+                    nuevoJugador.DNI = txtDNI.Text;
+                    nuevoJugador.Email = txtEmail.Text;
+                    nuevoJugador.Telefono = Int32.Parse((String)txtTel.Text);
+                    if(rdbF.Checked)
+                    {
+                        nuevoJugador.Sexo = "F";
+                    }
+                    else
+                    {
+                        nuevoJugador.Sexo = "M";
+                    }
+                    nuevoJugador.Foto = imagen;
+                    if (rdbSi.Checked)
+                    {
+                        nuevoJugador.Habilitado = true;
+                    }
+                    else
+                    {
+                        nuevoJugador.Habilitado = false;
+                    }
+
+                    jugador.guardarJugador(nuevoJugador);
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El jugador se ha registrado correctamente','','success')", true);
+                }
+                else
+                {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El jugador ya existe','','info')", true);
+                }
+                CargarGrilla();
+
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtFecNac.Text = "";
+                txtFecEMMAC.Text = "";
+                txtDNI.Text = "";
+                txtEmail.Text = "";
+                txtTel.Text = "";
+                rdbF.Checked = false;
+                rdbM.Checked = false;
+                rdbNo.Checked = false;
+                rdbSi.Checked = false;
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void modalModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["idJugadorSeleccionado"] != null)
+                {
+                    int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
+
+                    Entidades.Jugadores jugadorAModificar = jugador.getJugador(idJugador);
+
+                    int tamanioFoto = archivoModificar.PostedFile.ContentLength;
+                    byte[] imagen = new byte[tamanioFoto];
+                    archivoModificar.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+
+                    jugadorAModificar.EquipoId = Int32.Parse((String)cmbModificarEquipo.SelectedValue) - 1;
+                    jugadorAModificar.Nombre = txtModificarNombre.Text;
+                    jugadorAModificar.Apellido = txtModificarApellido.Text;
+                    jugadorAModificar.FechaNac = DateTime.Parse(txtModificarFecNac.Text);
+                    jugadorAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
+                    jugadorAModificar.DNI = txtModificarDNI.Text;
+                    jugadorAModificar.Email = txtModificarEmail.Text;
+                    jugadorAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    if (rdbModificarF.Checked)
+                    {
+                        jugadorAModificar.Sexo = "F";
+                    }
+                    else
+                    {
+                        jugadorAModificar.Sexo = "M";
+                    }
+                    if (rdbModificarSi.Checked)
+                    {
+                        jugadorAModificar.Habilitado = true;
+                    }
+                    else
+                    {
+                        jugadorAModificar.Habilitado = false;
+                    }
+
+                    byte[] sinImagen = new byte[0];
+
+                    if (imagen != sinImagen)
+                    {
+                        jugadorAModificar.Foto = imagen;
+                    }
+
+
+                    jugador.modificarJugador(jugadorAModificar);
+
+                    CargarGrilla();
+
+                    txtModificarNombre.Text = "";
+                    txtModificarNombre.Text = "";
+                    txtModificarApellido.Text = "";
+                    txtModificarFecNac.Text = "";
+                    txtModificarFecEMMAC.Text = "";
+                    txtModificarDNI.Text = "";
+                    txtModificarEmail.Text = "";
+                    txtModificarTel.Text = "";
+                    rdbModificarSi.Checked = false;
+                    rdbModificarNo.Checked = false;
+                    rdbModificarF.Checked = false;
+                    rdbModificarM.Checked = false;
+                    archivoModificar = null;
+
+                }
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El jugador se ha modificado correctamente','','success')", true);
+            }
+            catch (Exception)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El jugador no se ha modificado','error')", true);
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["idJugadorSeleccionado"] != null)
+                {
+                    int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
+
+                    jugador.eliminarJugador(idJugador);
+                    CargarGrilla();
+
+
+                    Session["ultimaFilaSeleccionada"] = null;
+                }
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El jugador se ha eliminado correctamente','','success')", true);
+            }
+            catch (Exception)
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El jugador no se pudo eliminar. Compruebe haber seleccionado uno.','error')", true);
+            }
+        }
+
+        protected void chk_CheckedChanged(object sender, EventArgs e)
+        {
+            int idFilaSeleccionada = ((GridViewRow)(sender as Control).NamingContainer).RowIndex;
+
+
+            if (Session["ultimaFilaSeleccionada"] != null)
+            {
+                int ultimaFilaSeleccionada = Int32.Parse((string)Session["ultimaFilaSeleccionada"]);
+
+                if (idFilaSeleccionada != ultimaFilaSeleccionada)
+                {
+                    ((CheckBox)gvJugadores.Rows[ultimaFilaSeleccionada].Cells[0].FindControl("chk")).Checked = false;
+                }
+            }
+
+
+            int idJugador = Int32.Parse(gvJugadores.Rows[idFilaSeleccionada].Cells[1].Text);
+
+            Entidades.Jugadores jugadorAModificar = jugador.getJugador(idJugador);
+
+            cmbModificarEquipo.SelectedValue = jugadorAModificar.EquipoId.ToString();
+            txtModificarNombre.Text = jugadorAModificar.Nombre;
+            txtModificarApellido.Text = jugadorAModificar.Apellido;
+            txtModificarFecNac.Text = jugadorAModificar.FechaNac.ToString("yyyy-MM-dd");
+            txtModificarFecEMMAC.Text = jugadorAModificar.FechaEMMAC.ToString("yyyy-MM-dd");
+            txtModificarDNI.Text = jugadorAModificar.DNI;
+            txtModificarEmail.Text = jugadorAModificar.Email;
+            txtModificarTel.Text = jugadorAModificar.Telefono.ToString();
+
+            if (jugadorAModificar.Sexo == "F")
+            {
+                rdbModificarF.Checked = true;
+                rdbModificarM.Checked = false;
+            }
+            else
+            {
+                rdbModificarF.Checked = false;
+                rdbModificarM.Checked = true;
+            }
+
+            if (jugadorAModificar.Habilitado)
+            {
+                rdbModificarSi.Checked = true;
+                rdbModificarNo.Checked = false;
+            }
+            else
+            {
+                rdbModificarSi.Checked = false;
+                rdbModificarNo.Checked = true;
+            }
+
+            Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
+            Session["idJugadorSeleccionado"] = idJugador.ToString();
         }
     }
 }

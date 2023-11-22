@@ -58,5 +58,43 @@ namespace Datos
 
             return listaClubes.ToList();
         }
+        public Entidades.Clubes eliminarClub(int clubId)
+        {
+            Entidades.Clubes club = context.Clubes.Find(clubId);
+            context.Clubes.Remove(club);
+            context.SaveChanges();
+            return club;
+        }
+        public Entidades.Clubes guardarClub(Entidades.Clubes nuevoClub)
+        {
+            context.Clubes.Add(nuevoClub);
+
+            context.SaveChanges();
+
+            return nuevoClub;
+        }
+        public Entidades.Clubes modificarClub(Entidades.Clubes clubModificado)
+        {
+            context.Entry(clubModificado).State = System.Data.Entity.EntityState.Modified;
+
+            context.SaveChanges();
+            return clubModificado;
+        }
+        public Entidades.Clubes getClub(int clubId)
+        {
+            var club = from c in context.Clubes
+                       where c.Id == clubId
+                       select c;
+
+            return club.FirstOrDefault();
+        }
+        public Entidades.Clubes getClubPorNombre(string nombre)
+        {
+            var club = from c in context.Clubes
+                       where c.Nombre == nombre
+                       select c;
+
+            return club.FirstOrDefault();
+        }
     }
 }

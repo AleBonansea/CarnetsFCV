@@ -57,12 +57,17 @@
     <Compile Include="Clubes.cs" />
     <Compile Include="Delegados.cs" />
     <Compile Include="Divisiones.cs" />
+    <Compile Include="Dto\ArbitroDto.cs" />
     <Compile Include="Dto\ClubDto.cs" />
     <Compile Include="Dto\DivisionDto.cs" />
+    <Compile Include="Dto\EntrenadorDto.cs" />
     <Compile Include="Dto\EquipoDto.cs" />
     <Compile Include="Dto\JugadorDto.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />
     <Compile Include="Entrenadores.cs" />
+    <Compile Include="Enums\DivisionesEnum.cs" />
+    <Compile Include="Enums\RamaEnum.cs" />
+    <Compile Include="Enums\RolesEnum.cs" />
     <Compile Include="Equipos.cs" />
     <Compile Include="Jugadores.cs" />
     <Compile Include="Modelo.cs" />

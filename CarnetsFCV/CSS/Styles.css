@@ -1,4 +1,74 @@
 ﻿body {
+    background-color: #020202;
+    background-image: url('../imagenes/pelota.png');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-attachment: fixed;
+    background-size: 30% 50%;
+}
+
+.carnet {
+    height: 400px;
+    width: 750px;
+    background-color:#ff6161;
+    border: solid 2px black;
+    border-radius: 30px;
+    position:relative;
+    margin-left:20%;
+    margin-top:2%;
+}
+
+.QR {
+    position:absolute;
+    bottom:2%;
+    right:3%;
+    width:170px;
+}
+
+.tituloCarnet {
+    display: flex;
+    font-size: 33px;
+    margin-left: 1%;
+    margin-top: 1%;
+    position:relative;
+}
+
+.datosCarnet {
+    font-size:20px;
+    margin-left:3%;
+    margin-top:2%;
+    font-weight:500;
+    text-decoration: underline
+}
+
+.datosCarnetBd {
+    font-size: 20px;
+    margin-left: 2%;
+    font-weight: 400;
+}
+
+.rolCarnet {
+    font-size: 30px;
+    margin-left: 35%;
+    font-weight: 500;
+    position: absolute;
+    bottom: 3%;
+}
+
+.imgFoto{
+    background-color:white;
+    height:200px;
+    width: 180px;
+    position:absolute;
+    right:3%;
+    top:4%;
+}
+
+.imgLogo {
+    margin: auto;
+    Margin-top: 30px;
+    height: 60%;
 }
 
 .bienvenidos {
@@ -21,7 +91,6 @@
 
 .formulario {
     float: left;
-    width: 200px;
     background: #cccccc;
     border-radius: 5px;
     position: absolute;
@@ -56,21 +125,6 @@
     width: 220px;
 }
 
-.btnIngresar {
-    margin: 10px 30px 15px;
-    padding: 5px 5px 5px 5px;
-    background-color: #e44f1e;
-    color: white;
-    font: bold 20px arial, verdana;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-    .btnIngresar:active {
-        background-color: #fd875c;
-    }
-
 .divImagen {
     float: left;
     width: 350px;
@@ -100,6 +154,191 @@
         text-align: center;
         margin-left: 50px;
     }
+
+.divGrilla {
+    text-align: center;
+    margin-top: 2%;
+    height: auto;
+    max-height: 500px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+    .divGrilla::-webkit-scrollbar-track {
+        background: white;
+        border: solid 1px #D33500;
+    }
+    .divGrilla::-webkit-scrollbar{
+        width:15px;
+    }
+
+    .divGrilla::-webkit-scrollbar-thumb {
+        background: #ffa560;
+        border-radius: 10px;
+    }
+
+
+.grilla {
+    margin: auto;
+    background-color: white;
+    border: solid #D33500;
+    border-width: 3px;
+    height: 100%;
+    width: 100%;
+}
+
+.buscador {
+    border: 3.5px solid #e44f1e;
+    border-radius: 30px;
+    margin-left: 5%;
+    padding-top: 6px;
+    font: 18px arial, verdana;
+    height:40px;
+    padding-inline-start:10px;
+}
+
+    .buscador:hover {
+        border-color: #fd875c;
+    }
+
+.Background {
+    background-color: Black;
+    filter: sepia(opacity=90);
+    opacity: 0.8;
+}
+
+.Popup {
+    background-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 400px;
+    height: 350px;
+}
+
+.lbl {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.textboxModal {
+    border-color:#e44f1e;
+    margin-left:2%;
+    width:auto;
+    margin-left:2px;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    
+}
+
+/*Botones*/
+
+.btnCalendario{
+    height:35px;
+    width:35px;
+    margin-left:10px;
+    border-radius:30px;
+}
+
+.btnIngresar {
+    margin: 10px 30px 15px;
+    padding: 5px 5px 5px 5px;
+    background-color: #e44f1e;
+    color: white;
+    font: bold 18px arial, verdana;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    .btnIngresar:active {
+        background-color: #fd875c;
+    }
+
+.btnCRUD {
+    padding: 6px 10px 10px 12px;
+    font: bold 16px arial, verdana;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    bottom: 0%;
+    background-color: #d8d8d8;
+    border: 3.5px solid #e44f1e;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+    .btnCRUD:hover {
+        background-color: #fd875c;
+        border-color: #e44f1e;
+        color: white;
+    }
+
+    .btnCRUD:active {
+        background-color: #e44f1e;
+        border-color: white;
+    }
+
+.btnInicio {
+    margin: 10px 10px 15px;
+    padding: 5px 5px 5px 5px;
+    font: bold 14px arial, verdana;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    bottom: 0%;
+    background-color: #fd875c;
+    border: 3.5px solid #e44f1e;
+    cursor: pointer;
+    height: 40px;
+    width: 60px;
+}
+
+    .btnInicio:hover {
+        background-color: #e44f1e;
+        border-color: #d8d8d8;
+        color: white;
+    }
+
+    .btnInicio:active {
+        background-color: #d8d8d8;
+        border-color: #e44f1e;
+    }
+
+.btnBuscar {
+    margin-left: 2%;
+    background-color: #e44f1e;
+    border-radius: 15px;
+    height: 32px;
+    width: 32px;
+    padding: 3px 3px 3px 5px;
+}
+
+    .btnBuscar:hover {
+        background-color: #fd875c;
+        border-color: #d8d8d8;
+    }
+
+    .btnBuscar:active {
+        background-color: #B32821;
+    }
+
 
 .btnMenu {
     background-color: #d8d8d8;
@@ -131,9 +370,11 @@
     font: bold 20px arial, verdana;
     border-radius: 5px;
     cursor: pointer;
-    text-align:right;
-    bottom: 0%;
+    position:absolute;
+    bottom:2%;
+    right:3%;
 }
+
     .btnCerrar:hover {
         background-color: #fd875c;
         border-color: #d8d8d8;
@@ -142,113 +383,367 @@
 
     .btnCerrar:active {
         background-color: #e44f1e;
+        color: black;
     }
 
-.divGrilla {
-    background-color: #e44f1e;
-    text-align: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    height:300px;
-}
-
-.grilla {
-    margin-left: 5%;
-    background-color: white;
-    border-color: black;
-    border: solid;
-    border-width: 3px;
-    height: 150px;
-    width:1350px;
-}
-
-.btnBuscar {
-    margin-left: 10px;
-    margin-right: 10%;
-}
-
-.buscador {
-    border: 3.5px solid #e44f1e;
-    border-radius: 30px;
-    margin-left: 5%;
-    padding-top: 6px;
-    font: 18px arial, verdana;
-    line-height:30px;
-    padding-inline-start:10px;
-}
-
-.btnInicio {
-    margin: 10px 10px 15px;
+.btnGuardar {
+    margin: 10px 30px 15px;
     padding: 5px 5px 5px 5px;
-    font: bold 14px arial, verdana;
-    border-radius:25px;
+    background-color: #e44f1e;
+    color: white;
+    font: bold 15px arial, verdana;
+    border-radius: 3px;
     cursor: pointer;
-    text-align: center;
+    text-align: right;
     bottom: 0%;
-    background-color: #d8d8d8;
-    border: 3.5px solid #e44f1e;
-    cursor: pointer;
-    height:40px;
-    width:60px;
 }
 
-    .btnInicio:hover {
-        background-color: black;
-        border-color: #d8d8d8;
-        color:white;
-    }
-
-    .btnInicio:active {
-        background-color: #e44f1e;
-        border-color: black;
-    }
-
-.btnCRUD {
-    margin-right:10px;
-    padding: 6px 10px 10px 12px;
-    font: bold 16px arial, verdana;
-    border-radius: 20px;
-    cursor: pointer;
-    text-align: center;
-    bottom: 0%;
-    background-color: #d8d8d8;
-    border: 3.5px solid #e44f1e;
-    cursor: pointer;
-    height: 40px;
-    width: auto;
-}
-
-    .btnCRUD:hover {
+    .btnGuardar:hover {
         background-color: #fd875c;
-        border-color: black;
-        color: white;
+        border-color: #d8d8d8;
     }
 
-    .btnCRUD:active {
+
+    .btnGuardar:active {
+        background-color: #3D642D;
+    }
+
+.btnCancelar {
+    margin: 10px 30px 15px;
+    padding: 5px 5px 5px 5px;
+    background-color: #e44f1e;
+    color: white;
+    font: bold 15px arial, verdana;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: right;
+    bottom: 0%;
+}
+
+    .btnCancelar:hover {
+        background-color: #fd875c;
+        border-color: #d8d8d8;
+    }
+
+
+    .btnCancelar:active {
+        background-color: #B32821;
+    }
+
+/*MediasQueries*/
+
+@media screen and (max-width:640px) {
+    .bienvenidos {
+        font-size: 50px;
+    }
+
+    .formulario {
+        float: left;
+        background: #cccccc;
+        border-radius: 5px;
+        position: absolute;
+        margin-top: 15%;
+        margin-left: 15%;
+        width: 280px;
+    }
+
+        .formulario h1 {
+            text-align: left;
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid #4e4d4d;
+            font: bold 20px arial, verdana;
+        }
+
+        .formulario label {
+            padding: 0 30px;
+            box-sizing: border-box;
+            font: 15px arial, verdana;
+        }
+
+        .formulario input{
+            margin-left:35px;
+            font:30px;
+        }
+    .imgLogo {
+        margin: auto;
+        Margin-top: 30px;
+        height: 40%;
+    }
+    .btnMenu {
+        background-color: #d8d8d8;
+        border: 3.5px solid #e44f1e;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+        font: bold 20px arial, verdana;
+        height: 60px;
+        width: 300px;
+        margin: 10px 10px 10px 10px;
+    }
+    .grilla {
+        margin: auto;
+        background-color: white;
+        border: solid #D33500;
+        border-width: 3px;
+        height: 100%;
+        width: 100%;
+        font-size:14px;
+    }
+    .btnCRUD {
+        padding: 6px 10px 10px 12px;
+        font: bold 14px arial, verdana;
+        border-radius: 20px;
+        cursor: pointer;
+        text-align: center;
+        bottom: 0%;
+        background-color: #d8d8d8;
+        border: 3.5px solid #e44f1e;
+        cursor: pointer;
+        height: 35px;
+        width: 90px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .btnInicio {
+        margin: 10px 10px 15px;
+        padding: 5px 5px 5px 5px;
+        font: bold 12px arial, verdana;
+        border-radius: 25px;
+        cursor: pointer;
+        text-align: center;
+        bottom: 0%;
+        background-color: #fd875c;
+        border: 3.5px solid #e44f1e;
+        cursor: pointer;
+        height: 35px;
+        width: 55px;
+    }
+
+    .btnBuscar {
+        margin-left: 2%;
+        margin-right: 8%;
         background-color: #e44f1e;
-        border-color: white;
+        border-radius: 15px;
+        height: 27px;
+        width: 27px;
+        padding: 3px 3px 3px 5px;
     }
 
-
-.Background {
-    background-color: Black;
-    filter: sepia(opacity=90);
-    opacity: 0.8;
+    .buscador {
+        border: 3.5px solid #e44f1e;
+        border-radius: 30px;
+        margin-left: 5%;
+        padding-top: 6px;
+        font: 16px arial, verdana;
+        height: 35px;
+        padding-inline-start: 10px;
+    }
+    .btnIngresar {
+        margin: 10px 30px 15px;
+        padding: 5px 5px 5px 5px;
+        background-color: #e44f1e;
+        color: white;
+        font: bold 16px arial, verdana;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }
 
-.Popup {
-    background-color: #FFFFFF;
-    border-width: 3px;
-    border-style: solid;
-    border-color: black;
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 400px;
-    height: 350px;
-}
+@media screen and (max-width:310px) {
+    .bienvenidos {
+        font-size: 40px;
+    }
 
-.lbl {
-    font-size: 16px;
-    font-style: italic;
-    font-weight: bold;
+    .formulario {
+        float: left;
+        background: #cccccc;
+        border-radius: 5px;
+        position: absolute;
+        margin-top: 15%;
+        margin-left: 10%;
+        width: 260px;
+    }
+
+        .formulario h1 {
+            text-align: left;
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid #4e4d4d;
+            font: bold 20px arial, verdana;
+        }
+
+        .formulario label {
+            padding: 0 30px;
+            box-sizing: border-box;
+            font: 15px arial, verdana;
+        }
+
+        .formulario input {
+            margin-left: 35px;
+            font: 30px;
+        }
+
+    .imgLogo {
+        Margin-top: 20px;
+        height: 30%;
+    }
+
+    .btnMenu {
+        background-color: #d8d8d8;
+        border: 3.5px solid #e44f1e;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+        font: bold 18px arial, verdana;
+        height: 50px;
+        width: 280px;
+    }
+
+    .btnCerrar {
+        margin: 0px 10px 15px;
+        background-color: #e44f1e;
+        color: white;
+        font: bold 18px arial, verdana;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: right;
+        bottom: 2%;
+    }
+
+    .grilla {
+        margin: auto;
+        background-color: white;
+        border: solid #D33500;
+        border-width: 3px;
+        height: 100%;
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .btnCRUD {
+        padding: 6px 10px 10px 12px;
+        font: bold 12px arial, verdana;
+        border-radius: 20px;
+        cursor: pointer;
+        text-align: center;
+        bottom: 0%;
+        background-color: #d8d8d8;
+        border: 3.5px solid #e44f1e;
+        cursor: pointer;
+        height: 30px;
+        width: 80px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    .btnInicio {
+        margin: 10px 10px 15px;
+        padding: 5px 5px 5px 5px;
+        font: bold 10px arial, verdana;
+        border-radius: 25px;
+        cursor: pointer;
+        text-align: center;
+        bottom: 0%;
+        background-color: #fd875c;
+        border: 3.5px solid #e44f1e;
+        cursor: pointer;
+        height: 30px;
+        width: 50px;
+    }
+
+    .btnBuscar {
+        margin-left: 2%;
+        margin-right: 8%;
+        background-color: #e44f1e;
+        border-radius: 15px;
+        height: 25px;
+        width: 25px;
+        padding: 3px 3px 3px 5px;
+    }
+
+    .buscador {
+        border: 3.5px solid #e44f1e;
+        border-radius: 30px;
+        margin-left: 5%;
+        padding-top: 6px;
+        font: 14px arial, verdana;
+        height: 30px;
+        padding-inline-start: 10px;
+    }
+
+    .btnIngresar {
+        margin: 10px 30px 15px;
+        padding: 5px 5px 5px 5px;
+        background-color: #e44f1e;
+        color: white;
+        font: bold 14px arial, verdana;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width:1500px) {
+    .btnCerrar {
+        margin: 10px 30px 15px;
+        padding: 5px 5px 5px 5px;
+        background-color: #e44f1e;
+        color: white;
+        font: bold 20px arial, verdana;
+        border-radius: 5px;
+        cursor: pointer;
+        position: initial;
+    }
+    .carnet {
+        height: 310px;
+        width: 550px;
+        background-color: #ff6161;
+        border: solid 2px black;
+        border-radius: 30px;
+        position: relative;
+        margin-left: 20%;
+        margin-top: 2%;
+    }
+
+    .QR {
+        position: absolute;
+        bottom: 2%;
+        right: 3%;
+    }
+
+    .tituloCarnet {
+        display: flex;
+        font-size: 25px;
+        margin-left: 1%;
+        margin-top: 1%;
+        position: relative;
+    }
+
+    .datosCarnet {
+        font-size: 15px;
+        margin-left: 3%;
+        margin-top: 2%;
+        font-weight: 500;
+    }
+
+    .datosCarnetBd {
+        font-size: 15px;
+        margin-left: 2%;
+        font-weight: 400;
+    }
+
+    .rolCarnet {
+        font-size: 22px;
+        margin-left: 35%;
+        font-weight: 500;
+        position: absolute;
+        bottom: 3%;
+    }
+
+    .imgFoto {
+        background-color: white;
+        height: 160px;
+        width: 130px;
+        position: absolute;
+        right: 3%;
+        top: 4%;
+    }
 }

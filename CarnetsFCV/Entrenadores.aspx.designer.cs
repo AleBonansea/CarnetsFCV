@@ -11,7 +11,7 @@ namespace CarnetsFCV
 {
 
 
-    public partial class Clubes
+    public partial class Entrenadores
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.ImageButton btnBuscar;
 
         /// <summary>
-        /// btnExportar control.
+        /// ImageButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportar;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
 
         /// <summary>
         /// filaSeleccionada control.
@@ -60,13 +60,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.HiddenField filaSeleccionada;
 
         /// <summary>
-        /// gvClubes control.
+        /// gvEntrenadores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvClubes;
+        protected global::System.Web.UI.WebControls.GridView gvEntrenadores;
 
         /// <summary>
         /// btnCerrarSesion control.
@@ -78,31 +78,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
-        /// txtNombreClub control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreClub;
-
-        /// <summary>
-        /// txtDomicilio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
-
-        /// <summary>
-        /// txtNombreDelegado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreDelegado;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
         /// txtApellido control.
@@ -112,6 +94,33 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
+
+        /// <summary>
+        /// txtFecNac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFecNac;
+
+        /// <summary>
+        /// txtFecEMMAC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFecEMMAC;
+
+        /// <summary>
+        /// txtDNI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDNI;
 
         /// <summary>
         /// txtEmail control.
@@ -132,31 +141,40 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtTel;
 
         /// <summary>
-        /// txtMofidicarNombreClub control.
+        /// rdbSi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMofidicarNombreClub;
+        protected global::System.Web.UI.WebControls.RadioButton rdbSi;
 
         /// <summary>
-        /// txtModificarDomicilio control.
+        /// rdbNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarDomicilio;
+        protected global::System.Web.UI.WebControls.RadioButton rdbNo;
 
         /// <summary>
-        /// txtModificarNombreDel control.
+        /// archivo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarNombreDel;
+        protected global::System.Web.UI.WebControls.FileUpload archivo;
+
+        /// <summary>
+        /// txtModificarNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtModificarNombre;
 
         /// <summary>
         /// txtModificarApellido control.
@@ -166,6 +184,33 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtModificarApellido;
+
+        /// <summary>
+        /// txtModificarFecNac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtModificarFecNac;
+
+        /// <summary>
+        /// txtModificarFecEMMAC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtModificarFecEMMAC;
+
+        /// <summary>
+        /// txtModificarDNI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtModificarDNI;
 
         /// <summary>
         /// txtModificarEmail control.
@@ -184,5 +229,32 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtModificarTel;
+
+        /// <summary>
+        /// rdbModificarSi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbModificarSi;
+
+        /// <summary>
+        /// rdbModificarNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rdbModificarNo;
+
+        /// <summary>
+        /// archivoModificar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload archivoModificar;
     }
 }

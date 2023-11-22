@@ -5,8 +5,13 @@
 
 
 <asp:Content  ID="Content2" ContentPlaceHolderID="Contenido"  runat="server">
-    <h1 style="background-color:#020202;" class="bienvenidos" >Bienvenidos !</h1>
-   
+    <div class="row">
+        <div class="col">            
+            <h1 style="background-color:#020202;" class="bienvenidos" >Bienvenidos !</h1>
+        </div>
+    </div>
+   <div class="row">
+        <div class="col">  
     <div class="formulario">
         <div class="formH1">
         <h1>Ingreso</h1>
@@ -29,8 +34,7 @@
         </div>
         
     </div>
-    <div >
+              </div>
     </div>
-
 
 </asp:Content>

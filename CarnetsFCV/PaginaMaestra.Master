@@ -12,22 +12,24 @@
 
     <title>Carnets Digitales</title>
 
+    <link href="CSS/Styles.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="CSS/Styles.css" rel="stylesheet" />
 </head>
-<body style="background-color:#020202;">
+<body style="background-color:#020202; max-width:1500px">
     <form id="form1" runat="server">
-        <div style="background-color:#020202; height:140px;">
-            <img style="margin:auto;Margin-top:30px; height:80px" align="right" src="Imagenes/Logo.png" />
+        <div style="background-color:#020202; text-align:right; height:140px;">
+            <img Class="imgLogo" src="Imagenes/Logo.png" />
         </div>
         <div>
             <asp:ContentPlaceHolder ID="Contenido" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
     </form>
 </body>
 </html>
