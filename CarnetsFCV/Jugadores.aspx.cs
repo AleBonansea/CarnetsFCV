@@ -268,7 +268,7 @@ namespace CarnetsFCV
 
         protected void cmbEquipos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbEquiposModal.SelectedIndex = cmbEquiposModal.SelectedIndex + 1;
+            cmbEquiposModal.SelectedIndex = cmbEquiposModal.SelectedIndex;
         }
         protected void cmbMoficarEquipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -304,7 +304,7 @@ namespace CarnetsFCV
 
                     nuevoJugador.UsuarioId = usuarioJugador.Id;
                     nuevoJugador.ClubId = clubId;
-                    nuevoJugador.EquipoId = Int32.Parse((String)cmbEquiposModal.SelectedValue) - 1;
+                    nuevoJugador.EquipoId = Int32.Parse((String)cmbEquiposModal.SelectedValue);
                     nuevoJugador.Nombre = txtNombre.Text;
                     nuevoJugador.Apellido = txtApellido.Text;
                     nuevoJugador.FechaNac = DateTime.Parse(txtFecNac.Text);

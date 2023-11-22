@@ -34,7 +34,7 @@ namespace CarnetsFCV
 
         protected void btnInicio_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Menu.aspx");
+            Response.Redirect("Menu.aspx");
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)

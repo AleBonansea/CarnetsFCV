@@ -51,6 +51,7 @@ namespace CarnetsFCV
                         btnArbitros.Visible = false;
                         btnClubes.Visible = false;
                         btnCarnet.Visible = false;
+                        btnEntrenadores.Visible = false;
                         break;
 
                     case (3):
