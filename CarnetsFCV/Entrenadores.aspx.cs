@@ -84,6 +84,7 @@ namespace CarnetsFCV
                     usuarioEntrenador.RolId = rolEntrenadorId;
                     usuarioEntrenador.NombreUsuario = txtDNI.Text;
                     usuarioEntrenador.Contraseña = txtDNI.Text;
+                    usuarioEntrenador.PrimerIngreso = true;
 
                     usuario.crearUsuario(usuarioEntrenador);
 
@@ -96,7 +97,7 @@ namespace CarnetsFCV
                     nuevoEntrenador.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
                     nuevoEntrenador.DNI = txtDNI.Text;
                     nuevoEntrenador.Email = txtEmail.Text;
-                    nuevoEntrenador.Telefono = Int32.Parse((String)txtTel.Text);
+                    nuevoEntrenador.Telefono = txtTel.Text;
                     nuevoEntrenador.Foto = imagen;
                     if (rdbSi.Checked)
                     {
@@ -159,7 +160,7 @@ namespace CarnetsFCV
                     entrenadorAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
                     entrenadorAModificar.DNI = txtModificarDNI.Text;
                     entrenadorAModificar.Email = txtModificarEmail.Text;
-                    entrenadorAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    entrenadorAModificar.Telefono = txtModificarTel.Text;
                     if (rdbModificarSi.Checked)
                     {
                         entrenadorAModificar.Habilitado = true;

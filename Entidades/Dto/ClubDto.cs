@@ -12,7 +12,7 @@ namespace Entidades.Dto
         public string Nombre { get; set; }
         public string Domicilio { get; set; }
         public string Delegado { get; set; }
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
         public string Email { get; set; }
     }
 }

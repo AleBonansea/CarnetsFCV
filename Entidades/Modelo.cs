@@ -21,6 +21,7 @@ namespace Entidades
         public virtual DbSet<Jugadores> Jugadores { get; set; }
         public virtual DbSet<Ramas> Ramas { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Sexo> Sexos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -43,6 +44,10 @@ namespace Entidades
 
             modelBuilder.Entity<Clubes>()
                 .Property(e => e.Nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Clubes>()
+                .Property(e => e.Cuit)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Clubes>()

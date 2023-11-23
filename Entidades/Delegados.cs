@@ -26,7 +26,7 @@ namespace Entidades
         [StringLength(50)]
         public string Email { get; set; }
 
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
 
         public virtual Clubes Clubes { get; set; }
 

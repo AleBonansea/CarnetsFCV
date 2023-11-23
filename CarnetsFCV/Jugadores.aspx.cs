@@ -297,6 +297,7 @@ namespace CarnetsFCV
                     usuarioJugador.RolId = rolJugadorId;
                     usuarioJugador.NombreUsuario = txtDNI.Text;
                     usuarioJugador.Contraseña = txtDNI.Text;
+                    usuarioJugador.PrimerIngreso = true;
 
                     usuario.crearUsuario(usuarioJugador);
 
@@ -311,7 +312,7 @@ namespace CarnetsFCV
                     nuevoJugador.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
                     nuevoJugador.DNI = txtDNI.Text;
                     nuevoJugador.Email = txtEmail.Text;
-                    nuevoJugador.Telefono = Int32.Parse((String)txtTel.Text);
+                    nuevoJugador.Telefono = txtTel.Text;
                     if(rdbF.Checked)
                     {
                         nuevoJugador.Sexo = "F";
@@ -384,7 +385,7 @@ namespace CarnetsFCV
                     jugadorAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
                     jugadorAModificar.DNI = txtModificarDNI.Text;
                     jugadorAModificar.Email = txtModificarEmail.Text;
-                    jugadorAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    jugadorAModificar.Telefono = txtModificarTel.Text;
                     if (rdbModificarF.Checked)
                     {
                         jugadorAModificar.Sexo = "F";
