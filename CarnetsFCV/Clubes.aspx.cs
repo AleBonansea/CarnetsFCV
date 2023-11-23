@@ -168,6 +168,7 @@ namespace CarnetsFCV
                     usuarioDelegado.RolId = rolDelegadoId;
                     usuarioDelegado.NombreUsuario = txtNombreClub.Text;
                     usuarioDelegado.Contraseña = "123";
+                    usuarioDelegado.PrimerIngreso = true;
 
                     usuario.crearUsuario(usuarioDelegado);
 
@@ -189,7 +190,7 @@ namespace CarnetsFCV
                         nuevoDelegado.Nombre = txtNombreDelegado.Text;
                         nuevoDelegado.Apellido = txtApellido.Text;
                         nuevoDelegado.Email = txtEmail.Text;
-                        nuevoDelegado.Telefono = Int32.Parse((String)txtTel.Text);
+                        nuevoDelegado.Telefono = txtTel.Text;
 
                         delegado.guardarDelegado(nuevoDelegado);
 
@@ -249,7 +250,7 @@ namespace CarnetsFCV
                     delegadoAModificar.Nombre = txtModificarNombreDel.Text;
                     delegadoAModificar.Apellido = txtModificarApellido.Text;
                     delegadoAModificar.Email = txtModificarEmail.Text;
-                    delegadoAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    delegadoAModificar.Telefono = txtModificarTel.Text;
 
                     delegado.modificarDelegado(delegadoAModificar);
 

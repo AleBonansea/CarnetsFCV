@@ -84,6 +84,7 @@ namespace CarnetsFCV
                     usuarioArbitro.RolId = rolArbitroId;
                     usuarioArbitro.NombreUsuario = txtDNI.Text;
                     usuarioArbitro.Contraseña = txtDNI.Text;
+                    usuarioArbitro.PrimerIngreso = true;
 
                     usuario.crearUsuario(usuarioArbitro);
 
@@ -96,7 +97,7 @@ namespace CarnetsFCV
                     nuevoArbitro.FechaEMMAC = DateTime.Parse(txtFecEMMAC.Text);
                     nuevoArbitro.DNI = txtDNI.Text;
                     nuevoArbitro.Email = txtEmail.Text;
-                    nuevoArbitro.Telefono = Int32.Parse((String)txtTel.Text);
+                    nuevoArbitro.Telefono = txtTel.Text;
                     nuevoArbitro.Foto = imagen;
                     if (rdbSi.Checked)
                     {
@@ -159,7 +160,7 @@ namespace CarnetsFCV
                     arbitroAModificar.FechaEMMAC = DateTime.Parse(txtModificarFecEMMAC.Text);
                     arbitroAModificar.DNI = txtModificarDNI.Text;
                     arbitroAModificar.Email = txtModificarEmail.Text;
-                    arbitroAModificar.Telefono = Int32.Parse((String)txtModificarTel.Text);
+                    arbitroAModificar.Telefono = txtModificarTel.Text;
                     if (rdbModificarSi.Checked)
                     {
                         arbitroAModificar.Habilitado = true;

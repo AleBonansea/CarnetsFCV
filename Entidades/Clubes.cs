@@ -17,6 +17,9 @@ namespace Entidades
         }
 
         public int Id { get; set; }
+        [Required]
+        [StringLength(11)]
+        public string Cuit { get; set; }
 
         [Required]
         [StringLength(60)]
