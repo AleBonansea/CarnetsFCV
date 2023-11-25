@@ -150,6 +150,15 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
+        /// txtDNI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDNI;
+
+        /// <summary>
         /// cmbEquiposModal control.
         /// </summary>
         /// <remarks>
@@ -195,15 +204,6 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtFecEMMAC;
 
         /// <summary>
-        /// txtDNI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDNI;
-
-        /// <summary>
         /// txtEmail control.
         /// </summary>
         /// <remarks>
@@ -222,22 +222,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtTel;
 
         /// <summary>
-        /// rdbF control.
+        /// cmbSexoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbF;
-
-        /// <summary>
-        /// rdbM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbM;
+        protected global::System.Web.UI.WebControls.DropDownList cmbSexoModal;
 
         /// <summary>
         /// rdbSi control.
@@ -265,6 +256,15 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload archivo;
+
+        /// <summary>
+        /// txtModificarDNI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtModificarDNI;
 
         /// <summary>
         /// cmbModificarEquipo control.
@@ -312,15 +312,6 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtModificarFecEMMAC;
 
         /// <summary>
-        /// txtModificarDNI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtModificarDNI;
-
-        /// <summary>
         /// txtModificarEmail control.
         /// </summary>
         /// <remarks>
@@ -339,22 +330,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtModificarTel;
 
         /// <summary>
-        /// rdbModificarF control.
+        /// cmbModificarSexoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbModificarF;
-
-        /// <summary>
-        /// rdbModificarM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbModificarM;
+        protected global::System.Web.UI.WebControls.DropDownList cmbModificarSexoModal;
 
         /// <summary>
         /// rdbModificarSi control.

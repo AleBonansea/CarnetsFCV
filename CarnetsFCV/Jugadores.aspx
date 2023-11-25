@@ -104,6 +104,15 @@
               <div class="modal-body" style="align-items:center">
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
+                            <asp:Label Text="DNI:" runat="server" />
+                        </div>
+                        <div class="col-sm-4" style="display:flex; align-items:center;">
+                            <asp:TextBox BorderColor="#e44f1e" ID="txtDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                        </div>
+                   </div>
+
+                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2"style="display:flex; align-items:center; width:35%;">
                             <asp:Label Text="Equipo:" runat="server" /> 
                         </div>
@@ -148,16 +157,7 @@
                             <asp:TextBox BorderColor="#e44f1e" ID="txtFecEMMAC" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" TextMode="Date" runat="server" />
                         </div>
                    </div>
-
-                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="DNI:" runat="server" />
-                        </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center;">
-                            <asp:TextBox BorderColor="#e44f1e" ID="txtDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
-                        </div>
-                   </div>
-
+                                    
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
                             <asp:Label Text="Email:" runat="server" />
@@ -177,18 +177,14 @@
                    </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="Sexo:" runat="server" />
+                        <div class="col-sm-2"style="display:flex; align-items:center; width:35%;">
+                            <asp:Label Text="Sexo:" runat="server" /> 
                         </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center; justify-content:center;">
-                            <div class="col-sm-2" style="display:flex; align-items:center; width:auto;margin-left:20%; margin-right:33%;">
-                                <asp:RadioButton GroupName="Sexo" Checked="true" ID="rdbF" margin-rigth="25%" Text="F" runat="server" />
-                            </div>
-                            <div class="col-sm-2" style="display:flex; align-items:center;width:auto;">
-                                <asp:RadioButton GroupName="Sexo" ID="rdbM" Text="M" runat="server" />
-                            </div>
+                        <div class="col-sm-4"style="display:flex; align-items:center">
+                            <asp:DropDownList ID="cmbSexoModal" Style=" margin-left:2%; width:auto; margin-left:2px;"  OnSelectedIndexChanged="cmbEquipos_SelectedIndexChanged"  class="btn btn-secondary btn-sm dropdown-toggle" runat="server" AutoPostBack="False">
+                                </asp:DropDownList>
                         </div>
-                   </div>
+                    </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
@@ -232,6 +228,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
+
+                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
+                            <asp:Label Text="DNI:" runat="server" />
+                        </div>
+                        <div class="col-sm-4" style="display:flex; align-items:center;">
+                            <asp:TextBox BorderColor="#e44f1e" ID="txtModificarDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                        </div>
+                   </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2"style="display:flex; align-items:center; width:35%;">
@@ -278,16 +283,7 @@
                             <asp:TextBox BorderColor="#e44f1e" ID="txtModificarFecEMMAC" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" TextMode="Date" runat="server" />
                         </div>
                    </div>
-
-                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="DNI:" runat="server" />
-                        </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center;">
-                            <asp:TextBox BorderColor="#e44f1e" ID="txtModificarDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
-                        </div>
-                   </div>
-
+                  
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
                             <asp:Label Text="Email:" runat="server" />
@@ -307,18 +303,14 @@
                    </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="Sexo:" runat="server" />
+                        <div class="col-sm-2"style="display:flex; align-items:center; width:35%;">
+                            <asp:Label Text="Sexo:" runat="server" /> 
                         </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center; justify-content:center;">
-                            <div class="col-sm-2" style="display:flex; align-items:center; width:auto;margin-left:20%; margin-right:33%;">
-                                <asp:RadioButton GroupName="Sexo" Checked="true" ID="rdbModificarF" margin-rigth="25%" Text="F" runat="server" />
-                            </div>
-                            <div class="col-sm-2" style="display:flex; align-items:center;width:auto;">
-                                <asp:RadioButton GroupName="Sexo" ID="rdbModificarM" Text="M" runat="server" />
-                            </div>
+                        <div class="col-sm-4"style="display:flex; align-items:center">
+                            <asp:DropDownList ID="cmbModificarSexoModal" Style=" margin-left:2%; width:auto; margin-left:2px;"  OnSelectedIndexChanged="cmbEquipos_SelectedIndexChanged"  class="btn btn-secondary btn-sm dropdown-toggle" runat="server" AutoPostBack="False">
+                                </asp:DropDownList>
                         </div>
-                   </div>
+                    </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">

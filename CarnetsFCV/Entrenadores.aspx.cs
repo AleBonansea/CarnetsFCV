@@ -208,8 +208,7 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 if (Session["idEntrenadorSeleccionado"] != null)
                 {
                     int idEntrenador = Int32.Parse((string)Session["idEntrenadorSeleccionado"]);
@@ -219,16 +218,14 @@ namespace CarnetsFCV
 
 
                     Session["ultimaFilaSeleccionada"] = null;
-                }
 
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El entrenador se ha eliminado correctamente','','success')", true);
-            }
-            catch (Exception)
-            {
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('El entrenador se ha eliminado correctamente','','success')", true);
+                }
+                           
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El entrenador no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
-            }
+            
         }
 
         protected void chk_CheckedChanged(object sender, EventArgs e)

@@ -129,8 +129,6 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
                 if (Session["idClubSeleccionado"] != null)
                 {
                     int idClub = Int32.Parse((string)Session["idClubSeleccionado"]);
@@ -140,16 +138,15 @@ namespace CarnetsFCV
 
 
                     Session["ultimaFilaSeleccionada"] = null;
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('El club se ha eliminado correctamente','','success')", true);
                 }
 
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El club se ha eliminado correctamente','','success')", true);
-            }
-            catch (Exception)
-            {
+            
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El club no se pudo eliminar. Compruebe haber seleccionado uno.','error')", true);
-            }
+            
         }
 
         protected void modalGuardar_Click(object sender, EventArgs e)

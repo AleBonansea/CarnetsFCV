@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Entidades;
 using Entidades.Dto;
 using Entidades.Enums;
 using System;
@@ -17,6 +18,7 @@ namespace CarnetsFCV
         Logica.EquipoLOG equipos = new Logica.EquipoLOG();
         Logica.DivisionLOG division = new Logica.DivisionLOG();
         Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
+        Logica.SexoLOG sexo = new Logica.SexoLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
             int rolId = Int32.Parse((string)Session["rolId"]);
@@ -36,10 +38,12 @@ namespace CarnetsFCV
                 }
                 CargarDivisiones();
                 CargarRamas();
+                
 
                 if (rolId == 2)
                 {
                     CargarEquiposModal();
+                    CargarSexosModal();
                 }
                 else
                 {
@@ -90,6 +94,29 @@ namespace CarnetsFCV
 
             }
         }
+
+        private void CargarSexosModal()
+        {
+            List<Sexo> sexos= sexo.getSexos();
+
+            if (sexos != null)
+            {
+                List<ListItem> items = sexos.ConvertAll(d =>
+
+                {
+                    return new ListItem()
+                    {
+                        Text = d.Descripcion,
+                        Value = d.Id.ToString(),
+                        Selected = false
+                    };
+                });
+
+                cmbSexoModal.DataSource = items;
+                cmbSexoModal.DataBind();
+            }
+        }
+
         private void CargarRamas()
         {
         }
@@ -313,14 +340,8 @@ namespace CarnetsFCV
                     nuevoJugador.DNI = txtDNI.Text;
                     nuevoJugador.Email = txtEmail.Text;
                     nuevoJugador.Telefono = txtTel.Text;
-                    if(rdbF.Checked)
-                    {
-                        nuevoJugador.Sexo = "F";
-                    }
-                    else
-                    {
-                        nuevoJugador.Sexo = "M";
-                    }
+                    nuevoJugador.Sexo = cmbSexoModal.SelectedValue;
+
                     nuevoJugador.Foto = imagen;
                     if (rdbSi.Checked)
                     {
@@ -350,8 +371,6 @@ namespace CarnetsFCV
                 txtDNI.Text = "";
                 txtEmail.Text = "";
                 txtTel.Text = "";
-                rdbF.Checked = false;
-                rdbM.Checked = false;
                 rdbNo.Checked = false;
                 rdbSi.Checked = false;
 
@@ -386,14 +405,8 @@ namespace CarnetsFCV
                     jugadorAModificar.DNI = txtModificarDNI.Text;
                     jugadorAModificar.Email = txtModificarEmail.Text;
                     jugadorAModificar.Telefono = txtModificarTel.Text;
-                    if (rdbModificarF.Checked)
-                    {
-                        jugadorAModificar.Sexo = "F";
-                    }
-                    else
-                    {
-                        jugadorAModificar.Sexo = "M";
-                    }
+                    jugadorAModificar.Sexo = cmbModificarSexoModal.SelectedValue;
+
                     if (rdbModificarSi.Checked)
                     {
                         jugadorAModificar.Habilitado = true;
@@ -416,7 +429,6 @@ namespace CarnetsFCV
                     CargarGrilla();
 
                     txtModificarNombre.Text = "";
-                    txtModificarNombre.Text = "";
                     txtModificarApellido.Text = "";
                     txtModificarFecNac.Text = "";
                     txtModificarFecEMMAC.Text = "";
@@ -425,8 +437,6 @@ namespace CarnetsFCV
                     txtModificarTel.Text = "";
                     rdbModificarSi.Checked = false;
                     rdbModificarNo.Checked = false;
-                    rdbModificarF.Checked = false;
-                    rdbModificarM.Checked = false;
                     archivoModificar = null;
 
                 }
@@ -443,8 +453,7 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 if (Session["idJugadorSeleccionado"] != null)
                 {
                     int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
@@ -454,16 +463,15 @@ namespace CarnetsFCV
 
 
                     Session["ultimaFilaSeleccionada"] = null;
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('El jugador se ha eliminado correctamente','','success')", true);
                 }
 
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El jugador se ha eliminado correctamente','','success')", true);
-            }
-            catch (Exception)
-            {
+           
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El jugador no se pudo eliminar. Compruebe haber seleccionado uno.','error')", true);
-            }
+            
         }
 
         protected void chk_CheckedChanged(object sender, EventArgs e)
@@ -494,17 +502,6 @@ namespace CarnetsFCV
             txtModificarDNI.Text = jugadorAModificar.DNI;
             txtModificarEmail.Text = jugadorAModificar.Email;
             txtModificarTel.Text = jugadorAModificar.Telefono.ToString();
-
-            if (jugadorAModificar.Sexo == "F")
-            {
-                rdbModificarF.Checked = true;
-                rdbModificarM.Checked = false;
-            }
-            else
-            {
-                rdbModificarF.Checked = false;
-                rdbModificarM.Checked = true;
-            }
 
             if (jugadorAModificar.Habilitado)
             {
