@@ -28,7 +28,7 @@ namespace Datos
                                      DNI = j.DNI,
                                      Email = j.Email,
                                      Telefono = j.Telefono,
-                                     Sexo = j.Sexo,
+                                     Sexo = j.Sexos.Descripcion,
                                      Habilitado = j.Habilitado
                                  };
 
@@ -38,6 +38,7 @@ namespace Datos
         public List<Entidades.Dto.JugadorDto> getGVJugadoresTotales()
         {
             var listaJugadores = from j in context.Jugadores
+                                 from s in context.Sexos
                                  select new Entidades.Dto.JugadorDto
                                  {
                                      Id = j.Id,
@@ -51,7 +52,7 @@ namespace Datos
                                      DNI = j.DNI,
                                      Email = j.Email,
                                      Telefono = j.Telefono,
-                                     Sexo = j.Sexo,
+                                     Sexo = j.Sexos.Descripcion,
                                      Habilitado = j.Habilitado
                                  };
 

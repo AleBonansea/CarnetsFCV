@@ -108,6 +108,7 @@ namespace Datos
                 case (int)RolesEnum.Jugador:
                     var carnetJugador = from u in context.Usuarios
                                         from j in context.Jugadores
+                                        from s in context.Sexos
                                         where j.DNI == usuario
                                         select new Entidades.Dto.UsuarioDto
                                         {
@@ -117,7 +118,7 @@ namespace Datos
                                             FechaEMMAC = j.FechaEMMAC,
                                             DNI = j.DNI,
                                             Habilitado = j.Habilitado,
-                                            Sexo = j.Sexo,
+                                            Sexo = s.Descripcion,
                                             Club = j.Clubes.Nombre,
                                             Foto = j.Foto,
                                             NombreRol = RolesEnum.Jugador.ToString()

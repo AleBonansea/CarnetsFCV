@@ -97,7 +97,7 @@ namespace CarnetsFCV
 
         private void CargarSexosModal()
         {
-            List<Sexo> sexos= sexo.getSexos();
+            List<Sexos> sexos= sexo.getSexos();
 
             if (sexos != null)
             {
@@ -215,11 +215,11 @@ namespace CarnetsFCV
 
         public void CargarGrilla()
         {
-            int rolId = Int32.Parse((string)Session["rolId"]);
+            int rolId = 2;
 
             if (rolId == 2)
             {
-                int clubId = Int32.Parse((string)Session["clubId"]);
+                int clubId = 1;
                 gvJugadores.DataSource = jugador.getGVJugadores(clubId);
                 gvJugadores.DataBind();
             }
@@ -340,7 +340,7 @@ namespace CarnetsFCV
                     nuevoJugador.DNI = txtDNI.Text;
                     nuevoJugador.Email = txtEmail.Text;
                     nuevoJugador.Telefono = txtTel.Text;
-                    nuevoJugador.Sexo = cmbSexoModal.SelectedValue;
+                    nuevoJugador.SexoId = Int32.Parse((string)cmbSexoModal.SelectedValue);
 
                     nuevoJugador.Foto = imagen;
                     if (rdbSi.Checked)
@@ -405,7 +405,7 @@ namespace CarnetsFCV
                     jugadorAModificar.DNI = txtModificarDNI.Text;
                     jugadorAModificar.Email = txtModificarEmail.Text;
                     jugadorAModificar.Telefono = txtModificarTel.Text;
-                    jugadorAModificar.Sexo = cmbModificarSexoModal.SelectedValue;
+                    jugadorAModificar.SexoId = Int32.Parse((string)cmbModificarSexoModal.SelectedValue);
 
                     if (rdbModificarSi.Checked)
                     {

@@ -21,7 +21,7 @@ namespace Entidades
         public virtual DbSet<Jugadores> Jugadores { get; set; }
         public virtual DbSet<Ramas> Ramas { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<Sexo> Sexos { get; set; }
+        public virtual DbSet<Sexos> Sexos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -42,16 +42,20 @@ namespace Entidades
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Arbitros>()
+                .Property(e => e.Telefono)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Clubes>()
                 .Property(e => e.Nombre)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Clubes>()
-                .Property(e => e.Cuit)
+                .Property(e => e.Domicilio)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Clubes>()
-                .Property(e => e.Domicilio)
+                .Property(e => e.CUIT)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Clubes>()
@@ -84,6 +88,10 @@ namespace Entidades
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Delegados>()
+                .Property(e => e.Telefono)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Divisiones>()
                 .Property(e => e.Descripcion)
                 .IsUnicode(false);
@@ -108,6 +116,10 @@ namespace Entidades
 
             modelBuilder.Entity<Entrenadores>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Entrenadores>()
+                .Property(e => e.Telefono)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Equipos>()
@@ -136,11 +148,6 @@ namespace Entidades
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Jugadores>()
-                .Property(e => e.Sexo)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<Ramas>()
                 .Property(e => e.Descripcion)
                 .IsUnicode(false);
@@ -159,6 +166,16 @@ namespace Entidades
                 .HasMany(e => e.Usuarios)
                 .WithRequired(e => e.Roles)
                 .HasForeignKey(e => e.RolId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Sexos>()
+                .Property(e => e.Descripcion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Sexos>()
+                .HasMany(e => e.Jugadores)
+                .WithRequired(e => e.Sexos)
+                .HasForeignKey(e => e.SexoId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usuarios>()

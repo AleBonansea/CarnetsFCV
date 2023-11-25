@@ -28,7 +28,8 @@ namespace Entidades
         [Required]
         [StringLength(30)]
         public string Contraseña { get; set; }
-        public bool? PrimerIngreso { get; set; }
+
+        public bool PrimerIngreso { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Arbitros> Arbitros { get; set; }

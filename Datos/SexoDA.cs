@@ -11,7 +11,7 @@ namespace Datos
     {
         Entidades.Modelo context = new Entidades.Modelo();
 
-        public List<Sexo> getSexos()
+        public List<Sexos> getSexos()
         {
             var listaSexos = from r in context.Sexos
                              select r;

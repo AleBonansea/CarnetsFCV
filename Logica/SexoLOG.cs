@@ -11,7 +11,7 @@ namespace Logica
     {
         Datos.SexoDA sexo = new Datos.SexoDA();
 
-        public List<Sexo> getSexos()
+        public List<Sexos> getSexos()
         {
             return sexo.getSexos();
         }
