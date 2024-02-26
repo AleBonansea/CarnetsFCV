@@ -163,7 +163,7 @@ namespace CarnetsFCV
                     var usuarioDelegado = new Entidades.Usuarios();
 
                     usuarioDelegado.RolId = rolDelegadoId;
-                    usuarioDelegado.NombreUsuario = txtNombreClub.Text;
+                    usuarioDelegado.NombreUsuario = txtCUIT.Text;
                     usuarioDelegado.Contraseña = "123";
                     usuarioDelegado.PrimerIngreso = true;
 
@@ -209,6 +209,7 @@ namespace CarnetsFCV
                 CargarGrilla();
 
                 txtNombreClub.Text = "";
+                txtCUIT.Text = "";
                 txtDomicilio.Text = "";
                 txtNombreDelegado.Text = "";
                 txtApellido.Text = "";
@@ -256,6 +257,7 @@ namespace CarnetsFCV
 
                     txtNombreClub.Text = "";
                     txtDomicilio.Text = "";
+                    txtCUIT.Text = "";
                     txtNombreDelegado.Text = "";
                     txtApellido.Text = "";
                     txtEmail.Text = "";

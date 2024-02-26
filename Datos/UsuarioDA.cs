@@ -16,17 +16,18 @@ namespace Datos
         public Entidades.Dto.UsuarioDto getUsuarios(string contr, string nombreUs)
         {
             var Usuario = (from u in context.Usuarios
-                                where u.NombreUsuario == nombreUs
-                                && u.Contraseña == contr
-                                select new Entidades.Dto.UsuarioDto
-                                {
-                                    Id = u.Id,
-                                    NombreUsuario = u.NombreUsuario,
-                                    Contraseña = u.Contraseña,
-                                    RolId = u.RolId
-                                }).FirstOrDefault();
-            
-            if (Usuario.RolId == 2)
+                           where u.NombreUsuario == nombreUs
+                           && u.Contraseña == contr
+                           select new Entidades.Dto.UsuarioDto
+                           {
+                               Id = u.Id,
+                               NombreUsuario = u.NombreUsuario,
+                               Contraseña = u.Contraseña,
+                               PrimerIngreso = u.PrimerIngreso,
+                               RolId = u.RolId
+                           }).FirstOrDefault();
+
+            if (Usuario != null && Usuario.RolId == 2)
             {
                 Usuario.ClubId = context.Delegados.Where(d => d.UsuarioId.Equals(Usuario.Id)).Select(d => d.ClubId).FirstOrDefault();
             }
@@ -48,20 +49,20 @@ namespace Datos
             context.SaveChanges();
 
             return usuario;
-            
+
         }
         public List<Entidades.Dto.UsuarioDto> getRoles(string nombreUsuario)
         {
-            var rolesUsuario =    from u in context.Usuarios
-                                  from r in context.Roles
-                                  where u.NombreUsuario == nombreUsuario
-                                  && u.RolId == r.Id
-                                  select new Entidades.Dto.UsuarioDto
-                                  {
-                                      NombreUsuario = u.NombreUsuario,
-                                      RolId = r.Id,
-                                      NombreRol = r.Descripcion
-                                  };
+            var rolesUsuario = from u in context.Usuarios
+                               from r in context.Roles
+                               where u.NombreUsuario == nombreUsuario
+                               && u.RolId == r.Id
+                               select new Entidades.Dto.UsuarioDto
+                               {
+                                   NombreUsuario = u.NombreUsuario,
+                                   RolId = r.Id,
+                                   NombreRol = r.Descripcion
+                               };
 
             return rolesUsuario.ToList();
         }
@@ -71,37 +72,37 @@ namespace Datos
             {
                 case (int)RolesEnum.Entrenador:
                     var carnetEntrenador = from u in context.Usuarios
-                                 from e in context.Entrenadores
-                                 where e.DNI == usuario
-                                 select new Entidades.Dto.UsuarioDto
-                                 {
-                                     Nombre = e.Nombre,
-                                     Apellido = e.Apellido,
-                                     FechaNac = e.FechaNac,
-                                     FechaEMMAC = e.FechaEMMAC,
-                                     DNI = e.DNI,
-                                     Habilitado = e.Habilitado,
-                                     Foto = e.Foto,
-                                     NombreRol = RolesEnum.Entrenador.ToString()
-                                 };
+                                           from e in context.Entrenadores
+                                           where e.DNI == usuario
+                                           select new Entidades.Dto.UsuarioDto
+                                           {
+                                               Nombre = e.Nombre,
+                                               Apellido = e.Apellido,
+                                               FechaNac = e.FechaNac,
+                                               FechaEMMAC = e.FechaEMMAC,
+                                               DNI = e.DNI,
+                                               Habilitado = e.Habilitado,
+                                               Foto = e.Foto,
+                                               NombreRol = RolesEnum.Entrenador.ToString()
+                                           };
 
                     return carnetEntrenador.FirstOrDefault();
 
-                    case (int)RolesEnum.Arbitro:
+                case (int)RolesEnum.Arbitro:
                     var carnetArbitro = from u in context.Usuarios
-                                 from a in context.Arbitros
-                                 where a.DNI == usuario
-                                 select new Entidades.Dto.UsuarioDto
-                                 {
-                                     Nombre = a.Nombre,
-                                     Apellido = a.Apellido,
-                                     FechaNac = a.FechaNac,
-                                     FechaEMMAC = a.FechaEMMAC,
-                                     DNI = a.DNI,
-                                     Habilitado = a.Habilitado,
-                                     Foto = a.Foto,
-                                     NombreRol = RolesEnum.Arbitro.ToString()
-                                 };
+                                        from a in context.Arbitros
+                                        where a.DNI == usuario
+                                        select new Entidades.Dto.UsuarioDto
+                                        {
+                                            Nombre = a.Nombre,
+                                            Apellido = a.Apellido,
+                                            FechaNac = a.FechaNac,
+                                            FechaEMMAC = a.FechaEMMAC,
+                                            DNI = a.DNI,
+                                            Habilitado = a.Habilitado,
+                                            Foto = a.Foto,
+                                            NombreRol = RolesEnum.Arbitro.ToString()
+                                        };
 
                     return carnetArbitro.FirstOrDefault();
 
@@ -129,8 +130,87 @@ namespace Datos
                 default:
                     return null;
             }
+        }
+        public Entidades.Usuarios modificarContraseña(Entidades.Usuarios usuarioAModificar)
+        {
+            context.Entry(usuarioAModificar).State = System.Data.Entity.EntityState.Modified;
 
-            
+            context.SaveChanges();
+            return usuarioAModificar;
+        }
+        public Entidades.Usuarios getUsuarioById(int usuarioId)
+        {
+            var usuario = from u in context.Usuarios
+                          where u.Id == usuarioId
+                          select u;
+            return usuario.FirstOrDefault();
+        }
+        public Entidades.Dto.UsuarioDto getUsuarioByNombre(string nombreUsuario)
+        {
+            var user = context.Usuarios.Where(u => u.NombreUsuario.Equals(nombreUsuario)).FirstOrDefault();
+
+            if (user != null)
+            {           
+
+            switch (user.RolId)
+            {
+                case (int)RolesEnum.Jugador:
+                    var datos = context.Jugadores.Where(j => j.DNI.Equals(nombreUsuario)).FirstOrDefault();
+
+                    Entidades.Dto.UsuarioDto usuarioDto = new UsuarioDto();
+
+                    usuarioDto.Nombre = datos.Nombre;
+                    usuarioDto.Apellido = datos.Apellido;
+                    usuarioDto.FechaNac = datos.FechaNac;
+                    usuarioDto.FechaEMMAC = datos.FechaEMMAC;
+                    usuarioDto.DNI = datos.DNI;
+                    usuarioDto.Email = datos.Email;
+                    usuarioDto.Telefono = datos.Telefono;
+                    usuarioDto.Foto = datos.Foto;
+                    usuarioDto.Habilitado = datos.Habilitado;
+                    usuarioDto.sexoId = datos.SexoId;
+
+                    return usuarioDto;
+
+                case (int)RolesEnum.Entrenador:
+                    var datosE = context.Entrenadores.Where(j => j.DNI.Equals(nombreUsuario)).FirstOrDefault();
+
+                    Entidades.Dto.UsuarioDto usuarioEDto = new UsuarioDto();
+
+                    usuarioEDto.Nombre = datosE.Nombre;
+                    usuarioEDto.Apellido = datosE.Apellido;
+                    usuarioEDto.FechaNac = datosE.FechaNac;
+                    usuarioEDto.FechaEMMAC = datosE.FechaEMMAC;
+                    usuarioEDto.DNI = datosE.DNI;
+                    usuarioEDto.Email = datosE.Email;
+                    usuarioEDto.Telefono = datosE.Telefono;
+                    usuarioEDto.Foto = datosE.Foto;
+                    usuarioEDto.Habilitado = datosE.Habilitado;
+
+                    return usuarioEDto;
+
+                case (int)RolesEnum.Arbitro:
+                    var datosA = context.Arbitros.Where(j => j.DNI.Equals(nombreUsuario)).FirstOrDefault();
+
+                    Entidades.Dto.UsuarioDto usuarioADto = new UsuarioDto();
+
+                    usuarioADto.Nombre = datosA.Nombre;
+                    usuarioADto.Apellido = datosA.Apellido;
+                    usuarioADto.FechaNac = datosA.FechaNac;
+                    usuarioADto.FechaEMMAC = datosA.FechaEMMAC;
+                    usuarioADto.DNI = datosA.DNI;
+                    usuarioADto.Email = datosA.Email;
+                    usuarioADto.Telefono = datosA.Telefono;
+                    usuarioADto.Foto = datosA.Foto;
+                    usuarioADto.Habilitado = datosA.Habilitado;
+
+                    return usuarioADto;
+
+            }
+
+            }
+            return null;
+
         }
     }
 }

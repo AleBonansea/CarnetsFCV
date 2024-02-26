@@ -351,6 +351,8 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  border-radius: 0.375rem;
+
 }
 
 button,

@@ -12,6 +12,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+
+
 <div class="row">  
     <div class="col-sm-1" style="margin-left:2%">
         <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
@@ -76,7 +78,7 @@
                             <asp:Label Text="DNI:" runat="server" />
                         </div>
                         <div class="col-sm-4" style="display:flex; align-items:center;">
-                            <asp:TextBox BorderColor="#e44f1e" ID="txtDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                            <asp:TextBox OnTextChanged="txtDNI_TextChanged" AutoPostBack="true" BorderColor="#e44f1e" ID="txtDNI" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
                         </div>
                    </div>
 
@@ -160,7 +162,7 @@
                       </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                <asp:button OnClick="ModalCancelar_click" class="btnCancelar" data-bs-dismiss="modal" Text="Cancelar" runat="server" />
                   <asp:Button class="btnGuardar" OnClick="modalGuardar_Click" Text="Guardar" runat="server" />
               </div>
             </div>
@@ -176,6 +178,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
+                <div class="modal-body" style="align-items:center">
+
                 <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
                             <asp:Label Text="DNI:" runat="server" />
@@ -185,7 +189,6 @@
                         </div>
                 </div>
 
-                <div class="modal-body" style="align-items:center">
                      <div class="row"style="display:flex;margin-top:2%; align-items:center">
                          <div class="col-sm-2" style="display:flex; align-items:center; width:35%;">
                             <asp:Label Text="Nombre:" runat="server" />

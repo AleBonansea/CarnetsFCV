@@ -18,14 +18,22 @@ namespace CarnetsFCV
         void getUsuarios()
         {
             var usuario = objLogica.getUsuarios(txtContraseña.Text, txtUsuario.Text);
-
-
+            
             if (usuario != null)
             {
+                Session["usuarioId"] = usuario.Id.ToString();
                 Session["clubId"] = usuario.ClubId.ToString();
                 Session["rolId"] = usuario.RolId.ToString();
                 Session["usuario"] = usuario.NombreUsuario.ToString();
-                Response.Redirect("Menu.aspx");
+                
+                if (usuario.PrimerIngreso == true)
+                {
+                    Response.Redirect("CambioContraseña.aspx");
+                }
+                else 
+                {
+                    Response.Redirect("Menu.aspx");
+                }
             }
             else
             {
