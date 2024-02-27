@@ -69,6 +69,15 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnJugadores;
 
         /// <summary>
+        /// btnCambioContraseña control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCambioContraseña;
+
+        /// <summary>
         /// btnCerrarSesion control.
         /// </summary>
         /// <remarks>

@@ -141,5 +141,10 @@ namespace CarnetsFCV
             Session["rolId"] = rolId.ToString();
             Response.Redirect("Carnets.aspx");
         }
+
+        protected void btnCambioContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CambioContraseña.aspx");
+        }
     }
 }

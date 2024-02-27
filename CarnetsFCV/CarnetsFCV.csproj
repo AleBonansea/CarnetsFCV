@@ -324,6 +324,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Arbitros.aspx" />
+    <Content Include="CambioContraseña.aspx" />
     <Content Include="Carnets.aspx" />
     <Content Include="Clubes.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -536,6 +537,13 @@
     <Compile Include="Arbitros.aspx.designer.cs">
       <DependentUpon>Arbitros.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CambioContraseña.aspx.cs">
+      <DependentUpon>CambioContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambioContraseña.aspx.designer.cs">
+      <DependentUpon>CambioContraseña.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Carnets.aspx.cs">
       <DependentUpon>Carnets.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -588,7 +596,7 @@
     <Compile Include="Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
-<Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>

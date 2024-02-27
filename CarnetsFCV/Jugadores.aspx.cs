@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Entidades;
 using Entidades.Dto;
 using Entidades.Enums;
 using System;
@@ -17,6 +18,7 @@ namespace CarnetsFCV
         Logica.EquipoLOG equipos = new Logica.EquipoLOG();
         Logica.DivisionLOG division = new Logica.DivisionLOG();
         Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
+        Logica.SexoLOG sexo = new Logica.SexoLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
             int rolId = Int32.Parse((string)Session["rolId"]);
@@ -28,6 +30,14 @@ namespace CarnetsFCV
                 {
                     CargarGrilla();
                     CargarClubes();
+                    txtDNI.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
+                    txtFecNac.Enabled = false;
+                    txtFecEMMAC.Enabled = false;
+                    txtEmail.Enabled = false;
+                    txtTel.Enabled = false;
+                    btnAgregar.Disabled = true;
 
                 }
                 else
@@ -36,10 +46,12 @@ namespace CarnetsFCV
                 }
                 CargarDivisiones();
                 CargarRamas();
+                
 
                 if (rolId == 2)
                 {
                     CargarEquiposModal();
+                    CargarSexosModal();
                 }
                 else
                 {
@@ -90,6 +102,29 @@ namespace CarnetsFCV
 
             }
         }
+
+        private void CargarSexosModal()
+        {
+            List<Sexos> sexos= sexo.getSexos();
+
+            if (sexos != null)
+            {
+                List<ListItem> items = sexos.ConvertAll(d =>
+
+                {
+                    return new ListItem()
+                    {
+                        Text = d.Descripcion,
+                        Value = d.Id.ToString(),
+                        Selected = false
+                    };
+                });
+
+                cmbSexoModal.DataSource = items;
+                cmbSexoModal.DataBind();
+            }
+        }
+
         private void CargarRamas()
         {
         }
@@ -188,11 +223,11 @@ namespace CarnetsFCV
 
         public void CargarGrilla()
         {
-            int rolId = Int32.Parse((string)Session["rolId"]);
+            int rolId = 2;
 
             if (rolId == 2)
             {
-                int clubId = Int32.Parse((string)Session["clubId"]);
+                int clubId = 1;
                 gvJugadores.DataSource = jugador.getGVJugadores(clubId);
                 gvJugadores.DataBind();
             }
@@ -313,15 +348,9 @@ namespace CarnetsFCV
                     nuevoJugador.DNI = txtDNI.Text;
                     nuevoJugador.Email = txtEmail.Text;
                     nuevoJugador.Telefono = txtTel.Text;
-                    if(rdbF.Checked)
-                    {
-                        nuevoJugador.Sexo = "F";
-                    }
-                    else
-                    {
-                        nuevoJugador.Sexo = "M";
-                    }
+                    nuevoJugador.SexoId = Int32.Parse((string)cmbSexoModal.SelectedValue);
                     nuevoJugador.Foto = imagen;
+
                     if (rdbSi.Checked)
                     {
                         nuevoJugador.Habilitado = true;
@@ -350,8 +379,6 @@ namespace CarnetsFCV
                 txtDNI.Text = "";
                 txtEmail.Text = "";
                 txtTel.Text = "";
-                rdbF.Checked = false;
-                rdbM.Checked = false;
                 rdbNo.Checked = false;
                 rdbSi.Checked = false;
 
@@ -386,14 +413,8 @@ namespace CarnetsFCV
                     jugadorAModificar.DNI = txtModificarDNI.Text;
                     jugadorAModificar.Email = txtModificarEmail.Text;
                     jugadorAModificar.Telefono = txtModificarTel.Text;
-                    if (rdbModificarF.Checked)
-                    {
-                        jugadorAModificar.Sexo = "F";
-                    }
-                    else
-                    {
-                        jugadorAModificar.Sexo = "M";
-                    }
+                    jugadorAModificar.SexoId = Int32.Parse((string)cmbModificarSexoModal.SelectedValue);
+
                     if (rdbModificarSi.Checked)
                     {
                         jugadorAModificar.Habilitado = true;
@@ -416,7 +437,6 @@ namespace CarnetsFCV
                     CargarGrilla();
 
                     txtModificarNombre.Text = "";
-                    txtModificarNombre.Text = "";
                     txtModificarApellido.Text = "";
                     txtModificarFecNac.Text = "";
                     txtModificarFecEMMAC.Text = "";
@@ -425,8 +445,6 @@ namespace CarnetsFCV
                     txtModificarTel.Text = "";
                     rdbModificarSi.Checked = false;
                     rdbModificarNo.Checked = false;
-                    rdbModificarF.Checked = false;
-                    rdbModificarM.Checked = false;
                     archivoModificar = null;
 
                 }
@@ -443,8 +461,7 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 if (Session["idJugadorSeleccionado"] != null)
                 {
                     int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
@@ -454,16 +471,15 @@ namespace CarnetsFCV
 
 
                     Session["ultimaFilaSeleccionada"] = null;
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('El jugador se ha eliminado correctamente','','success')", true);
                 }
 
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El jugador se ha eliminado correctamente','','success')", true);
-            }
-            catch (Exception)
-            {
+           
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El jugador no se pudo eliminar. Compruebe haber seleccionado uno.','error')", true);
-            }
+            
         }
 
         protected void chk_CheckedChanged(object sender, EventArgs e)
@@ -495,17 +511,6 @@ namespace CarnetsFCV
             txtModificarEmail.Text = jugadorAModificar.Email;
             txtModificarTel.Text = jugadorAModificar.Telefono.ToString();
 
-            if (jugadorAModificar.Sexo == "F")
-            {
-                rdbModificarF.Checked = true;
-                rdbModificarM.Checked = false;
-            }
-            else
-            {
-                rdbModificarF.Checked = false;
-                rdbModificarM.Checked = true;
-            }
-
             if (jugadorAModificar.Habilitado)
             {
                 rdbModificarSi.Checked = true;
@@ -519,6 +524,90 @@ namespace CarnetsFCV
 
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
             Session["idJugadorSeleccionado"] = idJugador.ToString();
+        }
+
+        protected void btnValidarDNI_Click(object sender, EventArgs e)
+        {
+            int tamanioFoto = archivo.PostedFile.ContentLength;
+            byte[] imagen = new byte[tamanioFoto];
+            archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+
+            var user = usuario.getUsuarioByNombre(txtValidarDni.Text);
+
+            if (user != null)
+            {
+                txtNombre.Text = user.Nombre;
+                txtApellido.Text = user.Apellido;
+                txtFecNac.Text = user.FechaNac.ToString("yyyy-MM-dd");
+                txtFecEMMAC.Text = user.FechaEMMAC.ToString("yyyy-MM-dd");
+                txtDNI.Text = user.DNI;
+                txtEmail.Text = user.Email;
+                txtTel.Text = user.Telefono;
+                archivo.PostedFile.InputStream.Read(user.Foto, 0, tamanioFoto);
+
+                if (user.Habilitado)
+                {
+                    rdbSi.Checked = true;
+                    rdbNo.Checked = false;
+                }
+                else
+                {
+                    rdbSi.Checked = false;
+                    rdbNo.Checked = true;
+                }
+
+                btnAgregar.Disabled = false;
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese al formulario Agregar.','','success')", true);
+
+            }
+            else
+            {
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtFecNac.Enabled = true;
+                txtFecEMMAC.Enabled = true;
+                txtDNI.Enabled = true;
+                txtEmail.Enabled = true;
+                txtTel.Enabled = true;
+                txtDNI.Enabled = true;
+
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtFecNac.Text = "";
+                txtFecEMMAC.Text = "";
+                txtDNI.Text = "";
+                txtEmail.Text = "";
+                txtTel.Text = "";
+
+                btnAgregar.Disabled = false;
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El DNI ingresado no existe. Ingrese al formulario Agregar.','','info')", true);
+            }
+        }
+
+        protected void ModalCancelar_click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtFecNac.Text = "";
+            txtFecEMMAC.Text = "";
+            txtDNI.Text = "";
+            txtEmail.Text = "";
+            txtTel.Text = "";
+            rdbNo.Checked = false;
+            rdbSi.Checked = true;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtFecNac.Enabled = false;
+            txtFecEMMAC.Enabled = false;
+            txtEmail.Enabled = false;
+            txtTel.Enabled = false;
+            txtDNI.Enabled = false;
+
+            btnAgregar.Disabled = true;
         }
     }
 }

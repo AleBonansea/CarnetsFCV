@@ -16,6 +16,8 @@ namespace Entidades
 
         public int EquipoId { get; set; }
 
+        public int SexoId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Nombre { get; set; }
@@ -24,8 +26,10 @@ namespace Entidades
         [StringLength(50)]
         public string Apellido { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime FechaNac { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime FechaEMMAC { get; set; }
 
         [Required]
@@ -38,10 +42,6 @@ namespace Entidades
 
         public string Telefono { get; set; }
 
-        [Required]
-        [StringLength(1)]
-        public string Sexo { get; set; }
-
         public byte[] Foto { get; set; }
 
         public bool Habilitado { get; set; }
@@ -49,6 +49,8 @@ namespace Entidades
         public virtual Clubes Clubes { get; set; }
 
         public virtual Equipos Equipos { get; set; }
+
+        public virtual Sexos Sexos { get; set; }
 
         public virtual Usuarios Usuarios { get; set; }
     }

@@ -11,6 +11,7 @@ namespace Entidades.Dto
         public int Id { get; set; }
         public string NombreUsuario { get; set; }
         public string Contraseña { get; set; }
+        public bool PrimerIngreso { get; set; }
         public int RolId { get; set; }
         public int? ClubId { get; set; }
         public string NombreRol { get; set; }
@@ -21,6 +22,9 @@ namespace Entidades.Dto
         public DateTime FechaEMMAC { get; set; }
         public string DNI { get; set; }
         public string Sexo { get; set; }
+        public int sexoId { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
         public bool Habilitado { get; set; }
         public byte[] Foto { get; set; }
     }

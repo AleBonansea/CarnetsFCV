@@ -81,6 +81,15 @@
                             </div>
                        </div>
 
+                      <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                            <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
+                                <asp:Label Text="CUIT:" runat="server" />
+                            </div>
+                            <div class="col-sm-4" style="display:flex; align-items:center;">
+                                <asp:TextBox BorderColor="#e44f1e" ID="txtCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                            </div>
+                       </div>
+
                          <div class="row"style="display:flex;margin-top:2%; align-items:center">
                             <div class="col-sm-2" style="display:flex; align-items:center; width:35%;">
                                 <asp:Label Text="Nombre:" runat="server" />
@@ -160,11 +169,20 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Club</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                  
+              <div class="modal-body">                  
+
                       <div class="row"style="display:flex;margin-top:2%; align-items:center">
                             <div class="col-sm-2" style="display:flex; align-items:center; width:35%;">
                                 <h5 style="text-decoration:underline">Club</h5>
+                            </div>
+                       </div>
+                     
+                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                            <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
+                                <asp:Label Text="CUIT:" runat="server" />
+                            </div>
+                            <div class="col-sm-4" style="display:flex; align-items:center;">
+                                <asp:TextBox BorderColor="#e44f1e" ID="txtModificarCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
                             </div>
                        </div>
 

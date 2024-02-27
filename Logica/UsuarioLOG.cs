@@ -33,6 +33,18 @@ namespace Logica
         {
             return usuario.getCarnet(nombreUsuario, rolId);
         }
+        public Entidades.Usuarios getUsuarioById(int usuarioId)
+        {
+            return usuario.getUsuarioById(usuarioId);
+        }
+        public Entidades.Usuarios modificarContraseña(Entidades.Usuarios usuarioAModificar)
+        {
+            return usuario.modificarContraseña(usuarioAModificar);
+        }
+        public Entidades.Dto.UsuarioDto getUsuarioByNombre(string nombreUsuario)
+        {
+            return usuario.getUsuarioByNombre(nombreUsuario);
+        }
 
     }
 }

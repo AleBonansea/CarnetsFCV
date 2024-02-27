@@ -17,9 +17,6 @@ namespace Entidades
         }
 
         public int Id { get; set; }
-        [Required]
-        [StringLength(11)]
-        public string Cuit { get; set; }
 
         [Required]
         [StringLength(60)]
@@ -28,6 +25,10 @@ namespace Entidades
         [Required]
         [StringLength(100)]
         public string Domicilio { get; set; }
+
+        [Required]
+        [StringLength(11)]
+        public string CUIT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipos> Equipos { get; set; }

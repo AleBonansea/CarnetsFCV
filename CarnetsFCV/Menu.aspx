@@ -24,9 +24,14 @@
         </div>
     </div>
     
-     <div class="row">
-             <div style="text-align:right">
-                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
+     <div class="row" >
+
+            <div class="col">
+                <asp:Button ID="btnCambioContraseña" OnClick="btnCambioContraseña_Click" class="btnCancelar" arial-label="Close" Text="Modificar Contraseña" runat="server"/>
+            </div>                
+
+             <div class="col" style="text-align:right">
+                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>                 
             </div>
     </div>
 
