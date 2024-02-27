@@ -21,7 +21,14 @@ namespace CarnetsFCV
                 if (Session["rolId"] != null)
                 {
                     CargarGrilla();
-
+                    txtDNI.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
+                    txtFecNac.Enabled = false;
+                    txtFecEMMAC.Enabled = false;
+                    txtEmail.Enabled = false;
+                    txtTel.Enabled = false;
+                    btnAgregar.Disabled = true;
                 }
                 else
                 {
@@ -297,6 +304,90 @@ namespace CarnetsFCV
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El excel no pudo ser descargado','error')", true);
             }
+        }
+
+        protected void btnValidarDNI_Click(object sender, EventArgs e)
+        {
+            int tamanioFoto = archivo.PostedFile.ContentLength;
+            byte[] imagen = new byte[tamanioFoto];
+            archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+
+            var user = usuario.getUsuarioByNombre(txtValidarDni.Text);
+
+            if (user != null)
+            {
+                txtNombre.Text = user.Nombre;
+                txtApellido.Text = user.Apellido;
+                txtFecNac.Text = user.FechaNac.ToString("yyyy-MM-dd");
+                txtFecEMMAC.Text = user.FechaEMMAC.ToString("yyyy-MM-dd");
+                txtDNI.Text = user.DNI;
+                txtEmail.Text = user.Email;
+                txtTel.Text = user.Telefono;
+                archivo.PostedFile.InputStream.Read(user.Foto, 0, tamanioFoto);
+
+                if (user.Habilitado)
+                {
+                    rdbSi.Checked = true;
+                    rdbNo.Checked = false;
+                }
+                else
+                {
+                    rdbSi.Checked = false;
+                    rdbNo.Checked = true;
+                }
+
+                btnAgregar.Disabled = false;
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese al formulario Agregar.','','success')", true);
+
+            }
+            else
+            {
+                txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
+                txtFecNac.Enabled = true;
+                txtFecEMMAC.Enabled = true;
+                txtDNI.Enabled = true;
+                txtEmail.Enabled = true;
+                txtTel.Enabled = true;
+                txtDNI.Enabled = true;
+
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtFecNac.Text = "";
+                txtFecEMMAC.Text = "";
+                txtDNI.Text = "";
+                txtEmail.Text = "";
+                txtTel.Text = "";
+
+                btnAgregar.Disabled = false;
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El DNI ingresado no existe. Ingrese al formulario Agregar.','','info')", true);
+            }
+        }
+
+        protected void ModalCancelar_click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtFecNac.Text = "";
+            txtFecEMMAC.Text = "";
+            txtDNI.Text = "";
+            txtEmail.Text = "";
+            txtTel.Text = "";
+            rdbNo.Checked = false;
+            rdbSi.Checked = true;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtFecNac.Enabled = false;
+            txtFecEMMAC.Enabled = false;
+            txtEmail.Enabled = false;
+            txtTel.Enabled = false;
+            txtDNI.Enabled = false;
+
+            btnAgregar.Disabled = true;
         }
     }
 }

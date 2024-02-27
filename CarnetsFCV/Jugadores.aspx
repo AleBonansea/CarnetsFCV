@@ -48,17 +48,22 @@
 
          
     <div class="row" style="margin-left:5%"">
-            <!-- Button trigger modal -->
-            <div class="col-xl-1" >   
+
+
+<!-- Button trigger modal -->
+            <div class="col-xl-1" padding-right: 8%; >   
+                <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalValidarDNI"  runat="server" ID="Button1">Validar DNI</button>
+            </div>
+            <div class="col-xl-1" padding-right: 8%; >   
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalAgregar"  runat="server" ID="btnAgregar">Agregar</button>
             </div>
-            <div class="col-xl-1"">
+            <div class="col-xl-1" padding-right: 8%;>
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalModificar" runat="server" ID="btnModificar">Modificar</button>
             </div>
-            <div class="col-xl-1">
+            <div class="col-xl-1" padding-right: 8%;>
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar" runat="server" ID="btnEliminar">Eliminar</button>
             </div>
-            <div class="col-xl-9" style="padding-right:6%; display: flex; justify-content: right; align-items: center;">
+            <div class="col-xl-7" style=" display: flex; justify-content: right; align-items: center;">
                 <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
                 <asp:ImageButton  class="btnBuscar" ID="ImageButton1" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />                
                 <asp:ImageButton CssClass="btnBuscar" ImageUrl="Imagenes/excel.png" ID="btnExportar" OnClick="btnExportar_Click" runat="server" />
@@ -93,7 +98,42 @@
             </div>
         </div>
 
-    <!-- Modal Agregar -->
+
+
+<!-- Modal ValidarDNI -->
+          
+
+                <div class="modal fade" id="ModalValidarDNI" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background-color:#CCCCCC">
+                      <div class="modal-header" style="background-color:#e44f1e;">
+                        <h1 class="modal-title fs-5" style="color:white" id="staticBackdropLabel">Ingrese DNI</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body" style="align-items:center">
+
+                          <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                                <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
+                                    <asp:Label Text="DNI:" runat="server" />
+                                </div>
+                                <div class="col-sm-4" style="display:flex; align-items:center;">
+                                    <asp:TextBox BorderColor="#e44f1e" ID="txtValidarDni" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                                </div>
+                           </div>
+
+                      <div class="modal-footer">
+                          <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                          <asp:Button ID="btnValidarDNI" class="btnGuardar" OnClick="btnValidarDNI_Click" Text="Validar" runat="server" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+<!-- Modal Agregar -->
+
         <div class="modal fade" id="ModalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background-color:#CCCCCC">
@@ -212,14 +252,17 @@
                       </div>
                   </div>
               <div class="modal-footer">
-                  <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                  <asp:button OnClick="ModalCancelar_click" class="btnCancelar" data-bs-dismiss="modal" Text="Cancelar" runat="server" />
                   <asp:Button class="btnGuardar" OnClick="btnGuardar_Click" Text="Guardar" runat="server" />
               </div>
             </div>
           </div>
         </div>
 
-    <!-- Modal Modificar -->
+
+
+
+ <!-- Modal Modificar -->
         <div class="modal fade" id="ModalModificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background-color:#CCCCCC">
@@ -345,7 +388,11 @@
           </div>
         </div>
 
-    <!-- Modal Eliminar -->
+
+
+
+ <!-- Modal Eliminar -->
+
         <div class="modal fade" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="background-color:#CCCCCC">

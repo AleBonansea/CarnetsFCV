@@ -22,12 +22,14 @@ namespace CarnetsFCV
                 if (Session["rolId"] != null)
                 {
                     CargarGrilla();
+                    txtDNI.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;
                     txtFecNac.Enabled = false;
                     txtFecEMMAC.Enabled = false;
                     txtEmail.Enabled = false;
                     txtTel.Enabled = false;
+                    btnAgregar.Disabled = true;
 
                 }
                 else
@@ -305,13 +307,35 @@ namespace CarnetsFCV
             }
         }
 
-        protected void txtDNI_TextChanged(object sender, EventArgs e)
+        protected void ModalCancelar_click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtFecNac.Text = "";
+            txtFecEMMAC.Text = "";
+            txtDNI.Text = "";
+            txtEmail.Text = "";
+            txtTel.Text = "";
+            rdbNo.Checked = false;
+            rdbSi.Checked = true;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtFecNac.Enabled = false;
+            txtFecEMMAC.Enabled = false;
+            txtEmail.Enabled = false;
+            txtTel.Enabled = false;
+            txtDNI.Enabled = false;
+
+            btnAgregar.Disabled = true;
+        }
+
+        protected void btnValidarDNI_Click(object sender, EventArgs e)
         {
             int tamanioFoto = archivo.PostedFile.ContentLength;
             byte[] imagen = new byte[tamanioFoto];
             archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
-            var user = usuario.getUsuarioByNombre(txtDNI.Text);
+            var user = usuario.getUsuarioByNombre(txtValidarDni.Text);
 
             if (user != null)
             {
@@ -335,6 +359,8 @@ namespace CarnetsFCV
                     rdbNo.Checked = true;
                 }
 
+                btnAgregar.Disabled = false;
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese nuevamente al formulario Agregar.','','success')", true);
 
@@ -349,28 +375,19 @@ namespace CarnetsFCV
                 txtEmail.Enabled = true;
                 txtTel.Enabled = true;
 
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtFecNac.Text = "";
+                txtFecEMMAC.Text = "";
+                txtDNI.Text = "";
+                txtEmail.Text = "";
+                txtTel.Text = "";
+
+                btnAgregar.Disabled = false;
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El DNI ingresado no existe. Ingrese nuevamente al formulario para Agregar.','','info')", true);
             }
-        }
-
-        protected void ModalCancelar_click(object sender, EventArgs e)
-        {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtFecNac.Text = "";
-            txtFecEMMAC.Text = "";
-            txtDNI.Text = "";
-            txtEmail.Text = "";
-            txtTel.Text = "";
-            rdbNo.Checked = false;
-            rdbSi.Checked = true;
-            txtNombre.Enabled = false;
-            txtApellido.Enabled = false;
-            txtFecNac.Enabled = false;
-            txtFecEMMAC.Enabled = false;
-            txtEmail.Enabled = false;
-            txtTel.Enabled = false;
         }
     }
 }
