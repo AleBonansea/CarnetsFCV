@@ -24,13 +24,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnInicio;
 
         /// <summary>
-        /// divQRContent control.
+        /// imgFoto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divQRContent;
+        protected global::System.Web.UI.WebControls.Image imgFoto;
 
         /// <summary>
         /// lblNombre control.
@@ -42,24 +42,6 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Label lblNombre;
 
         /// <summary>
-        /// lblApellido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApellido;
-
-        /// <summary>
-        /// lblFecNac control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecNac;
-
-        /// <summary>
         /// lblDNI control.
         /// </summary>
         /// <remarks>
@@ -69,15 +51,6 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Label lblDNI;
 
         /// <summary>
-        /// lblHabilitado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHabilitado;
-
-        /// <summary>
         /// lblEMMAC control.
         /// </summary>
         /// <remarks>
@@ -85,6 +58,24 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEMMAC;
+
+        /// <summary>
+        /// lblRolTit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRolTit;
+
+        /// <summary>
+        /// lblRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRol;
 
         /// <summary>
         /// lblSexoTit control.
@@ -105,6 +96,33 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Label lblSexo;
 
         /// <summary>
+        /// lblApellido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblApellido;
+
+        /// <summary>
+        /// lblFecNac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFecNac;
+
+        /// <summary>
+        /// lblHabilitado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHabilitado;
+
+        /// <summary>
         /// lblClub control.
         /// </summary>
         /// <remarks>
@@ -121,24 +139,6 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblClubJugador;
-
-        /// <summary>
-        /// lblRol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRol;
-
-        /// <summary>
-        /// imgFoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgFoto;
 
         /// <summary>
         /// imgQRCode control.
