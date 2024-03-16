@@ -353,6 +353,7 @@
     <Content Include="Imagenes\Calendar.png" />
     <Content Include="Imagenes\excel.png" />
     <Content Include="Imagenes\LupaBlanca.svg" />
+    <Content Include="Imagenes\sinImagen.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

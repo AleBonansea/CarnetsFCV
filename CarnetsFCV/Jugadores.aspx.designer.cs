@@ -258,24 +258,6 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.DropDownList cmbSexoModal;
 
         /// <summary>
-        /// rdbSi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbSi;
-
-        /// <summary>
-        /// rdbNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbNo;
-
-        /// <summary>
         /// archivo control.
         /// </summary>
         /// <remarks>
@@ -364,24 +346,6 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cmbModificarSexoModal;
-
-        /// <summary>
-        /// rdbModificarSi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbModificarSi;
-
-        /// <summary>
-        /// rdbModificarNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdbModificarNo;
 
         /// <summary>
         /// archivoModificar control.
