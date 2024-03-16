@@ -17,36 +17,45 @@
             <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
         </div>  
     </div>
-            <asp:Label Text="Club: " runat="server" />
-            <asp:DropDownList ID="cmbClub" runat="server" OnSelectedIndexChanged="cmbClub_SelectedIndexChanged1" AutoPostBack="True">
-                <asp:ListItem Text="text1" />
-                <asp:ListItem Text="text2" />
+    <div class="row"  style="margin-left:4%;">  
+        <div class="col-sm-2">
+            <asp:Label CssClass="ddlLabel" Text="Club: " runat="server" />
+            <asp:DropDownList CssClass="ddlCRUD" ID="cmbClub" runat="server" OnSelectedIndexChanged="cmbClub_SelectedIndexChanged1" AutoPostBack="True">
+                
             </asp:DropDownList>
+            </div>
 
-            <asp:Label Text="Rama: " runat="server" />
-            <asp:DropDownList ID="cmbRama" runat="server">
+            <div class="col-sm-2">
+            <asp:Label CssClass="ddlLabel" Text="Rama: " runat="server" />
+            <asp:DropDownList CssClass="ddlCRUD" ID="cmbRama" runat="server">
                 <asp:ListItem Text="M" Value="1" />
                 <asp:ListItem Text="F" Value="2" />
             </asp:DropDownList>
+                </div>
 
 
-            <asp:Label Text="Division: " runat="server" />
-            <asp:DropDownList ID="cmbDiv" runat="server" Enabled="False">
-                <asp:ListItem Text="text1" />
-                <asp:ListItem Text="text2" />
+                <div class="col-sm-2">
+            <asp:Label CssClass="ddlLabel" Text="Division: " runat="server" />
+            <asp:DropDownList CssClass="ddlCRUD" ID="cmbDiv" runat="server" Enabled="False">
+                
             </asp:DropDownList>
+                    </div>
 
-             <asp:Label Text="Equipo: " runat="server" />
-            <asp:DropDownList ID="cmbEquipo" runat="server" Enabled="False">
-                <asp:ListItem Text="text1" />
-                <asp:ListItem Text="text2" />
+                    <div class="col-sm-2">
+             <asp:Label CssClass="ddlLabel" Text="Equipo: " runat="server" />
+            <asp:DropDownList CssClass="ddlCRUD" ID="cmbEquipo" runat="server" Enabled="False">
+                
             </asp:DropDownList>
+                        </div>
 
-            <asp:Button ID="btnBuscar" OnClick="btnBuscar_Click" Text="Buscar" runat="server" />
+                        <div class="col-sm-2">
+            <asp:Button CssClass="btnCRUD" ID="btnBuscar" OnClick="btnBuscar_Click" Text="Buscar" runat="server" />
+                            </div>
             <br />
             <br />
+        </div>
 
-         
+         <br />
     <div class="row" style="margin-left:5%"">
 
 
@@ -226,19 +235,6 @@
                         </div>
                     </div>
 
-                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="Habilitado:" runat="server" />
-                        </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center; justify-content:center;">
-                            <div class="col-sm-2" style="display:flex; align-items:center; width:auto;margin-left:25%; margin-right:30%;">
-                                <asp:RadioButton GroupName="habilitado" Checked="true" ID="rdbSi" margin-rigth="25%" Text="Si" runat="server" />
-                            </div>
-                            <div class="col-sm-2" style="display:flex; align-items:center;width:auto;">
-                                <asp:RadioButton GroupName="habilitado" ID="rdbNo" Text="No" runat="server" />
-                            </div>
-                        </div>
-                   </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
@@ -355,19 +351,6 @@
                         </div>
                     </div>
 
-                  <div class="row"style="display:flex;margin-top:2%; align-items:center">
-                        <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">
-                            <asp:Label Text="Habilitado:" runat="server" />
-                        </div>
-                        <div class="col-sm-4" style="display:flex; align-items:center; justify-content:center;">
-                            <div class="col-sm-2" style="display:flex; align-items:center; width:auto;margin-left:25%; margin-right:30%;">
-                                <asp:RadioButton GroupName="habilitado" Checked="true" ID="rdbModificarSi" margin-rigth="25%" Text="Si" runat="server" />
-                            </div>
-                            <div class="col-sm-2" style="display:flex; align-items:center;width:auto;">
-                                <asp:RadioButton GroupName="habilitado" ID="rdbModificarNo" Text="No" runat="server" />
-                            </div>
-                        </div>
-                   </div>
 
                   <div class="row"style="display:flex;margin-top:2%; align-items:center">
                         <div class="col-sm-2" style="display:flex; align-items:center;width:35%;">

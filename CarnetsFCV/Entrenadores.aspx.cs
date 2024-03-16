@@ -218,22 +218,26 @@ namespace CarnetsFCV
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
            
-                if (Session["idEntrenadorSeleccionado"] != null)
-                {
-                    int idEntrenador = Int32.Parse((string)Session["idEntrenadorSeleccionado"]);
+            if (Session["idEntrenadorSeleccionado"] != null)
+            {
+                int idEntrenador = Int32.Parse((string)Session["idEntrenadorSeleccionado"]);
 
-                    entrenador.eliminarEntrenador(idEntrenador);
-                    CargarGrilla();
+                var entrenadorAEliminar = entrenador.getEntrenador(idEntrenador);
+
+                usuario.EliminarUsuario(entrenadorAEliminar.UsuarioId);
+
+                entrenador.eliminarEntrenador(idEntrenador);
+                CargarGrilla();
 
 
-                    Session["ultimaFilaSeleccionada"] = null;
+                Session["ultimaFilaSeleccionada"] = null;
 
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                        "swal('El entrenador se ha eliminado correctamente','','success')", true);
-                }
-                           
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Error','El entrenador no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
+                    "swal('El entrenador se ha eliminado correctamente','','success')", true);
+            }
+                           
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                "swal('Error','El entrenador no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
             
         }
 
@@ -379,7 +383,7 @@ namespace CarnetsFCV
                 txtApellido.Text = "";
                 txtFecNac.Text = "";
                 txtFecEMMAC.Text = "";
-                txtDNI.Text = "";
+                txtDNI.Text = txtValidarDni.Text;
                 txtEmail.Text = "";
                 txtTel.Text = "";
 

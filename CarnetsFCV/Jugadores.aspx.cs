@@ -82,17 +82,18 @@ namespace CarnetsFCV
             }
             else
             {
-                List<EquipoDto> sinDivision = new List<EquipoDto>();
-                List<ListItem> items = sinDivision.ConvertAll(d =>
+                List<EquipoDto> sinEquipos = new List<EquipoDto>();
+sinEquipos.Add(new EquipoDto() { NombreEquipo = "Sin Equipos", Id = 0 }); // Asignamos el valor 0 para indicar que no hay equipos
 
-                {
-                    return new ListItem()
-                    {
-                        Text = "Sin Equipos",
-                        Value = "1",
-                        Selected = false
-                    };
-                });
+List<ListItem> items = sinEquipos.ConvertAll(d =>
+{
+    return new ListItem()
+    {
+        Text = d.NombreEquipo,
+        Value = d.Id.ToString(),
+        Selected = false
+    };
+});
 
                 cmbEquiposModal.DataSource = items;
                 cmbEquiposModal.DataBind();
@@ -109,19 +110,15 @@ namespace CarnetsFCV
 
             if (sexos != null)
             {
-                List<ListItem> items = sexos.ConvertAll(d =>
-
-                {
-                    return new ListItem()
-                    {
-                        Text = d.Descripcion,
-                        Value = d.Id.ToString(),
-                        Selected = false
-                    };
-                });
-
-                cmbSexoModal.DataSource = items;
+                cmbSexoModal.DataSource = sexos;
+                cmbSexoModal.DataTextField = "Descripcion";
+                cmbSexoModal.DataValueField= "Id";
                 cmbSexoModal.DataBind();
+
+                cmbModificarSexoModal.DataSource = sexos;
+                cmbModificarSexoModal.DataTextField = "Descripcion";
+                cmbModificarSexoModal.DataValueField = "Id";
+                cmbModificarSexoModal.DataBind();
             }
         }
 
@@ -307,7 +304,7 @@ namespace CarnetsFCV
         }
         protected void cmbMoficarEquipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbModificarEquipo.SelectedIndex = cmbModificarEquipo.SelectedIndex + 1;
+            cmbModificarEquipo.SelectedIndex = cmbModificarEquipo.SelectedIndex;
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -340,7 +337,8 @@ namespace CarnetsFCV
 
                     nuevoJugador.UsuarioId = usuarioJugador.Id;
                     nuevoJugador.ClubId = clubId;
-                    nuevoJugador.EquipoId = Int32.Parse((String)cmbEquiposModal.SelectedValue);
+                    nuevoJugador.EquipoId = 
+                        Int32.Parse((String)cmbEquiposModal.SelectedValue);
                     nuevoJugador.Nombre = txtNombre.Text;
                     nuevoJugador.Apellido = txtApellido.Text;
                     nuevoJugador.FechaNac = DateTime.Parse(txtFecNac.Text);
@@ -350,16 +348,8 @@ namespace CarnetsFCV
                     nuevoJugador.Telefono = txtTel.Text;
                     nuevoJugador.SexoId = Int32.Parse((string)cmbSexoModal.SelectedValue);
                     nuevoJugador.Foto = imagen;
-
-                    if (rdbSi.Checked)
-                    {
-                        nuevoJugador.Habilitado = true;
-                    }
-                    else
-                    {
-                        nuevoJugador.Habilitado = false;
-                    }
-
+                    nuevoJugador.Habilitado = false;
+                    
                     jugador.guardarJugador(nuevoJugador);
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
@@ -379,8 +369,6 @@ namespace CarnetsFCV
                 txtDNI.Text = "";
                 txtEmail.Text = "";
                 txtTel.Text = "";
-                rdbNo.Checked = false;
-                rdbSi.Checked = false;
 
 
             }
@@ -405,7 +393,7 @@ namespace CarnetsFCV
                     byte[] imagen = new byte[tamanioFoto];
                     archivoModificar.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
 
-                    jugadorAModificar.EquipoId = Int32.Parse((String)cmbModificarEquipo.SelectedValue) - 1;
+                    jugadorAModificar.EquipoId = Int32.Parse((String)cmbModificarEquipo.SelectedValue);
                     jugadorAModificar.Nombre = txtModificarNombre.Text;
                     jugadorAModificar.Apellido = txtModificarApellido.Text;
                     jugadorAModificar.FechaNac = DateTime.Parse(txtModificarFecNac.Text);
@@ -415,14 +403,6 @@ namespace CarnetsFCV
                     jugadorAModificar.Telefono = txtModificarTel.Text;
                     jugadorAModificar.SexoId = Int32.Parse((string)cmbModificarSexoModal.SelectedValue);
 
-                    if (rdbModificarSi.Checked)
-                    {
-                        jugadorAModificar.Habilitado = true;
-                    }
-                    else
-                    {
-                        jugadorAModificar.Habilitado = false;
-                    }
 
                     byte[] sinImagen = new byte[0];
 
@@ -443,8 +423,6 @@ namespace CarnetsFCV
                     txtModificarDNI.Text = "";
                     txtModificarEmail.Text = "";
                     txtModificarTel.Text = "";
-                    rdbModificarSi.Checked = false;
-                    rdbModificarNo.Checked = false;
                     archivoModificar = null;
 
                 }
@@ -462,19 +440,23 @@ namespace CarnetsFCV
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
            
-                if (Session["idJugadorSeleccionado"] != null)
-                {
-                    int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
+            if (Session["idJugadorSeleccionado"] != null)
+            {
+                int idJugador = Int32.Parse((string)Session["idJugadorSeleccionado"]);
 
-                    jugador.eliminarJugador(idJugador);
-                    CargarGrilla();
+                var jugadorAEliminar = jugador.getJugador(idJugador);
+
+                usuario.EliminarUsuario(jugadorAEliminar.UsuarioId);
+
+                jugador.eliminarJugador(idJugador);
+                CargarGrilla();
 
 
-                    Session["ultimaFilaSeleccionada"] = null;
+                Session["ultimaFilaSeleccionada"] = null;
 
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                        "swal('El jugador se ha eliminado correctamente','','success')", true);
-                }
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El jugador se ha eliminado correctamente','','success')", true);
+            }
 
            
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
@@ -510,18 +492,6 @@ namespace CarnetsFCV
             txtModificarDNI.Text = jugadorAModificar.DNI;
             txtModificarEmail.Text = jugadorAModificar.Email;
             txtModificarTel.Text = jugadorAModificar.Telefono.ToString();
-
-            if (jugadorAModificar.Habilitado)
-            {
-                rdbModificarSi.Checked = true;
-                rdbModificarNo.Checked = false;
-            }
-            else
-            {
-                rdbModificarSi.Checked = false;
-                rdbModificarNo.Checked = true;
-            }
-
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
             Session["idJugadorSeleccionado"] = idJugador.ToString();
         }
@@ -545,18 +515,9 @@ namespace CarnetsFCV
                 txtTel.Text = user.Telefono;
                 archivo.PostedFile.InputStream.Read(user.Foto, 0, tamanioFoto);
 
-                if (user.Habilitado)
-                {
-                    rdbSi.Checked = true;
-                    rdbNo.Checked = false;
-                }
-                else
-                {
-                    rdbSi.Checked = false;
-                    rdbNo.Checked = true;
-                }
 
                 btnAgregar.Disabled = false;
+
 
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese al formulario Agregar.','','success')", true);
@@ -577,7 +538,7 @@ namespace CarnetsFCV
                 txtApellido.Text = "";
                 txtFecNac.Text = "";
                 txtFecEMMAC.Text = "";
-                txtDNI.Text = "";
+                txtDNI.Text = txtValidarDni.Text;
                 txtEmail.Text = "";
                 txtTel.Text = "";
 
@@ -597,8 +558,6 @@ namespace CarnetsFCV
             txtDNI.Text = "";
             txtEmail.Text = "";
             txtTel.Text = "";
-            rdbNo.Checked = false;
-            rdbSi.Checked = true;
             txtNombre.Enabled = false;
             txtApellido.Enabled = false;
             txtFecNac.Enabled = false;

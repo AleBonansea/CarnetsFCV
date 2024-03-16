@@ -216,19 +216,23 @@ namespace CarnetsFCV
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
            
-                if (Session["idArbitroSeleccionado"] != null)
-                {
-                    int idEntrenador = Int32.Parse((string)Session["idArbitroSeleccionado"]);
+            if (Session["idArbitroSeleccionado"] != null)
+            {
+                int idArbitro = Int32.Parse((string)Session["idArbitroSeleccionado"]);
 
-                    arbitro.eliminarArbitro(idEntrenador);
-                    CargarGrilla();
+                var arbitroAEliminar = arbitro.getArbitro(idArbitro);
+
+                usuario.EliminarUsuario(arbitroAEliminar.UsuarioId);
+
+                arbitro.eliminarArbitro(idArbitro);
+                CargarGrilla();
 
 
-                    Session["ultimaFilaSeleccionada"] = null;
+                Session["ultimaFilaSeleccionada"] = null;
 
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                        "swal('El árbitro se ha eliminado correctamente','','success')", true);
-                }
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('El árbitro se ha eliminado correctamente','','success')", true);
+            }
 
             
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
@@ -357,7 +361,7 @@ namespace CarnetsFCV
                 txtApellido.Text = "";
                 txtFecNac.Text = "";
                 txtFecEMMAC.Text = "";
-                txtDNI.Text = "";
+                txtDNI.Text = txtValidarDni.Text;
                 txtEmail.Text = "";
                 txtTel.Text = "";
 

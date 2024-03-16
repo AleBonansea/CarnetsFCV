@@ -212,5 +212,15 @@ namespace Datos
             return null;
 
         }
+
+        public Entidades.Usuarios EliminarUsuario(int usuarioId)
+        {
+            var usuario = context.Usuarios.Find(usuarioId);
+
+            context.Usuarios.Remove(usuario);
+            context.SaveChangesAsync();
+
+            return usuario;
+        }
     }
 }
