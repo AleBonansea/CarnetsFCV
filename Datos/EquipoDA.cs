@@ -84,6 +84,14 @@ namespace Datos
             context.SaveChanges();
             return equipo;
         }
+        public List<Entidades.Equipos> GetEquiposHabilitaciones(int clubId, int divisionId, int ramaId)
+        {
+            var listaEquipos = context.Equipos.Where(e => e.ClubId.Equals(clubId)
+                                && e.DivisionId.Equals(divisionId)
+                                && e.RamaId.Equals(ramaId)).ToList();
+
+            return listaEquipos;
+        }
     }
 }
 

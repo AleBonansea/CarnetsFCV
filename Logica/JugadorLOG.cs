@@ -34,6 +34,13 @@ namespace Logica
         {
             return jugador.eliminarJugador(jugadorId);
         }
-
+        public List<Entidades.Dto.JugadorDto> GetJugadoresEquipo(int equipoId)
+        {
+            return jugador.GetJugadoresEquipo(equipoId);
+        }
+        public List<Entidades.Dto.JugadorDto> getBuscadorJugadores(string buscar, int clubId)
+        {
+            return jugador.getBuscadorJugadores(buscar, clubId);
+        }
     }
 }

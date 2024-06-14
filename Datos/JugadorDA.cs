@@ -87,5 +87,49 @@ namespace Datos
             context.SaveChanges();
             return jugador;
         }
+        public List<Entidades.Dto.JugadorDto> GetJugadoresEquipo(int equipoId)
+        {
+            List<Entidades.Dto.JugadorDto> jugadores = context.Jugadores.Where(j => j.EquipoId.Equals(equipoId))
+                .Select(j => new Entidades.Dto.JugadorDto
+                {
+                    Id = j.Id,
+                    Nombre = j.Nombre,
+                    Apellido = j.Apellido,
+                    FechaNac = j.FechaNac,
+                    FechaEMMAC = j.FechaEMMAC,
+                    DNI = j.DNI,
+                    Email = j.Email,
+                    Telefono = j.Telefono,
+                    Sexo = j.Sexos.Descripcion,
+                    Habilitado = j.Habilitado
+                }).ToList();
+
+            return jugadores;
+        }
+        public List<Entidades.Dto.JugadorDto> getBuscadorJugadores(string buscar, int clubId)
+        {
+            var listaJugadores = from j in context.Jugadores
+                               where j.Nombre.Contains(buscar) || j.Apellido.Contains(buscar)
+                               && j.ClubId == clubId
+                               select new Entidades.Dto.JugadorDto
+                               {
+                                   Id = j.Id,
+                                   Club = j.Clubes.Nombre,
+                                   Equipo = j.Equipos.Nombre,
+                                   División = j.Equipos.Divisiones.Descripcion,
+                                   Nombre = j.Nombre,
+                                   Apellido = j.Apellido,
+                                   FechaNac = j.FechaNac,
+                                   FechaEMMAC = j.FechaEMMAC,
+                                   DNI = j.DNI,
+                                   Email = j.Email,
+                                   Telefono = j.Telefono,
+                                   Sexo = j.Sexos.Descripcion,
+                                   Habilitado = j.Habilitado
+                               };
+
+
+            return listaJugadores.ToList();
+        }
     }
 }

@@ -12,6 +12,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <div>
+        <asp:Label ID="titulo" Text="Equipos" CssClass="titulo" style="color:white" runat="server" />
+    </div>
 <div class="row">  
     <div class="col-sm-1" style="margin-left:2%">
         <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
@@ -29,7 +32,7 @@
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar">Eliminar</button>
             </div>
             <div class="col-xl-9" style="padding-right:6%; display: flex; justify-content: right; align-items: center;">
-                <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
+                <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" onkeypress="return handleKeyDown(event)"/>
                 <asp:ImageButton  class="btnBuscar" ID="btnBuscar" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />                
                 <asp:ImageButton CssClass="btnBuscar" ImageUrl="Imagenes/excel.png" ID="btnExportar" OnClick="btnExportar_Click" runat="server" />
             </div>
@@ -186,4 +189,18 @@
             </div>
           </div>
         </div>
+
+            <script type="text/javascript">
+    function handleKeyDown(event) {
+        // Si la tecla presionada es Enter (código 13), realizar la búsqueda
+        if (event.keyCode === 13) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            document.getElementById('btnBuscar').click(); // Simula el clic en el botón de búsqueda
+            return false; // Evita el comportamiento predeterminado de la tecla Enter
+        }
+    }
+    // Agrega un listener para el evento keydown en el campo de búsqueda
+    document.getElementById('<%= txtBuscar.ClientID %>').addEventListener('keydown', handleKeyDown);
+            </script>
+
 </asp:Content>

@@ -11,89 +11,98 @@ namespace CarnetsFCV
 {
 
 
-    public partial class Menu
+    public partial class Habilitaciones
     {
 
         /// <summary>
-        /// btnArbitros control.
+        /// titulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnArbitros;
+        protected global::System.Web.UI.WebControls.Label titulo;
 
         /// <summary>
-        /// btnCarnet control.
+        /// btnInicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCarnet;
+        protected global::System.Web.UI.WebControls.Button btnInicio;
 
         /// <summary>
-        /// btnClubes control.
+        /// btnBuscador control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClubes;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnBuscador;
 
         /// <summary>
-        /// btnEntrenadores control.
+        /// btnHabilitar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEntrenadores;
+        protected global::System.Web.UI.WebControls.Button btnHabilitar;
 
         /// <summary>
-        /// btnEquipos control.
+        /// btnDeshabilitar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEquipos;
+        protected global::System.Web.UI.WebControls.Button btnDeshabilitar;
 
         /// <summary>
-        /// btnJugadores control.
+        /// lblEquipos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnJugadores;
+        protected global::System.Web.UI.WebControls.Label lblEquipos;
 
         /// <summary>
-        /// btnHabilitaciones control.
+        /// cmbEquipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHabilitaciones;
+        protected global::System.Web.UI.WebControls.DropDownList cmbEquipo;
 
         /// <summary>
-        /// btnAjustes control.
+        /// btnSeleccionar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAjustes;
+        protected global::System.Web.UI.WebControls.Button btnSeleccionar;
 
         /// <summary>
-        /// btnCambioContraseña control.
+        /// filaSeleccionada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCambioContraseña;
+        protected global::System.Web.UI.WebControls.HiddenField filaSeleccionada;
+
+        /// <summary>
+        /// gvJugadores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvJugadores;
 
         /// <summary>
         /// btnCerrarSesion control.
@@ -105,30 +114,39 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
-        /// carnetArbitro control.
+        /// cmbClub control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetArbitro;
+        protected global::System.Web.UI.WebControls.DropDownList cmbClub;
 
         /// <summary>
-        /// carnetEntrenador control.
+        /// cmbRama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetEntrenador;
+        protected global::System.Web.UI.WebControls.DropDownList cmbRama;
 
         /// <summary>
-        /// carnetJugador control.
+        /// cmbDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetJugador;
+        protected global::System.Web.UI.WebControls.DropDownList cmbDiv;
+
+        /// <summary>
+        /// btnFiltros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFiltros;
     }
 }

@@ -27,16 +27,11 @@ namespace Datos
             return listaDivisiones.ToList();
         }
 
-        public List<Entidades.Dto.DivisionDto> getDivisiones()
+        public List<Entidades.Divisiones> getDivisiones()
         {
-            var listaDivisiones = from d in context.Divisiones
-                                  select new Entidades.Dto.DivisionDto
-                                  {
-                                      Id = d.Id,
-                                      Descripcion = d.Descripcion
-                                  };
+            var listaDivisiones = context.Divisiones.ToList();
 
-            return listaDivisiones.ToList();
+            return listaDivisiones;
         }
     }
 }

@@ -45,6 +45,7 @@ namespace CarnetsFCV
                     case 1:
                         btnEquipos.Visible = false;
                         btnCarnet.Visible = false;
+                        btnJugadores.Visible = false;
                         break;
 
                     case 2:
@@ -52,6 +53,8 @@ namespace CarnetsFCV
                         btnClubes.Visible = false;
                         btnCarnet.Visible = false;
                         btnEntrenadores.Visible = false;
+                        btnAjustes.Visible = false;
+                        btnHabilitaciones.Visible = false;
                         break;
 
                     case (3):
@@ -60,6 +63,8 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnEquipos.Visible = false;
                         btnJugadores.Visible = false;
+                        btnAjustes.Visible = false;
+                        btnHabilitaciones.Visible = false;
                         break;
 
                     case (4):
@@ -68,6 +73,8 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnEquipos.Visible = false;
                         btnJugadores.Visible = false;
+                        btnAjustes.Visible = false;
+                        btnHabilitaciones.Visible = false;
                         break;
 
                     case (5):
@@ -76,6 +83,8 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnEquipos.Visible = false;
                         btnJugadores.Visible = false;
+                        btnAjustes.Visible = false;
+                        btnHabilitaciones.Visible = false;
                         break;
 
                 }
@@ -145,6 +154,16 @@ namespace CarnetsFCV
         protected void btnCambioContraseña_Click(object sender, EventArgs e)
         {
             Response.Redirect("CambioContraseña.aspx");
+        }
+
+        protected void btnHabilitaciones_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Habilitaciones.aspx");
+        }
+
+        protected void btnAjustes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Ajustes.aspx");
         }
     }
 }

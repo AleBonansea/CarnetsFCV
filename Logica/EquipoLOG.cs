@@ -43,5 +43,9 @@ namespace Logica
         {
             return equipo.eliminarEquipo(equipoId);
         }
+        public List<Entidades.Equipos> GetEquiposHabilitaciones(int clubId, int divisionId, int ramaId)
+        {
+            return equipo.GetEquiposHabilitaciones(clubId, divisionId, ramaId);
+        }
     }        
 }

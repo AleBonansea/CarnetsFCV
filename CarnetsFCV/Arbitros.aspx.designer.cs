@@ -15,6 +15,15 @@ namespace CarnetsFCV
     {
 
         /// <summary>
+        /// titulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titulo;
+
+        /// <summary>
         /// btnInicio control.
         /// </summary>
         /// <remarks>
@@ -69,13 +78,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtBuscar;
 
         /// <summary>
-        /// ImageButton1 control.
+        /// btnBuscar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.ImageButton btnBuscar;
 
         /// <summary>
         /// btnExportar control.

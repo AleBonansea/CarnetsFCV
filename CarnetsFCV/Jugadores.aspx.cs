@@ -45,7 +45,6 @@ namespace CarnetsFCV
                     Response.Redirect("Ingreso.aspx");
                 }
                 CargarDivisiones();
-                CargarRamas();
                 
 
                 if (rolId == 2)
@@ -83,17 +82,17 @@ namespace CarnetsFCV
             else
             {
                 List<EquipoDto> sinEquipos = new List<EquipoDto>();
-sinEquipos.Add(new EquipoDto() { NombreEquipo = "Sin Equipos", Id = 0 }); // Asignamos el valor 0 para indicar que no hay equipos
+                sinEquipos.Add(new EquipoDto() { NombreEquipo = "Sin Equipos", Id = 0 }); // Asignamos el valor 0 para indicar que no hay equipos
 
-List<ListItem> items = sinEquipos.ConvertAll(d =>
-{
-    return new ListItem()
-    {
-        Text = d.NombreEquipo,
-        Value = d.Id.ToString(),
-        Selected = false
-    };
-});
+                List<ListItem> items = sinEquipos.ConvertAll(d =>
+                {
+                    return new ListItem()
+                    {
+                        Text = d.NombreEquipo,
+                        Value = d.Id.ToString(),
+                        Selected = false
+                    };
+                });
 
                 cmbEquiposModal.DataSource = items;
                 cmbEquiposModal.DataBind();
@@ -120,10 +119,6 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
                 cmbModificarSexoModal.DataValueField = "Id";
                 cmbModificarSexoModal.DataBind();
             }
-        }
-
-        private void CargarRamas()
-        {
         }
 
         private void CargarDivisiones()
@@ -237,11 +232,6 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
         protected void btnInicio_Click(object sender, EventArgs e)
         {
             Response.Redirect("Menu.aspx");
-        }
-
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
-
         }
 
         protected void cmbClub_SelectedIndexChanged1(object sender, EventArgs e)
@@ -567,6 +557,44 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
             txtDNI.Enabled = false;
 
             btnAgregar.Disabled = true;
+        }
+
+        protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+            if (!string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                gvJugadores.DataSource = jugador.getBuscadorJugadores(txtBuscar.Text, clubId);
+                gvJugadores.DataBind();
+            }
+            else
+            {
+                CargarGrilla();
+            }
+        }
+
+        protected void gvJugadores_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Encuentra el control de imagen
+                Image imgHabilitado = (Image)e.Row.FindControl("imgHabilitado");
+
+                // Obtén el valor del campo Habilitado
+                bool habilitado = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "Habilitado"));
+
+                // Asigna la imagen correspondiente según el valor del campo Habilitado
+                if (habilitado)
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/habilitado.png"; // Ruta a la imagen para habilitado
+                    imgHabilitado.AlternateText = "Habilitado";
+                }
+                else
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/no_habilitado.png"; // Ruta a la imagen para no habilitado
+                    imgHabilitado.AlternateText = "No habilitado";
+                }
+            }
         }
     }
 }

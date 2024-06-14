@@ -115,7 +115,7 @@ namespace CarnetsFCV
 
         private void CargarDivisiones()
         {
-            List<DivisionDto> divisiones = division.getDivisiones();
+            List<Divisiones> divisiones = division.getDivisiones();
             
             if (divisiones != null)
             {

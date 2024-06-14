@@ -8,6 +8,34 @@
     background-size: 30% 50%;
 }
 
+.btnCambioContraseña {
+    padding: 5px 5px 5px 5px;
+    background-color: #e44f1e;
+    color: white;
+    font: bold 15px arial, verdana;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: right;
+    margin-left: 3%;
+    position:absolute;
+    bottom:5%;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 350%;
+    margin-top: -3%;
+    font-family: Arial,Verdana;
+}
+
+.imgHabilitado {
+    width: 20px;
+    height: 20px;
+}
+
 .carnet {
     height: 400px;
     width: 750px;
@@ -251,8 +279,8 @@
 /*DropDownList*/
 
 .ddlLabel {
-    color: white;
-    font: bold 20px arial, verdana;
+    color: black;
+    font: bold 19px arial, verdana;
     justify-content:center;
     text-align:center;
 }
@@ -267,7 +295,7 @@
     border: 3.5px solid #e44f1e;
     cursor: pointer;
     height: 40px;
-    width: 130px; 
+    width: 150px; 
     margin-top: 2px;
     margin-bottom: 2px;
 }
@@ -322,15 +350,20 @@
     margin-bottom: 2px;
 }
 
-    .btnCRUD:hover {
+    .btnCRUD:hover:not(:disabled) {
         background-color: #fd875c;
         border-color: #e44f1e;
         color: white;
     }
 
-    .btnCRUD:active {
+    .btnCRUD:active:not(:disabled) {
         background-color: #e44f1e;
         border-color: white;
+    }
+    .btnCRUD:disabled {
+        cursor: default;
+        background-color: #cccccc; /* Puedes cambiar el color si lo deseas */
+        border-color: #999999; /* Puedes cambiar el color si lo deseas */
     }
 
 .btnInicio {

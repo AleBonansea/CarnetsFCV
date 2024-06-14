@@ -393,5 +393,29 @@ namespace CarnetsFCV
 
             btnAgregar.Disabled = true;
         }
+
+        protected void gvArbitros_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Encuentra el control de imagen
+                Image imgHabilitado = (Image)e.Row.FindControl("imgHabilitado");
+
+                // Obtén el valor del campo Habilitado
+                bool habilitado = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "Habilitado"));
+
+                // Asigna la imagen correspondiente según el valor del campo Habilitado
+                if (habilitado)
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/habilitado.png"; // Ruta a la imagen para habilitado
+                    imgHabilitado.AlternateText = "Habilitado";
+                }
+                else
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/no_habilitado.png"; // Ruta a la imagen para no habilitado
+                    imgHabilitado.AlternateText = "No habilitado";
+                }
+            }
+        }
     }
 }
