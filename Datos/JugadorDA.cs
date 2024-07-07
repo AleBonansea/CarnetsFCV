@@ -93,6 +93,9 @@ namespace Datos
                 .Select(j => new Entidades.Dto.JugadorDto
                 {
                     Id = j.Id,
+                    Club = j.Clubes.Nombre,
+                    Equipo = j.Equipos.Nombre,
+                    División = j.Equipos.Divisiones.Descripcion,
                     Nombre = j.Nombre,
                     Apellido = j.Apellido,
                     FechaNac = j.FechaNac,

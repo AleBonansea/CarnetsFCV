@@ -215,6 +215,16 @@
     width: 100%;
 }
 
+.grillaChica {
+    margin: auto;
+    background-color: white;
+    border: solid #D33500;
+    border-width: 3px;
+    height: 100%;
+    width: 50%;
+    margin-bottom: 3%;
+}
+
 .buscador {
     border: 3.5px solid #e44f1e;
     border-radius: 30px;

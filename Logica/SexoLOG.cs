@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using Datos;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,22 @@ namespace Logica
         public List<Sexos> getSexos()
         {
             return sexo.getSexos();
+        }
+        public Entidades.Sexos getSexo(int id)
+        {
+            return sexo.getSexo(id);
+        }
+        public void GuardarSexo(Entidades.Sexos nuevo)
+        {
+            sexo.GuardarSexo(nuevo);
+        }
+        public void EliminarSexo(int id)
+        {
+            sexo.EliminarSexo(id);
+        }
+        public void ActualizarSexo(Entidades.Sexos modificada)
+        {
+            sexo.ActualizarSexo(modificada);
         }
     }
 }

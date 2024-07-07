@@ -20,49 +20,39 @@
             <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
         </div>  
     </div>
-    <div class="row"  style="margin-left:4%;">  
-        <div class="col-sm-2">
-            <asp:Label CssClass="ddlLabel" Text="Club: " runat="server" />
-            <asp:DropDownList CssClass="ddlCRUD" ID="cmbClub" runat="server" OnSelectedIndexChanged="cmbClub_SelectedIndexChanged1" AutoPostBack="True">
-                
-            </asp:DropDownList>
-            </div>
 
-            <div class="col-sm-2">
-            <asp:Label CssClass="ddlLabel" Text="Rama: " runat="server" />
-            <asp:DropDownList CssClass="ddlCRUD" ID="cmbRama" runat="server">
-                <asp:ListItem Text="M" Value="1" />
-                <asp:ListItem Text="F" Value="2" />
-            </asp:DropDownList>
-                </div>
+        <!-- Button trigger modal -->
+    <div class="row" style="margin-left: 4%;">
+        <div class="col-xl-2">   
+            <button type="button" style="width:100%" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#btnBuscarFiltro" runat="server" ID="btnBuscador">Ingresar Filtros</button>
+        </div>  
+    </div>  
 
+    <div class="row" style="margin-left: 4%; margin-top: 1%;">
+    <div class="col-md-1" style="display:flex; justify-content:center;">
+        <asp:Label ID="lblEquipos" style="color:white; display:flex; align-items:center; justify-content:center;" CssClass="ddlLabel" Text="Equipos: " runat="server" />            
+    </div>
 
-                <div class="col-sm-2">
-            <asp:Label CssClass="ddlLabel" Text="Division: " runat="server" />
-            <asp:DropDownList CssClass="ddlCRUD" ID="cmbDiv" runat="server" Enabled="False">
-                
-            </asp:DropDownList>
-                    </div>
+    <div class="col-md-1">
+        <asp:DropDownList CssClass="ddlCRUD" ID="cmbEquipo" runat="server">
+        </asp:DropDownList> 
+    </div>
 
-                    <div class="col-sm-2">
-             <asp:Label CssClass="ddlLabel" Text="Equipo: " runat="server" />
-            <asp:DropDownList CssClass="ddlCRUD" ID="cmbEquipo" runat="server" Enabled="False">
-                
-            </asp:DropDownList>
-                        </div>
+    
+    <div class="col-md-1" style="margin-left: 5%;display:flex; justify-content:center; align-items:center">
+        <asp:Button CssClass="btnCRUD" ID="btnSeleccionar" OnClick="btnSeleccionar_Click" Text="Seleccionar" runat="server" />
+    </div>
 
-                       <%-- <div class="col-sm-2">
-                            <asp:Button CssClass="btnCRUD" ID="btnBuscar" OnClick="btnBuscar_Click" Text="Buscar" runat="server" />
-                        </div>--%>
-            <br />
-            <br />
-        </div>
-
-         <br />
-    <div class="row" style="margin-left:5%"">
+    <div class="col-md-1" style="display:flex; justify-content:left; align-items:center">
+        <asp:ImageButton  class="btnBuscar" OnClick="LimpiarFiltros_Click" ID="LimpiarFiltros" ImageUrl="Imagenes/X.png" runat="server" ClientIDMode="Static"/> 
+    </div>
+    <br />
+    <br />
+</div>
 
 
 <!-- Button trigger modal -->
+    <div class="row" style="margin-left:5%; margin-top: 1%;">
             <div class="col-xl-1" padding-right: 8%; >   
                 <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalValidarDNI"  runat="server" ID="Button1">Validar DNI</button>
             </div>
@@ -121,11 +111,7 @@
             </div>
         </div>
     </div>
-        <div class="row">
-             <div style="text-align:right">
-                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
-            </div>
-        </div>
+        
 
 
 
@@ -416,6 +402,47 @@
             </div>
           </div>
         </div>
+        </div>
+
+            <!-- Modal Buscar -->
+          
+
+                <div class="modal fade" id="btnBuscarFiltro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background-color:#CCCCCC">
+                      <div class="modal-header" style="background-color:#e44f1e;">
+                        <h1 class="modal-title fs-5" style="color:white" id="staticBackdropLabel">Seleccione Equipo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body" style="align-items:center">
+                                                    
+                          <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                                <div class="col-sm-2" style="display:flex; align-items:center; margin-left:10%">
+                                    <asp:Label CssClass="ddlLabel" Text="Rama: " runat="server" />
+                                </div>
+                                    <div class="col-sm-6" style="display:flex; align-items:center; margin-left:10%">
+                                    <asp:DropDownList CssClass="ddlCRUD" ID="cmbRama" runat="server">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="row"style="display:flex;margin-top:2%; align-items:center">
+                                <div class="col-sm-2" style="display:flex; align-items:center; margin-left:10%">
+                                    <asp:Label CssClass="ddlLabel" Text="División: " runat="server" />
+                                </div>
+                                <div class="col-sm-6" style="display:flex; align-items:center; margin-left:10%">
+                                    <asp:DropDownList CssClass="ddlCRUD" ID="cmbDiv" runat="server">
+                                    </asp:DropDownList>
+                                </div>
+                           </div>
+
+                      <div class="modal-footer">
+                          <button type="button" class="btnCancelar" data-bs-dismiss="modal">Cancelar</button>
+                          <asp:Button ID="btnFiltros" class="btnGuardar" OnClick="btnFiltros_Click" Text="Buscar" runat="server" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
             
 
             <script type="text/javascript">
