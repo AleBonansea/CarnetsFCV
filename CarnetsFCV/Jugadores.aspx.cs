@@ -19,6 +19,7 @@ namespace CarnetsFCV
         Logica.DivisionLOG division = new Logica.DivisionLOG();
         Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
         Logica.SexoLOG sexo = new Logica.SexoLOG();
+        Logica.RamaLOG rama = new Logica.RamaLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
             int rolId = Int32.Parse((string)Session["rolId"]);
@@ -29,7 +30,8 @@ namespace CarnetsFCV
                 if (Session["rolId"] != null)
                 {
                     CargarGrilla();
-                    CargarClubes();
+                    CargarRamas();
+                    CargarDivisiones();
                     txtDNI.Enabled = false;
                     txtNombre.Enabled = false;
                     txtApellido.Enabled = false;
@@ -44,8 +46,7 @@ namespace CarnetsFCV
                 {
                     Response.Redirect("Ingreso.aspx");
                 }
-                CargarDivisiones();
-                CargarRamas();
+                //CargarDivisiones();
                 
 
                 if (rolId == 2)
@@ -60,6 +61,36 @@ namespace CarnetsFCV
                     btnEliminar.Disabled = true;
                 }
 
+            }
+        }
+        private void CargarRamas()
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+
+            List<Ramas> ramas = rama.getRamasPorClub(clubId);
+
+            if (ramas != null)
+            {
+                cmbRama.DataSource = ramas;
+                cmbRama.DataTextField = "Descripcion";
+                cmbRama.DataValueField = "Id";
+                cmbRama.DataBind();
+            }
+        }
+
+        private void CargarDivisiones()
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+
+            List<Divisiones> divisiones = division.getDivisionesPorClub(clubId);
+            cmbDiv.Items.Clear();
+
+            if (divisiones != null)
+            {
+                cmbDiv.DataSource = divisiones;
+                cmbDiv.DataTextField = "Descripcion";
+                cmbDiv.DataValueField = "Id";
+                cmbDiv.DataBind();
             }
         }
 
@@ -83,17 +114,17 @@ namespace CarnetsFCV
             else
             {
                 List<EquipoDto> sinEquipos = new List<EquipoDto>();
-sinEquipos.Add(new EquipoDto() { NombreEquipo = "Sin Equipos", Id = 0 }); // Asignamos el valor 0 para indicar que no hay equipos
+                sinEquipos.Add(new EquipoDto() { NombreEquipo = "Sin Equipos", Id = 0 }); // Asignamos el valor 0 para indicar que no hay equipos
 
-List<ListItem> items = sinEquipos.ConvertAll(d =>
-{
-    return new ListItem()
-    {
-        Text = d.NombreEquipo,
-        Value = d.Id.ToString(),
-        Selected = false
-    };
-});
+                List<ListItem> items = sinEquipos.ConvertAll(d =>
+                {
+                    return new ListItem()
+                    {
+                        Text = d.NombreEquipo,
+                        Value = d.Id.ToString(),
+                        Selected = false
+                    };
+                });
 
                 cmbEquiposModal.DataSource = items;
                 cmbEquiposModal.DataBind();
@@ -122,101 +153,97 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
             }
         }
 
-        private void CargarRamas()
-        {
-        }
+        //private void CargarDivisiones()
+        //{
 
-        private void CargarDivisiones()
-        {
+        //    List<DivisionDto> divisiones = division.getComboDivisiones(cmbClub.SelectedIndex +1, cmbRama.SelectedIndex +1);
 
-            List<DivisionDto> divisiones = division.getComboDivisiones(cmbClub.SelectedIndex +1, cmbRama.SelectedIndex +1);
+        //    if (divisiones != null)
+        //    {
+        //    List<ListItem> items = divisiones.ConvertAll(d =>
 
-            if (divisiones != null)
-            {
-            List<ListItem> items = divisiones.ConvertAll(d =>
+        //    {
+        //        return new ListItem()
+        //        {
+        //            Text = d.Descripcion,
+        //            Value = d.Id.ToString(),
+        //            Selected = false
+        //        };
+        //    });
 
-            {
-                return new ListItem()
-                {
-                    Text = d.Descripcion,
-                    Value = d.Id.ToString(),
-                    Selected = false
-                };
-            });
+        //    cmbDiv.DataSource = items;
+        //    cmbDiv.DataBind();
+        //    }
+        //    else
+        //    {
+        //        List<DivisionDto> sinDivision = new List<DivisionDto>();
+        //        List<ListItem> items = sinDivision.ConvertAll(d =>
 
-            cmbDiv.DataSource = items;
-            cmbDiv.DataBind();
-            }
-            else
-            {
-                List<DivisionDto> sinDivision = new List<DivisionDto>();
-                List<ListItem> items = sinDivision.ConvertAll(d =>
+        //        {
+        //            return new ListItem()
+        //            {
+        //                Text = "Sin Division",
+        //                Value = "1",
+        //                Selected = false
+        //            };
+        //        });
 
-                {
-                    return new ListItem()
-                    {
-                        Text = "Sin Division",
-                        Value = "1",
-                        Selected = false
-                    };
-                });
+        //        cmbDiv.DataSource = items;
+        //        cmbDiv.DataBind();
 
-                cmbDiv.DataSource = items;
-                cmbDiv.DataBind();
+        //    }
+        //}
 
-            }
-        }
-
-        private void CargarEquipos(int clubId)
-        {
-            List<EquipoDto> listaEquipos = equipos.getComboEquipos();
-            List<ListItem> items = listaEquipos.ConvertAll(e =>
-            {
-                return new ListItem()
-                {
-                    Text = e.NombreEquipo,
-                    Value = e.Id.ToString(),
-                    Selected = false
-                };
-            });
+        //private void CargarEquipos(int clubId)
+        //{
+        //    List<EquipoDto> listaEquipos = equipos.getComboEquipos();
+        //    List<ListItem> items = listaEquipos.ConvertAll(e =>
+        //    {
+        //        return new ListItem()
+        //        {
+        //            Text = e.NombreEquipo,
+        //            Value = e.Id.ToString(),
+        //            Selected = false
+        //        };
+        //    });
 
 
-            cmbEquipo.DataSource = items;
-            cmbEquipo.DataBind();
-        }
+        //    cmbEquipo.DataSource = items;
+        //    cmbEquipo.DataBind();
+        //}
 
-        private void CargarClubes()
-        {
+        //private void CargarClubes()
+        //{
 
-            int rolId = Int32.Parse((string)Session["rolId"]);
+        //    int rolId = Int32.Parse((string)Session["rolId"]);
             
 
-            List<ClubDto> listaClubes = clubes.getComboClubes();
+        //    List<ClubDto> listaClubes = clubes.getComboClubes();
 
 
-            List<ListItem> items = listaClubes.ConvertAll(c =>
-            {
-                return new ListItem()
-                {
-                    Text = c.Nombre,
-                    Value = c.Id.ToString(),
-                    Selected = false
-                };
-            });
+        //    List<ListItem> items = listaClubes.ConvertAll(c =>
+        //    {
+        //        return new ListItem()
+        //        {
+        //            Text = c.Nombre,
+        //            Value = c.Id.ToString(),
+        //            Selected = false
+        //        };
+        //    });
 
-            cmbClub.DataSource = items;
-            cmbClub.DataBind();
+        //    cmbClub.DataSource = items;
+        //    cmbClub.DataBind();
 
-            if (rolId == 2)
-            {
-                int clubId = Int32.Parse((string)Session["clubId"]);
-                cmbClub.SelectedIndex = clubId - 1;
-            }
-            else
-            {
-                cmbClub.SelectedIndex = 0;
-            }
-        }
+        //    if (rolId == 2)
+        //    {
+        //        int clubId = Int32.Parse((string)Session["clubId"]);
+        //        cmbClub.SelectedIndex = clubId - 1;
+        //    }
+        //    else
+        //    {
+        //        cmbClub.SelectedIndex = 0;
+        //    }
+        //}
 
         public void CargarGrilla()
         {
@@ -239,25 +266,13 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
             Response.Redirect("Menu.aspx");
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
+        //protected void cmbClub_SelectedIndexChanged1(object sender, EventArgs e)
+        //{
+        //    cmbDiv.Enabled = true;
+        //    CargarDivisiones();
 
-        }
+        //}
 
-        protected void cmbClub_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            cmbDiv.Enabled = true;
-            CargarDivisiones();
-
-        }
-
-        protected void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            Session.RemoveAll();
-            Response.Cookies.Clear();
-            Response.Redirect("Ingreso.aspx");
-        }
 
         protected void btnExportar_Click(object sender, ImageClickEventArgs e)
         {
@@ -567,6 +582,107 @@ List<ListItem> items = sinEquipos.ConvertAll(d =>
             txtDNI.Enabled = false;
 
             btnAgregar.Disabled = true;
+        }
+
+        protected void btnBuscar_Click(object sender, ImageClickEventArgs e)
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+            if (!string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                gvJugadores.DataSource = jugador.getBuscadorJugadores(txtBuscar.Text, clubId);
+                gvJugadores.DataBind();
+            }
+            else
+            {
+                CargarGrilla();
+            }
+        }
+
+        protected void gvJugadores_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Encuentra el control de imagen
+                Image imgHabilitado = (Image)e.Row.FindControl("imgHabilitado");
+
+                // Obtén el valor del campo Habilitado
+                bool habilitado = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "Habilitado"));
+
+                // Asigna la imagen correspondiente según el valor del campo Habilitado
+                if (habilitado)
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/habilitado.png"; // Ruta a la imagen para habilitado
+                    imgHabilitado.AlternateText = "Habilitado";
+                }
+                else
+                {
+                    imgHabilitado.ImageUrl = "~/Imagenes/no_habilitado.png"; // Ruta a la imagen para no habilitado
+                    imgHabilitado.AlternateText = "No habilitado";
+                }
+            }
+        }
+
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            var equipoId = Int32.Parse((String)cmbEquipo.SelectedValue);
+            List<Entidades.Dto.JugadorDto> jugadoresEquipo = jugador.GetJugadoresEquipo(equipoId);
+
+            if (jugadoresEquipo != null)
+            {
+                gvJugadores.Visible = true;
+                gvJugadores.DataSource = jugadoresEquipo;
+                gvJugadores.DataBind();
+            }
+        }
+
+        protected void btnFiltros_Click(object sender, EventArgs e)
+        {
+            int clubId = Int32.Parse((string)Session["clubId"]);
+            var divisionId = Int32.Parse((String)cmbDiv.SelectedValue);
+            var ramaId = Int32.Parse((String)cmbRama.SelectedValue);
+
+            List<Entidades.Equipos> listaEquipos = equipos.GetEquiposHabilitaciones(clubId, divisionId, ramaId);
+
+            cmbEquipo.Items.Clear();
+
+            if (listaEquipos.Any())
+            {
+                cmbEquipo.DataSource = listaEquipos;
+                cmbEquipo.DataTextField = "Nombre";
+                cmbEquipo.DataValueField = "Id";
+                cmbEquipo.DataBind();
+                lblEquipos.Visible = true;
+                btnSeleccionar.Visible = true;
+                cmbEquipo.Visible = true;
+            }
+            else
+            {
+                lblEquipos.Visible = false;
+                btnSeleccionar.Visible = false;
+                cmbEquipo.Visible = false;
+                gvJugadores.Visible = false;
+
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('No existen equipos para el filtro seleccionado.','','info')", true);
+            }
+        }
+
+        protected void LimpiarFiltros_Click(object sender, ImageClickEventArgs e)
+        {
+            CargarGrilla();
+            CargarRamas();
+            CargarDivisiones();
+            txtDNI.Enabled = false;
+            txtNombre.Enabled = false;
+            txtApellido.Enabled = false;
+            txtFecNac.Enabled = false;
+            txtFecEMMAC.Enabled = false;
+            txtEmail.Enabled = false;
+            txtTel.Enabled = false;
+            btnAgregar.Disabled = true;
+
+            cmbDiv.SelectedIndex = 0;
+            cmbRama.SelectedIndex = 0;
         }
     }
 }

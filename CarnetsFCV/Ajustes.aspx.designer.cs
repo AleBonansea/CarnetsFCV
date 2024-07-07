@@ -11,124 +11,124 @@ namespace CarnetsFCV
 {
 
 
-    public partial class Menu
+    public partial class Ajustes
     {
 
         /// <summary>
-        /// btnArbitros control.
+        /// titulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnArbitros;
+        protected global::System.Web.UI.WebControls.Label titulo;
 
         /// <summary>
-        /// btnCarnet control.
+        /// btnInicio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCarnet;
+        protected global::System.Web.UI.WebControls.Button btnInicio;
 
         /// <summary>
-        /// btnClubes control.
+        /// cmbAjustes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClubes;
+        protected global::System.Web.UI.WebControls.DropDownList cmbAjustes;
 
         /// <summary>
-        /// btnEntrenadores control.
+        /// ddlDivisiones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEntrenadores;
+        protected global::System.Web.UI.WebControls.ListItem ddlDivisiones;
 
         /// <summary>
-        /// btnEquipos control.
+        /// ddlRamas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEquipos;
+        protected global::System.Web.UI.WebControls.ListItem ddlRamas;
 
         /// <summary>
-        /// btnJugadores control.
+        /// ddlSexos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnJugadores;
+        protected global::System.Web.UI.WebControls.ListItem ddlSexos;
 
         /// <summary>
-        /// btnHabilitaciones control.
+        /// filaSeleccionada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHabilitaciones;
+        protected global::System.Web.UI.WebControls.HiddenField filaSeleccionada;
 
         /// <summary>
-        /// btnAjustes control.
+        /// gvAjustes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAjustes;
+        protected global::System.Web.UI.WebControls.GridView gvAjustes;
 
         /// <summary>
-        /// btnCambioContraseña control.
+        /// txtDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCambioContraseña;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
-        /// btnCerrarSesion control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
 
         /// <summary>
-        /// carnetArbitro control.
+        /// txtModificarDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetArbitro;
+        protected global::System.Web.UI.WebControls.TextBox txtModificarDescripcion;
 
         /// <summary>
-        /// carnetEntrenador control.
+        /// btnModificar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetEntrenador;
+        protected global::System.Web.UI.WebControls.Button btnModificar;
 
         /// <summary>
-        /// carnetJugador control.
+        /// btnEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button carnetJugador;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
     }
 }

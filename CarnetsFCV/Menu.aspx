@@ -19,7 +19,8 @@
                 <asp:Button ID="btnEntrenadores" OnClick="btnEntrenadores_Click" class="btnMenu" Text="Entrenadores" runat="server" />
                 <asp:Button ID="btnEquipos" OnClick="btnEquipos_Click" class="btnMenu" Text="Equipos" runat="server" />
                 <asp:Button ID="btnJugadores" OnClick="btnJugadores_Click" class="btnMenu" Text="Jugadores" runat="server" />
-
+                <asp:Button ID="btnHabilitaciones" OnClick="btnHabilitaciones_Click" class="btnMenu" Text="Habilitaciones" runat="server" />
+                <asp:Button ID="btnAjustes" OnClick="btnAjustes_Click" class="btnMenu" Text="Ajustes" runat="server" />
             </div>
         </div>
     </div>
@@ -27,7 +28,7 @@
      <div class="row" >
 
             <div class="col">
-                <asp:Button ID="btnCambioContraseña" OnClick="btnCambioContraseña_Click" class="btnCancelar" arial-label="Close" Text="Modificar Contraseña" runat="server"/>
+                <asp:Button ID="btnCambioContraseña" OnClick="btnCambioContraseña_Click" class="btnCambioContraseña" arial-label="Close" Text="Modificar Contraseña" runat="server"/>
             </div>                
 
              <div class="col" style="text-align:right">

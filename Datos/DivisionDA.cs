@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,16 +28,62 @@ namespace Datos
             return listaDivisiones.ToList();
         }
 
-        public List<Entidades.Dto.DivisionDto> getDivisiones()
+        public List<Entidades.Divisiones> getDivisiones()
         {
-            var listaDivisiones = from d in context.Divisiones
-                                  select new Entidades.Dto.DivisionDto
-                                  {
-                                      Id = d.Id,
-                                      Descripcion = d.Descripcion
-                                  };
+            var listaDivisiones = context.Divisiones.ToList();
 
-            return listaDivisiones.ToList();
+            return listaDivisiones;
+        }
+
+        public Entidades.Divisiones getDivision(int id)
+        {
+            var division = context.Divisiones.Find(id);
+
+            return division;
+        }
+        public Entidades.Divisiones GuardarDivision(Entidades.Divisiones divisionNueva)
+        {
+            context.Divisiones.Add(divisionNueva);
+
+            context.SaveChanges();
+
+            return divisionNueva;
+        }
+        public void EliminarDivision(int id)
+        {
+            Entidades.Divisiones division = context.Divisiones.Find(id);
+
+            context.Divisiones.Remove(division);
+
+            context.SaveChanges();
+        }
+        public void ActualizarDivision(Entidades.Divisiones modificada)
+        {
+            context.Entry(modificada).State = System.Data.Entity.EntityState.Modified;
+
+            context.SaveChanges();
+        }
+
+        public List<Divisiones> getDivisionesPorClub(int clubId)
+        {
+            var divisiones = context.Equipos
+                .Where(eq => eq.ClubId == clubId)
+                .Select(eq => eq.Divisiones)
+                .Distinct()
+                .Select(division => new
+                {
+                    Id = division.Id,
+                    Descripcion = division.Descripcion
+                })
+                .ToList()
+                .Select(d => new Divisiones
+                {
+                    Id = d.Id,
+                    Descripcion = d.Descripcion
+                })
+                .ToList();
+
+            return divisiones;
         }
     }
 }

@@ -12,7 +12,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
-
+        <div>
+            <asp:Label ID="titulo" Text="Entrenadores" CssClass="titulo" style="color:white" runat="server" />
+        </div>
 
 <div class="row">  
     <div class="col-sm-1" style="margin-left:2%">
@@ -38,8 +40,8 @@
                     <button  type="button" class="btnCRUD" data-bs-toggle="modal" data-bs-target="#ModalEliminar" runat="server" ID="btnEliminar">Eliminar</button>
                 </div>
                 <div class="col-xl-7" style=" display: flex; justify-content: right; align-items: center;">
-                    <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" />
-                    <asp:ImageButton  class="btnBuscar" ID="ImageButton1" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />                
+                    <asp:TextBox CssClass="buscador" ID="txtBuscar" runat="server" onkeypress="return handleKeyDown(event)"/>
+                    <asp:ImageButton  class="btnBuscar" ID="btnBuscar" OnClick="btnBuscar_Click" ImageUrl="Imagenes/Lupa.png" runat="server" />                
                     <asp:ImageButton CssClass="btnBuscar" ImageUrl="Imagenes/excel.png" ID="btnExportar" OnClick="btnExportar_Click" runat="server" />
                 </div>            
             </div>
@@ -49,7 +51,7 @@
             
             <div class="divGrilla">
                 <asp:HiddenField ID="filaSeleccionada" runat="server" />
-                <asp:GridView  CssClass="grilla"  ID="gvEntrenadores" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None">
+                <asp:GridView  AutoGenerateColumns="false" CssClass="grilla"  ID="gvEntrenadores" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None" OnRowDataBound="gvEntrenadores_RowDataBound">
                     <AlternatingRowStyle CssClass="grilla" BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="3px" Font-Names="Arial"/>
                     <EditRowStyle Font-Names="Arial" Font-Size="14pt" />
                     <HeaderStyle CssClass="grilla" BackColor="#e44f1e" Font-Bold="True" Font-Names="Arial"  Font-Strikeout="False" VerticalAlign="Middle" />
@@ -58,6 +60,19 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                     <asp:CheckBox ID="chk" OnCheckedChanged="chk_CheckedChanged" AutoPostBack="true" runat="server" BorderStyle="None" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="Id" HeaderText="Id" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                        <asp:BoundField DataField="FechaNac" HeaderText="FechaNac" />
+                        <asp:BoundField DataField="FechaEMMAC" HeaderText="FechaEMMAC" />
+                        <asp:BoundField DataField="DNI" HeaderText="DNI" />
+                        <asp:BoundField DataField="Email" HeaderText="Email" />
+                        <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
+                        <asp:TemplateField HeaderText="Habilitado">
+                            <ItemTemplate>
+                                <asp:Image ID="imgHabilitado" CssClass="imgHabilitado" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -339,4 +354,17 @@
             </div>
           </div>
         </div>
+
+            <script type="text/javascript">
+    function handleKeyDown(event) {
+        // Si la tecla presionada es Enter (código 13), realizar la búsqueda
+        if (event.keyCode === 13) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            document.getElementById('btnBuscar').click(); // Simula el clic en el botón de búsqueda
+            return false; // Evita el comportamiento predeterminado de la tecla Enter
+        }
+    }
+    // Agrega un listener para el evento keydown en el campo de búsqueda
+    document.getElementById('<%= txtBuscar.ClientID %>').addEventListener('keydown', handleKeyDown);
+            </script>
 </asp:Content>

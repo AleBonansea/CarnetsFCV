@@ -323,6 +323,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Ajustes.aspx" />
     <Content Include="Arbitros.aspx" />
     <Content Include="CambioContraseña.aspx" />
     <Content Include="Carnets.aspx" />
@@ -350,10 +351,14 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
+    <Content Include="Habilitaciones.aspx" />
     <Content Include="Imagenes\Calendar.png" />
     <Content Include="Imagenes\excel.png" />
+    <Content Include="Imagenes\habilitado.png" />
     <Content Include="Imagenes\LupaBlanca.svg" />
+    <Content Include="Imagenes\no_habilitado.png" />
     <Content Include="Imagenes\sinImagen.png" />
+    <Content Include="Imagenes\X.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -527,6 +532,13 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ajustes.aspx.cs">
+      <DependentUpon>Ajustes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajustes.aspx.designer.cs">
+      <DependentUpon>Ajustes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -575,6 +587,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Habilitaciones.aspx.cs">
+      <DependentUpon>Habilitaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Habilitaciones.aspx.designer.cs">
+      <DependentUpon>Habilitaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ingreso.aspx.cs">
       <DependentUpon>Ingreso.aspx</DependentUpon>

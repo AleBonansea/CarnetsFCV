@@ -15,6 +15,15 @@ namespace CarnetsFCV
     {
 
         /// <summary>
+        /// titulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titulo;
+
+        /// <summary>
         /// btnInicio control.
         /// </summary>
         /// <remarks>
@@ -24,31 +33,22 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.Button btnInicio;
 
         /// <summary>
-        /// cmbClub control.
+        /// btnBuscador control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbClub;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnBuscador;
 
         /// <summary>
-        /// cmbRama control.
+        /// lblEquipos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbRama;
-
-        /// <summary>
-        /// cmbDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbDiv;
+        protected global::System.Web.UI.WebControls.Label lblEquipos;
 
         /// <summary>
         /// cmbEquipo control.
@@ -60,13 +60,22 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.DropDownList cmbEquipo;
 
         /// <summary>
-        /// btnBuscar control.
+        /// btnSeleccionar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Button btnSeleccionar;
+
+        /// <summary>
+        /// LimpiarFiltros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton LimpiarFiltros;
 
         /// <summary>
         /// Button1 control.
@@ -114,13 +123,13 @@ namespace CarnetsFCV
         protected global::System.Web.UI.WebControls.TextBox txtBuscar;
 
         /// <summary>
-        /// ImageButton1 control.
+        /// btnBuscar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.ImageButton btnBuscar;
 
         /// <summary>
         /// btnExportar control.
@@ -148,15 +157,6 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvJugadores;
-
-        /// <summary>
-        /// btnCerrarSesion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCerrarSesion;
 
         /// <summary>
         /// txtValidarDni control.
@@ -355,5 +355,32 @@ namespace CarnetsFCV
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload archivoModificar;
+
+        /// <summary>
+        /// cmbRama control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbRama;
+
+        /// <summary>
+        /// cmbDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbDiv;
+
+        /// <summary>
+        /// btnFiltros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFiltros;
     }
 }

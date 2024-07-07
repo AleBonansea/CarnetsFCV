@@ -13,6 +13,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <div>
+        <asp:Label ID="titulo" Text="Clubes" CssClass="titulo" style="color:white" runat="server" />
+    </div>
     <div class="row">  
         <div class="col-sm-1" style="margin-left:2%">
             <asp:Button CssClass="btnInicio" ID="btnInicio" OnClick="btnInicio_Click" Text="Inicio" runat="server" />
