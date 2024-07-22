@@ -18,6 +18,7 @@ namespace Entidades
         public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<Entrenadores> Entrenadores { get; set; }
         public virtual DbSet<Equipos> Equipos { get; set; }
+        public virtual DbSet<Habilitaciones> Habilitaciones { get; set; }
         public virtual DbSet<Jugadores> Jugadores { get; set; }
         public virtual DbSet<Ramas> Ramas { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
@@ -74,7 +75,7 @@ namespace Entidades
                 .HasMany(e => e.Delegados)
                 .WithRequired(e => e.Clubes)
                 .HasForeignKey(e => e.ClubId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Delegados>()
                 .Property(e => e.Nombre)
@@ -167,6 +168,12 @@ namespace Entidades
                 .WithRequired(e => e.Roles)
                 .HasForeignKey(e => e.RolId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Roles>()
+               .HasMany(e => e.Habilitaciones)
+               .WithRequired(e => e.Roles)
+               .HasForeignKey(e => e.RolId)
+               .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sexos>()
                 .Property(e => e.Descripcion)

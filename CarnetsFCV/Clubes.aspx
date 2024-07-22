@@ -62,11 +62,7 @@
             </div>
         </div>
     </div>
-        <div class="row">
-             <div style="text-align:right">
-                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
-            </div>
-        </div>
+        
 
     <!-- Modal Agregar -->
         <div class="modal fade" id="ModalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -89,7 +85,7 @@
                                 <asp:Label Text="CUIT:" runat="server" />
                             </div>
                             <div class="col-sm-4" style="display:flex; align-items:center;">
-                                <asp:TextBox BorderColor="#e44f1e" ID="txtCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                                <asp:TextBox BorderColor="#e44f1e" ID="txtCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example"  inputmode="numeric" onkeypress="return event.charCode >= 48 && event.charCode <= 57" runat="server" />
                             </div>
                        </div>
 
@@ -152,7 +148,7 @@
                                   <asp:Label Text="Teléfono:" runat="server" />
                               </div>
                               <div class="col-sm-4" style="display:flex; align-items:center;">
-                                  <asp:TextBox BorderColor="#e44f1e" ID="txtTel" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                                  <asp:TextBox inputmode="numeric" BorderColor="#e44f1e" ID="txtTel" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
                               </div>
                          </div>
                    </div>
@@ -185,7 +181,7 @@
                                 <asp:Label Text="CUIT:" runat="server" />
                             </div>
                             <div class="col-sm-4" style="display:flex; align-items:center;">
-                                <asp:TextBox BorderColor="#e44f1e" ID="txtModificarCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                                <asp:TextBox inputmode="numeric" onkeypress="return event.charCode >= 48 && event.charCode <= 57" BorderColor="#e44f1e" ID="txtModificarCUIT" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
                             </div>
                        </div>
 
@@ -248,7 +244,7 @@
                                   <asp:Label Text="Teléfono:" runat="server" />
                               </div>
                               <div class="col-sm-4" style="display:flex; align-items:center;">
-                                  <asp:TextBox BorderColor="#e44f1e" ID="txtModificarTel" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
+                                  <asp:TextBox inputmode="numeric" BorderColor="#e44f1e" ID="txtModificarTel" Style=" margin-left:2%; width:auto; margin-left:2px;" class="form-control" type="text" aria-label="default input example" runat="server" />
                               </div>
                          </div>
                    </div>
@@ -280,4 +276,42 @@
             </div>
           </div>
         </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Formato y validación para txtCUIT en Modal Agregar
+                    var cuitAgregarInput = document.getElementById('<%= txtCUIT.ClientID %>');
+    if (cuitAgregarInput) {
+        cuitAgregarInput.addEventListener('input', function(e) {
+            formatCuit(e);
+        });
+    }
+
+    // Formato y validación para txtModificarCUIT en Modal Modificar
+    var cuitModificarInput = document.getElementById('<%= txtModificarCUIT.ClientID %>');
+    if (cuitModificarInput) {
+        cuitModificarInput.addEventListener('input', function (e) {
+            formatCuit(e);
+        });
+    }
+
+    function formatCuit(e) {
+        // Remover todos los caracteres no numéricos
+        let value = e.target.value.replace(/\D/g, '');
+        // Limitar a 11 caracteres
+        if (value.length > 11) {
+            value = value.slice(0, 11);
+        }
+        // Agregar guiones
+        if (value.length > 2 && value.length <= 10) {
+            value = value.slice(0, 2) + '-' + value.slice(2);
+        } else if (value.length > 10) {
+            value = value.slice(0, 2) + '-' + value.slice(2, 10) + '-' + value.slice(10);
+        }
+        e.target.value = value;
+    }
+});
+            </script>
+
 </asp:Content>

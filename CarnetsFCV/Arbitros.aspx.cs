@@ -105,7 +105,16 @@ namespace CarnetsFCV
                     nuevoArbitro.DNI = txtDNI.Text;
                     nuevoArbitro.Email = txtEmail.Text;
                     nuevoArbitro.Telefono = txtTel.Text;
-                    nuevoArbitro.Foto = imagen;
+
+                    if (tamanioFoto != 0)
+                    {
+                        nuevoArbitro.Foto = imagen;
+                    }
+                    else
+                    {
+                        nuevoArbitro.Foto = null;
+                    }
+
                     if (rdbSi.Checked)
                     {
                         nuevoArbitro.Habilitado = true;
@@ -179,9 +188,13 @@ namespace CarnetsFCV
 
                     byte[] sinImagen = new byte[0];
 
-                    if (imagen != sinImagen)
+                    if (tamanioFoto != 0)
                     {
                         arbitroAModificar.Foto = imagen;
+                    }
+                    else
+                    {
+                        arbitroAModificar.Foto = null;
                     }
 
 
@@ -222,9 +235,10 @@ namespace CarnetsFCV
 
                 var arbitroAEliminar = arbitro.getArbitro(idArbitro);
 
+                arbitro.eliminarArbitro(idArbitro);
+
                 usuario.EliminarUsuario(arbitroAEliminar.UsuarioId);
 
-                arbitro.eliminarArbitro(idArbitro);
                 CargarGrilla();
 
 

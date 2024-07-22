@@ -107,7 +107,16 @@ namespace CarnetsFCV
                     nuevoEntrenador.DNI = txtDNI.Text;
                     nuevoEntrenador.Email = txtEmail.Text;
                     nuevoEntrenador.Telefono = txtTel.Text;
-                    nuevoEntrenador.Foto = imagen;
+
+                    if (tamanioFoto != 0)
+                    {
+                        nuevoEntrenador.Foto = imagen;
+                    }
+                    else
+                    {
+                        nuevoEntrenador.Foto = null;
+                    }
+
                     if (rdbSi.Checked)
                     {
                         nuevoEntrenador.Habilitado = true;
@@ -179,11 +188,13 @@ namespace CarnetsFCV
                         entrenadorAModificar.Habilitado = false;
                     }
 
-                    byte[] sinImagen = new byte[0];
-
-                    if (imagen != sinImagen)
+                    if (tamanioFoto != 0)
                     {
                         entrenadorAModificar.Foto = imagen;
+                    }
+                    else
+                    {
+                        entrenadorAModificar.Foto = null;
                     }
 
 
@@ -224,9 +235,10 @@ namespace CarnetsFCV
 
                 var entrenadorAEliminar = entrenador.getEntrenador(idEntrenador);
 
+                entrenador.eliminarEntrenador(idEntrenador);
+
                 usuario.EliminarUsuario(entrenadorAEliminar.UsuarioId);
 
-                entrenador.eliminarEntrenador(idEntrenador);
                 CargarGrilla();
 
 

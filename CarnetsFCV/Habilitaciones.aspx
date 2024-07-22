@@ -93,11 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div style="text-align: right">
-            <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server" />
-        </div>
-    </div>
+    
 
 
 <!-- Modal Buscar -->

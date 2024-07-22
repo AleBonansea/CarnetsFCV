@@ -62,13 +62,17 @@
     <Compile Include="Dto\DivisionDto.cs" />
     <Compile Include="Dto\EntrenadorDto.cs" />
     <Compile Include="Dto\EquipoDto.cs" />
+    <Compile Include="Dto\HabilitadosDto.cs" />
+    <Compile Include="Dto\HabilitadosPorAnoDto.cs" />
     <Compile Include="Dto\JugadorDto.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />
     <Compile Include="Entrenadores.cs" />
     <Compile Include="Enums\DivisionesEnum.cs" />
     <Compile Include="Enums\RamaEnum.cs" />
     <Compile Include="Enums\RolesEnum.cs" />
+    <Compile Include="Enums\SexosEnum.cs" />
     <Compile Include="Equipos.cs" />
+    <Compile Include="Habilitaciones.cs" />
     <Compile Include="Jugadores.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

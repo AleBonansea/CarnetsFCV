@@ -21,6 +21,7 @@
                 <asp:Button ID="btnJugadores" OnClick="btnJugadores_Click" class="btnMenu" Text="Jugadores" runat="server" />
                 <asp:Button ID="btnHabilitaciones" OnClick="btnHabilitaciones_Click" class="btnMenu" Text="Habilitaciones" runat="server" />
                 <asp:Button ID="btnAjustes" OnClick="btnAjustes_Click" class="btnMenu" Text="Ajustes" runat="server" />
+                <asp:Button ID="Informes" OnClick="Informes_Click" class="btnMenu" Text="Informes" runat="server" />
             </div>
         </div>
     </div>

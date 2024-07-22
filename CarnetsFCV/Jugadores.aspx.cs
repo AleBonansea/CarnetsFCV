@@ -5,6 +5,7 @@ using Entidades.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -46,7 +47,6 @@ namespace CarnetsFCV
                 {
                     Response.Redirect("Ingreso.aspx");
                 }
-                //CargarDivisiones();
                 
 
                 if (rolId == 2)
@@ -153,105 +153,13 @@ namespace CarnetsFCV
             }
         }
 
-        //private void CargarDivisiones()
-        //{
-
-        //    List<DivisionDto> divisiones = division.getComboDivisiones(cmbClub.SelectedIndex +1, cmbRama.SelectedIndex +1);
-
-        //    if (divisiones != null)
-        //    {
-        //    List<ListItem> items = divisiones.ConvertAll(d =>
-
-        //    {
-        //        return new ListItem()
-        //        {
-        //            Text = d.Descripcion,
-        //            Value = d.Id.ToString(),
-        //            Selected = false
-        //        };
-        //    });
-
-        //    cmbDiv.DataSource = items;
-        //    cmbDiv.DataBind();
-        //    }
-        //    else
-        //    {
-        //        List<DivisionDto> sinDivision = new List<DivisionDto>();
-        //        List<ListItem> items = sinDivision.ConvertAll(d =>
-
-        //        {
-        //            return new ListItem()
-        //            {
-        //                Text = "Sin Division",
-        //                Value = "1",
-        //                Selected = false
-        //            };
-        //        });
-
-        //        cmbDiv.DataSource = items;
-        //        cmbDiv.DataBind();
-
-        //    }
-        //}
-
-        //private void CargarEquipos(int clubId)
-        //{
-        //    List<EquipoDto> listaEquipos = equipos.getComboEquipos();
-        //    List<ListItem> items = listaEquipos.ConvertAll(e =>
-        //    {
-        //        return new ListItem()
-        //        {
-        //            Text = e.NombreEquipo,
-        //            Value = e.Id.ToString(),
-        //            Selected = false
-        //        };
-        //    });
-
-
-        //    cmbEquipo.DataSource = items;
-        //    cmbEquipo.DataBind();
-        //}
-
-        //private void CargarClubes()
-        //{
-
-        //    int rolId = Int32.Parse((string)Session["rolId"]);
-            
-
-        //    List<ClubDto> listaClubes = clubes.getComboClubes();
-
-
-        //    List<ListItem> items = listaClubes.ConvertAll(c =>
-        //    {
-        //        return new ListItem()
-        //        {
-        //            Text = c.Nombre,
-        //            Value = c.Id.ToString(),
-        //            Selected = false
-        //        };
-        //    });
-
-        //    cmbClub.DataSource = items;
-        //    cmbClub.DataBind();
-
-        //    if (rolId == 2)
-        //    {
-        //        int clubId = Int32.Parse((string)Session["clubId"]);
-        //        cmbClub.SelectedIndex = clubId - 1;
-        //    }
-        //    else
-        //    {
-        //        cmbClub.SelectedIndex = 0;
-        //    }
-        //}
-
         public void CargarGrilla()
         {
             int rolId = 2;
 
             if (rolId == 2)
             {
-                int clubId = 1;
+                int clubId = Int32.Parse((string)Session["clubId"]);
                 gvJugadores.DataSource = jugador.getGVJugadores(clubId);
                 gvJugadores.DataBind();
             }
@@ -266,14 +174,7 @@ namespace CarnetsFCV
             Response.Redirect("Menu.aspx");
         }
 
-        //protected void cmbClub_SelectedIndexChanged1(object sender, EventArgs e)
-        //{
-        //    cmbDiv.Enabled = true;
-        //    CargarDivisiones();
-
-        //}
-
-
+        
         protected void btnExportar_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -362,7 +263,9 @@ namespace CarnetsFCV
                     nuevoJugador.Email = txtEmail.Text;
                     nuevoJugador.Telefono = txtTel.Text;
                     nuevoJugador.SexoId = Int32.Parse((string)cmbSexoModal.SelectedValue);
-                    nuevoJugador.Foto = imagen;
+
+                    
+
                     nuevoJugador.Habilitado = false;
                     
                     jugador.guardarJugador(nuevoJugador);
@@ -419,11 +322,13 @@ namespace CarnetsFCV
                     jugadorAModificar.SexoId = Int32.Parse((string)cmbModificarSexoModal.SelectedValue);
 
 
-                    byte[] sinImagen = new byte[0];
-
-                    if (imagen != sinImagen)
+                    if (tamanioFoto != 0)
                     {
                         jugadorAModificar.Foto = imagen;
+                    }
+                    else
+                    {
+                        jugadorAModificar.Foto = null;
                     }
 
 
@@ -461,11 +366,11 @@ namespace CarnetsFCV
 
                 var jugadorAEliminar = jugador.getJugador(idJugador);
 
+                jugador.eliminarJugador(idJugador);
+
                 usuario.EliminarUsuario(jugadorAEliminar.UsuarioId);
 
-                jugador.eliminarJugador(idJugador);
                 CargarGrilla();
-
 
                 Session["ultimaFilaSeleccionada"] = null;
 
@@ -507,60 +412,69 @@ namespace CarnetsFCV
             txtModificarDNI.Text = jugadorAModificar.DNI;
             txtModificarEmail.Text = jugadorAModificar.Email;
             txtModificarTel.Text = jugadorAModificar.Telefono.ToString();
+            cmbModificarSexoModal.SelectedValue = jugadorAModificar.SexoId.ToString();
             Session["ultimaFilaSeleccionada"] = idFilaSeleccionada.ToString();
             Session["idJugadorSeleccionado"] = idJugador.ToString();
         }
 
         protected void btnValidarDNI_Click(object sender, EventArgs e)
         {
-            int tamanioFoto = archivo.PostedFile.ContentLength;
-            byte[] imagen = new byte[tamanioFoto];
-            archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
-
-            var user = usuario.getUsuarioByNombre(txtValidarDni.Text);
-
-            if (user != null)
+            try
             {
-                txtNombre.Text = user.Nombre;
-                txtApellido.Text = user.Apellido;
-                txtFecNac.Text = user.FechaNac.ToString("yyyy-MM-dd");
-                txtFecEMMAC.Text = user.FechaEMMAC.ToString("yyyy-MM-dd");
-                txtDNI.Text = user.DNI;
-                txtEmail.Text = user.Email;
-                txtTel.Text = user.Telefono;
-                archivo.PostedFile.InputStream.Read(user.Foto, 0, tamanioFoto);
+                int tamanioFoto = archivo.PostedFile.ContentLength;
+                byte[] imagen = new byte[tamanioFoto];
+                archivo.PostedFile.InputStream.Read(imagen, 0, tamanioFoto);
+
+                var user = usuario.getUsuarioByNombre(txtValidarDni.Text);
+
+                if (user != null)
+                {
+                    txtNombre.Text = user.Nombre;
+                    txtApellido.Text = user.Apellido;
+                    txtFecNac.Text = user.FechaNac.ToString("yyyy-MM-dd");
+                    txtFecEMMAC.Text = user.FechaEMMAC.ToString("yyyy-MM-dd");
+                    txtDNI.Text = user.DNI;
+                    txtEmail.Text = user.Email;
+                    txtTel.Text = user.Telefono;
+                    archivo.PostedFile.InputStream.Read(user.Foto, 0, tamanioFoto);
 
 
-                btnAgregar.Disabled = false;
+                    btnAgregar.Disabled = false;
 
 
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese al formulario Agregar.','','success')", true);
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('Se han encontrado datos para el DNI seleccionado y se han cargado. Ingrese al formulario Agregar.','','success')", true);
 
+                }
+                else
+                {
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
+                    txtFecNac.Enabled = true;
+                    txtFecEMMAC.Enabled = true;
+                    txtDNI.Enabled = true;
+                    txtEmail.Enabled = true;
+                    txtTel.Enabled = true;
+                    txtDNI.Enabled = true;
+
+                    txtNombre.Text = "";
+                    txtApellido.Text = "";
+                    txtFecNac.Text = "";
+                    txtFecEMMAC.Text = "";
+                    txtDNI.Text = txtValidarDni.Text;
+                    txtEmail.Text = "";
+                    txtTel.Text = "";
+
+                    btnAgregar.Disabled = false;
+
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                        "swal('El DNI ingresado no existe. Ingrese al formulario Agregar.','','info')", true);
+                }
             }
-            else
+            catch
             {
-                txtNombre.Enabled = true;
-                txtApellido.Enabled = true;
-                txtFecNac.Enabled = true;
-                txtFecEMMAC.Enabled = true;
-                txtDNI.Enabled = true;
-                txtEmail.Enabled = true;
-                txtTel.Enabled = true;
-                txtDNI.Enabled = true;
-
-                txtNombre.Text = "";
-                txtApellido.Text = "";
-                txtFecNac.Text = "";
-                txtFecEMMAC.Text = "";
-                txtDNI.Text = txtValidarDni.Text;
-                txtEmail.Text = "";
-                txtTel.Text = "";
-
-                btnAgregar.Disabled = false;
-
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
-                    "swal('El DNI ingresado no existe. Ingrese al formulario Agregar.','','info')", true);
+                        "swal('El usuario tiene problema de datos, comuniquese con su proveedor.','','error')", true);
             }
         }
 
