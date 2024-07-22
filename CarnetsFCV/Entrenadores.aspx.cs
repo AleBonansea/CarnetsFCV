@@ -75,6 +75,7 @@ namespace CarnetsFCV
 
         protected void modalGuardar_Click(object sender, EventArgs e)
         {
+            var usuarioEntrenador = new Entidades.Usuarios();
             try
             {
                 int tamanioFoto = archivo.PostedFile.ContentLength;
@@ -88,7 +89,7 @@ namespace CarnetsFCV
 
                 if (usuarioExistente is null)
                 {
-                    var usuarioEntrenador = new Entidades.Usuarios();
+                    
 
                     usuarioEntrenador.RolId = rolEntrenadorId;
                     usuarioEntrenador.NombreUsuario = txtDNI.Text;
@@ -147,11 +148,14 @@ namespace CarnetsFCV
                 txtTel.Text = "";
                 rdbNo.Checked = false;
                 rdbSi.Checked = true;
+                btnAgregar.Disabled = true;
 
-                
+
             }
             catch (Exception)
             {
+                usuario.EliminarUsuario(usuarioEntrenador.Id);
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El entrenador no se ha registrado correctamente','error')", true);                
             }

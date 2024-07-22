@@ -73,6 +73,8 @@ namespace CarnetsFCV
 
         protected void modalGuardar_Click(object sender, EventArgs e)
         {
+            var usuarioArbitro = new Entidades.Usuarios();
+
             try
             {
                 int tamanioFoto = archivo.PostedFile.ContentLength;
@@ -86,7 +88,6 @@ namespace CarnetsFCV
 
                 if (usuarioExistente is null)
                 {
-                    var usuarioArbitro = new Entidades.Usuarios();
 
                     usuarioArbitro.RolId = rolArbitroId;
                     usuarioArbitro.NombreUsuario = txtDNI.Text;
@@ -131,6 +132,7 @@ namespace CarnetsFCV
                 }
                 else
                 {
+                    usuario.EliminarUsuario(usuarioArbitro.Id);
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El áritro ya existe','','info')", true);
                 }

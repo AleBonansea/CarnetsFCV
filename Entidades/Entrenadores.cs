@@ -36,7 +36,6 @@ namespace Entidades
         [StringLength(30)]
         public string Telefono { get; set; }
 
-        [Required]
         public byte[] Foto { get; set; }
 
         public bool Habilitado { get; set; }

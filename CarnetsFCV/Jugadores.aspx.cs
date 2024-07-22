@@ -225,6 +225,8 @@ namespace CarnetsFCV
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            var usuarioJugador = new Entidades.Usuarios();
+
             try
             {
                 int clubId = Int32.Parse((string)Session["clubId"]);
@@ -240,7 +242,6 @@ namespace CarnetsFCV
 
                 if (usuarioExistente is null)
                 {
-                    var usuarioJugador = new Entidades.Usuarios();
 
                     usuarioJugador.RolId = rolJugadorId;
                     usuarioJugador.NombreUsuario = txtDNI.Text;
@@ -275,6 +276,8 @@ namespace CarnetsFCV
                 }
                 else
                 {
+                    usuario.EliminarUsuario(usuarioJugador.Id);
+                    
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El jugador ya existe','','info')", true);
                 }
