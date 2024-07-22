@@ -258,7 +258,8 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
                 int clubId = Int32.Parse((string)Session["clubId"]);
                 if (Session["idEquipoSeleccionado"] != null)
                 {
@@ -274,10 +275,16 @@ namespace CarnetsFCV
                         "swal('El equipo se ha eliminado correctamente','','success')", true);
                 }
 
-            
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El equipo no se pudo eliminar.  Compruebe haber seleccionado uno.','error')", true);
-            
+            }
+                
+            catch
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El equipo no se pudo eliminar.  Compruebe haber seleccionado uno o que no esté en uso.','error')", true);
+            }
         }
 
         protected void btnExportar_Click(object sender, ImageClickEventArgs e)

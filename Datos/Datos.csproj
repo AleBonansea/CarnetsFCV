@@ -57,6 +57,7 @@
     <Compile Include="DivisionDA.cs" />
     <Compile Include="EntrenadorDA.cs" />
     <Compile Include="EquipoDA.cs" />
+    <Compile Include="HabilitacionDA.cs" />
     <Compile Include="JugadorDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RamaDA.cs" />

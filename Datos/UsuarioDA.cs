@@ -108,8 +108,8 @@ namespace Datos
 
                 case (int)RolesEnum.Jugador:
                     var carnetJugador = from u in context.Usuarios
-                                        from j in context.Jugadores
-                                        from s in context.Sexos
+                                        join j in context.Jugadores on u.Id equals j.UsuarioId
+                                        join s in context.Sexos on j.SexoId equals s.Id
                                         where j.DNI == usuario
                                         select new Entidades.Dto.UsuarioDto
                                         {
@@ -213,14 +213,13 @@ namespace Datos
 
         }
 
-        public Entidades.Usuarios EliminarUsuario(int usuarioId)
+        public void EliminarUsuario(int usuarioId)
         {
             var usuario = context.Usuarios.Find(usuarioId);
 
             context.Usuarios.Remove(usuario);
             context.SaveChangesAsync();
 
-            return usuario;
         }
     }
 }

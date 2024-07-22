@@ -55,6 +55,7 @@ namespace CarnetsFCV
                         btnEntrenadores.Visible = false;
                         btnAjustes.Visible = false;
                         btnHabilitaciones.Visible = false;
+                        Informes.Visible = false;
                         break;
 
                     case (3):
@@ -65,6 +66,7 @@ namespace CarnetsFCV
                         btnJugadores.Visible = false;
                         btnAjustes.Visible = false;
                         btnHabilitaciones.Visible = false;
+                        Informes.Visible = false;
                         break;
 
                     case (4):
@@ -75,6 +77,7 @@ namespace CarnetsFCV
                         btnJugadores.Visible = false;
                         btnAjustes.Visible = false;
                         btnHabilitaciones.Visible = false;
+                        Informes.Visible = false;
                         break;
 
                     case (5):
@@ -85,6 +88,7 @@ namespace CarnetsFCV
                         btnJugadores.Visible = false;
                         btnAjustes.Visible = false;
                         btnHabilitaciones.Visible = false;
+                        Informes.Visible = false;
                         break;
 
                 }
@@ -164,6 +168,11 @@ namespace CarnetsFCV
         protected void btnAjustes_Click(object sender, EventArgs e)
         {
             Response.Redirect("Ajustes.aspx");
+        }
+
+        protected void Informes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Informes.aspx");
         }
     }
 }

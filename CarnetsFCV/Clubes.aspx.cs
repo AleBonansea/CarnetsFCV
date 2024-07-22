@@ -116,7 +116,7 @@ namespace CarnetsFCV
 
             txtMofidicarNombreClub.Text = clubAModificar.Nombre;
             txtModificarDomicilio.Text = clubAModificar.Domicilio;
-
+            txtModificarCUIT.Text = FormatearCUIT(clubAModificar.CUIT);
             txtModificarNombreDel.Text = delegadoAModificar.Nombre;
             txtModificarApellido.Text = delegadoAModificar.Apellido;
             txtModificarEmail.Text = delegadoAModificar.Email;
@@ -129,6 +129,8 @@ namespace CarnetsFCV
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
                 if (Session["idClubSeleccionado"] != null)
                 {
                     int idClub = Int32.Parse((string)Session["idClubSeleccionado"]);
@@ -143,10 +145,17 @@ namespace CarnetsFCV
                         "swal('El club se ha eliminado correctamente','','success')", true);
                 }
 
-            
+
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El club no se pudo eliminar. Compruebe haber seleccionado uno.','error')", true);
-            
+            }
+            catch
+            {
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
+                    "swal('Error','El club no se pudo eliminar.  Compruebe haber seleccionado uno o que no esté en uso.','error')", true);
+            }
+
+
         }
 
         protected void modalGuardar_Click(object sender, EventArgs e)
@@ -158,12 +167,16 @@ namespace CarnetsFCV
 
                 var usuarioExistente = usuario.validarUsuario(rolDelegadoId, txtNombreClub.Text);
 
+                string cuitSinGuiones = txtCUIT.Text.Replace("-", "");
+
                 if (usuarioExistente is null)
                 {
                     var usuarioDelegado = new Entidades.Usuarios();
 
                     usuarioDelegado.RolId = rolDelegadoId;
-                    usuarioDelegado.NombreUsuario = txtCUIT.Text;
+
+
+                    usuarioDelegado.NombreUsuario = cuitSinGuiones;
                     usuarioDelegado.Contraseña = "123";
                     usuarioDelegado.PrimerIngreso = true;
 
@@ -177,6 +190,8 @@ namespace CarnetsFCV
 
                         nuevoClub.Nombre = txtNombreClub.Text;
                         nuevoClub.Domicilio = txtDomicilio.Text;
+
+                        nuevoClub.CUIT = cuitSinGuiones;
 
                         club.guardarClub(nuevoClub);
 
@@ -217,7 +232,7 @@ namespace CarnetsFCV
                 txtTel.Text = "";
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                                     "swal('Error','El club no se ha registrado correctamente','error')", true);
@@ -237,6 +252,10 @@ namespace CarnetsFCV
 
                     clubAModificar.Nombre = txtMofidicarNombreClub.Text;
                     clubAModificar.Domicilio = txtModificarDomicilio.Text;
+
+                    string cuitSinGuiones = txtModificarCUIT.Text.Replace("-", "");
+
+                    clubAModificar.CUIT = cuitSinGuiones;
                                        
 
                     club.modificarClub(clubAModificar);
@@ -255,13 +274,13 @@ namespace CarnetsFCV
 
                     CargarGrilla();
 
-                    txtNombreClub.Text = "";
-                    txtDomicilio.Text = "";
-                    txtCUIT.Text = "";
-                    txtNombreDelegado.Text = "";
-                    txtApellido.Text = "";
-                    txtEmail.Text = "";
-                    txtTel.Text = "";
+                    txtMofidicarNombreClub.Text = "";
+                    txtModificarDomicilio.Text = "";
+                    txtModificarCUIT.Text = "";
+                    txtModificarNombreDel.Text = "";
+                    txtModificarApellido.Text = "";
+                    txtModificarEmail.Text = "";
+                    txtModificarTel.Text = "";
                 }
 
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
@@ -271,6 +290,18 @@ namespace CarnetsFCV
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El club no se ha modificado','error')", true);
+            }
+        }
+
+        private string FormatearCUIT(string cuit)
+        {
+            if (cuit.Length == 11)
+            {
+                return $"{cuit.Substring(0, 2)}-{cuit.Substring(2, 8)}-{cuit.Substring(10, 1)}";
+            }
+            else
+            {
+                return cuit; // Devuelve el CUIT sin formatear si no tiene 11 dígitos
             }
         }
     }

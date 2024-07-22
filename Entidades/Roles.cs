@@ -12,6 +12,7 @@ namespace Entidades
         public Roles()
         {
             Usuarios = new HashSet<Usuarios>();
+            Habilitaciones = new HashSet<Habilitaciones>();
         }
 
         public int Id { get; set; }
@@ -22,5 +23,6 @@ namespace Entidades
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
+        public virtual ICollection<Habilitaciones> Habilitaciones { get; set; }
     }
 }

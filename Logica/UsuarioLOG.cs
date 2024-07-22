@@ -45,9 +45,9 @@ namespace Logica
         {
             return usuario.getUsuarioByNombre(nombreUsuario);
         }
-        public Entidades.Usuarios EliminarUsuario(int usuarioId)
+        public void EliminarUsuario(int usuarioId)
         {
-            return usuario.EliminarUsuario(usuarioId);
+            usuario.EliminarUsuario(usuarioId);
         }
 
     }

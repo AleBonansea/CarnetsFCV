@@ -61,6 +61,10 @@ namespace Datos
         public Entidades.Clubes eliminarClub(int clubId)
         {
             Entidades.Clubes club = context.Clubes.Find(clubId);
+            Entidades.Delegados delegado = context.Delegados.SingleOrDefault(d => d.ClubId == clubId);
+
+            context.Delegados.Remove(delegado);
+
             context.Clubes.Remove(club);
             context.SaveChanges();
             return club;

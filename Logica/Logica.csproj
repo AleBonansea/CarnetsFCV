@@ -57,6 +57,7 @@
     <Compile Include="DivisionLOG.cs" />
     <Compile Include="EntrenadorLOG.cs" />
     <Compile Include="EquipoLOG.cs" />
+    <Compile Include="HabilitacionLOG.cs" />
     <Compile Include="JugadorLOG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RamaLOG.cs" />

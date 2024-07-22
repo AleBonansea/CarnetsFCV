@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
 using Entidades;
 using Entidades.Dto;
+using Entidades.Enums;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace CarnetsFCV
         Logica.DivisionLOG division = new Logica.DivisionLOG();
         Logica.UsuarioLOG usuario = new Logica.UsuarioLOG();
         Logica.RamaLOG rama = new Logica.RamaLOG();
+        Logica.HabilitacionLOG habilitacion = new Logica.HabilitacionLOG();
         protected void Page_Load(object sender, EventArgs e)
         {
             int rolId = Int32.Parse((string)Session["rolId"]);
@@ -204,9 +206,14 @@ namespace CarnetsFCV
                 foreach (var jugador in jugadores)
                 {
                     jugador.Habilitado = true;
+
+                    habilitacion.Habilitar(jugador.Id, (int)RolesEnum.Jugador);
+
                 }
                 context.SaveChanges();
             }
+
+
 
             // Recargar la grilla después de actualizar
             CargarJugadores();
@@ -227,6 +234,8 @@ namespace CarnetsFCV
                 foreach (var jugador in jugadores)
                 {
                     jugador.Habilitado = false;
+
+                    habilitacion.DesHabilitar(jugador.Id, (int)RolesEnum.Jugador);
                 }
                 context.SaveChanges();
             }
