@@ -20,8 +20,9 @@ namespace Datos
         public List<Entidades.Arbitros> getBuscadorArbitros(string buscar)
         {
             var listaArbitros = from e in context.Arbitros
-                                where e.Nombre.Contains(buscar)
-                                    select e;
+                                where e.Nombre.Contains(buscar) || e.Apellido.Contains(buscar)
+
+                                select e;
 
 
             return listaArbitros.ToList();

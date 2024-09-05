@@ -20,8 +20,8 @@ namespace Datos
         public List<Entidades.Entrenadores> getBuscadorEntrenadores(string buscar)
         {
             var listaEntrenadores = from e in context.Entrenadores
-                                    where e.Nombre.Contains(buscar)
-                                       select e;
+                                    where e.Nombre.Contains(buscar) || e.Apellido.Contains(buscar)
+                                    select e;
 
 
             return listaEntrenadores.ToList();
