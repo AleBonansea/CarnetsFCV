@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Entidades;
 using Entidades.Dto;
 using Entidades.Enums;
 using System;
@@ -126,6 +127,8 @@ namespace CarnetsFCV
                     }
 
                     arbitro.guardarArbitro(nuevoArbitro);
+
+                    txtValidarDni.Text = "";
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El árbitro se ha registrado correctamente','','success')", true);
@@ -432,6 +435,15 @@ namespace CarnetsFCV
                     imgHabilitado.AlternateText = "No habilitado";
                 }
             }
+        }
+
+        protected void gvArbitros_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvArbitros.PageIndex = e.NewPageIndex;
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            CargarGrilla();
         }
     }
 }

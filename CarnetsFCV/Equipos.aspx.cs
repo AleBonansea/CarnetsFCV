@@ -45,13 +45,7 @@ namespace CarnetsFCV
             Response.Redirect("Menu.aspx");
         }
 
-        protected void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            Session.RemoveAll();
-            Response.Cookies.Clear();
-            Response.Redirect("Ingreso.aspx");
-        }
+        
 
         public void CargarGrilla(int clubId)
         {
@@ -313,6 +307,17 @@ namespace CarnetsFCV
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('Error','El excel no pudo ser descargado','error')", true);
             }
+        }
+
+        protected void gvEquipos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEquipos.PageIndex = e.NewPageIndex;
+
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            int clubId = Int32.Parse((string)Session["clubId"]);
+            CargarGrilla(clubId);
         }
     }
 }

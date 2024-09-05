@@ -271,6 +271,8 @@ namespace CarnetsFCV
                     
                     jugador.guardarJugador(nuevoJugador);
 
+                    txtValidarDni.Text = "";
+
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El jugador se ha registrado correctamente','','success')", true);
                 }
@@ -600,6 +602,15 @@ namespace CarnetsFCV
 
             cmbDiv.SelectedIndex = 0;
             cmbRama.SelectedIndex = 0;
+        }
+
+        protected void gvJugadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvJugadores.PageIndex = e.NewPageIndex;
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            CargarGrilla() ;
         }
     }
 }

@@ -255,5 +255,22 @@ namespace CarnetsFCV
                 gvJugadores.DataBind();
             }
         }
+
+        protected void gvJugadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvJugadores.PageIndex = e.NewPageIndex;
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            var equipoId = Int32.Parse((String)cmbEquipo.SelectedValue);
+            List<Entidades.Dto.JugadorDto> jugadoresEquipo = jugador.GetJugadoresEquipo(equipoId);
+
+            if (jugadoresEquipo != null)
+            {
+                gvJugadores.Visible = true;
+                gvJugadores.DataSource = jugadoresEquipo;
+                gvJugadores.DataBind();
+            }
+        }
     }
 }

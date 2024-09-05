@@ -44,7 +44,10 @@
             
             <div class="divGrilla">
                 <asp:HiddenField ID="filaSeleccionada" runat="server" />
-                <asp:GridView AutoGenerateColumns="false" CssClass="grilla"  ID="gvEquipos" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None">
+                <asp:GridView AutoGenerateColumns="false" CssClass="grilla"  ID="gvEquipos" runat="server" ShowHeaderWhenEmpty="True" 
+                    Font-Names="Arial" GridLines="None"
+                    AllowPaging="true" PageSize="10" OnPageIndexChanging="gvEquipos_PageIndexChanging">
+                    <PagerStyle CssClass="customPager" />
                     <AlternatingRowStyle CssClass="grilla" BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="3px" Font-Names="Arial"/>
                     <EditRowStyle Font-Names="Arial" Font-Size="14pt" />
                     <HeaderStyle CssClass="grilla" BackColor="#e44f1e" Font-Bold="True" Font-Names="Arial"  Font-Strikeout="False" VerticalAlign="Middle" />
@@ -65,11 +68,7 @@
             </div>
         </div>
     </div>
-        <div class="row">
-             <div style="text-align:right">
-                <asp:Button ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" class="btnCerrar" arial-label="Close" Text="Cerrar Sesión" runat="server"/>
-            </div>
-        </div>
+        
 
     <!-- Modal Agregar -->
         <div class="modal fade" id="ModalAgregar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -191,16 +190,16 @@
         </div>
 
             <script type="text/javascript">
-    function handleKeyDown(event) {
-        // Si la tecla presionada es Enter (código 13), realizar la búsqueda
-        if (event.keyCode === 13) {
-            event.preventDefault(); // Evita que el formulario se envíe
-            document.getElementById('btnBuscar').click(); // Simula el clic en el botón de búsqueda
-            return false; // Evita el comportamiento predeterminado de la tecla Enter
-        }
-    }
-    // Agrega un listener para el evento keydown en el campo de búsqueda
-    document.getElementById('<%= txtBuscar.ClientID %>').addEventListener('keydown', handleKeyDown);
+                function handleKeyDown(event) {
+                    // Si la tecla presionada es Enter (código 13), realizar la búsqueda
+                    if (event.keyCode === 13) {
+                        event.preventDefault(); // Evita que el formulario se envíe
+                        document.getElementById('btnBuscar').click(); // Simula el clic en el botón de búsqueda
+                        return false; // Evita el comportamiento predeterminado de la tecla Enter
+                    }
+                }
+                // Agrega un listener para el evento keydown en el campo de búsqueda
+                document.getElementById('<%= txtBuscar.ClientID %>').addEventListener('keydown', handleKeyDown);
             </script>
 
 </asp:Content>

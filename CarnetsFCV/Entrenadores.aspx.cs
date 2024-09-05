@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Entidades;
 using Entidades.Dto;
 using Entidades.Enums;
 using System;
@@ -128,6 +129,8 @@ namespace CarnetsFCV
                     }
 
                     entrenador.guardarEntrenador(nuevoEntrenador);
+
+                    txtValidarDni.Text = "";
 
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "k",
                     "swal('El entrenador se ha registrado correctamente','','success')", true);
@@ -432,6 +435,15 @@ namespace CarnetsFCV
                     imgHabilitado.AlternateText = "No habilitado";
                 }
             }
+        }
+
+        protected void gvEntrenadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEntrenadores.PageIndex = e.NewPageIndex;
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            CargarGrilla();
         }
     }
 }

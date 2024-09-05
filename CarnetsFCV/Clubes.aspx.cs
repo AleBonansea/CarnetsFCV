@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Entidades;
 using Entidades.Dto;
 using Entidades.Enums;
 using System;
@@ -303,6 +304,15 @@ namespace CarnetsFCV
             {
                 return cuit; // Devuelve el CUIT sin formatear si no tiene 11 dígitos
             }
+        }
+
+        protected void gvClubes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvClubes.PageIndex = e.NewPageIndex;
+
+            Session["ultimaFilaSeleccionada"] = null;
+
+            CargarGrilla();
         }
     }
 }

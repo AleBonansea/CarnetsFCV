@@ -51,7 +51,10 @@
             
             <div class="divGrilla">
                 <asp:HiddenField ID="filaSeleccionada" runat="server" />
-                <asp:GridView AutoGenerateColumns="false"  CssClass="grilla"  ID="gvArbitros" runat="server" ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None" OnRowDataBound="gvArbitros_RowDataBound">
+                <asp:GridView AutoGenerateColumns="false"  CssClass="grilla"  ID="gvArbitros" runat="server"
+                    ShowHeaderWhenEmpty="True" Font-Names="Arial" GridLines="None" OnRowDataBound="gvArbitros_RowDataBound"
+                    AllowPaging="true" PageSize="10" OnPageIndexChanging="gvArbitros_PageIndexChanging">
+                    <PagerStyle CssClass="customPager" />
                     <AlternatingRowStyle CssClass="grilla" BackColor="#CCCCCC" BorderStyle="Solid" BorderWidth="3px" Font-Names="Arial"/>
                     <EditRowStyle Font-Names="Arial" Font-Size="14pt" />
                     <HeaderStyle CssClass="grilla" BackColor="#e44f1e" Font-Bold="True" Font-Names="Arial"  Font-Strikeout="False" VerticalAlign="Middle" />
@@ -65,8 +68,8 @@
                          <asp:BoundField DataField="Id" HeaderText="Id" />
                          <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                          <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                         <asp:BoundField DataField="FechaNac" HeaderText="FechaNac" />
-                         <asp:BoundField DataField="FechaEMMAC" HeaderText="FechaEMMAC" />
+                         <asp:BoundField DataField="FechaNac" HeaderText="FechaNac"  DataFormatString="{0:dd/MM/yyyy}"/>
+                         <asp:BoundField DataField="FechaEMMAC" HeaderText="FechaEMMAC" DataFormatString="{0:dd/MM/yyyy}" />
                          <asp:BoundField DataField="DNI" HeaderText="DNI" />
                          <asp:BoundField DataField="Email" HeaderText="Email" />
                          <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
